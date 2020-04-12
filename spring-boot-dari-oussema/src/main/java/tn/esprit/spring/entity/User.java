@@ -25,7 +25,7 @@ import javax.persistence.TemporalType;
 public class User {
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
-	//test comment test 1 1
+	// test comment 
 	private Long idU;
 	private String username;
 	private String password;
