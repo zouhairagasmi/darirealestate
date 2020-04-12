@@ -4,9 +4,9 @@ import java.util.List;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.interfaces.IUserService;
@@ -44,12 +44,11 @@ public class UserService implements IUserService {
 										,user.getRole()
 										, idU);
 	}
+	/*@Override
+	public void banUserById(Long idU) {
+		userRepository.banUserById(idU);
+	}*/
 	
-	@Override
-	public List<User> getAllUsers() {
-		
-		return (List<User>) userRepository.findAll();
-	}
 	
 	@Override
 	public void deleteUser(User user) {
@@ -63,6 +62,12 @@ public class UserService implements IUserService {
 	@Override
 	public void deleteAllUsers() {
 		userRepository.deleteAll();
+	}
+	@Override
+	public List<User> getAllUsers() {
+		//https://jira.spring.io/browse/DATACMNS-21
+		//Ce cast n'est pas une bonne pratique ?
+		return (List<User>) userRepository.findAll();
 	}
 	
 	

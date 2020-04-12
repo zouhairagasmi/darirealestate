@@ -7,6 +7,7 @@ import java.util.Date;
 
 
 
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -20,12 +21,12 @@ import javax.persistence.TemporalType;
 
 
 
+
 @Entity
 @Table(name="Utilisateur")
 public class User {
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
-	// test comment 
 	private Long idU;
 	private String username;
 	private String password;
@@ -39,6 +40,7 @@ public class User {
 	private int rating;
 	private String email;
 	public Role role;
+	private Integer status;
 	
 	
 	
@@ -53,8 +55,18 @@ public class User {
 		this.password = password;
 	}
 	
+	
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
 	public User(Long idU, String username, String password, String firstname, String lastname, String gender,
-			Long phone, String adress, Date dateofbirth, int rating, String email, Role role) {
+			Long phone, String adress, Date dateofbirth, int rating, String email, Role role, Integer status) {
 		super();
 		this.idU = idU;
 		this.username = username;
@@ -68,6 +80,7 @@ public class User {
 		this.rating = rating;
 		this.email = email;
 		this.role = role;
+		this.status = status;
 	}
 
 	public String getEmail() {

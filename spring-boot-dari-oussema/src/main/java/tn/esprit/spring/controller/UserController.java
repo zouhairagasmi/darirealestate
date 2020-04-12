@@ -1,6 +1,9 @@
 package tn.esprit.spring.controller;
 
 
+import java.util.List;
+
+
 import org.slf4j.Logger;
 
 
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.interfaces.IUserService;
@@ -50,7 +54,7 @@ public class UserController {
 	//modifier user
 	@RequestMapping(value = "/modify/{idU}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> updateUser(@PathVariable("idU") Long idU, @org.springframework.web.bind.annotation.RequestBody User user){
-    	logger.debug("Invocation de la resource : PUT /modify/");
+    	logger.debug("Invocation de la resource : PUT /modify/{idU}");
     	userinfoservice.updateUserById(user, idU);
     	return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -61,6 +65,28 @@ public class UserController {
     	logger.debug("Invocation de la resource : DELETE /delete/");
     	userinfoservice.deleteUser(new User(idU));
     	return new ResponseEntity<>(HttpStatus.OK);
+    }
+	
+	//ban user
+	/*	@RequestMapping(value = "/ban/{idU}", method = RequestMethod.PUT)
+	    public ResponseEntity<Void> ban(@PathVariable("idU") Long idU){
+	    	logger.debug("Invocation de la resource : PUT /ban/{idU}");
+	    	userinfoservice.banUserById(idU);
+	    	return new ResponseEntity<>(HttpStatus.OK);
+	    }
+		*/
+	
+	/**
+     * afficher tous les utilisateurs
+     */
+	@RequestMapping(value = "/showallusers", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<User>> getAllUsers(){
+    	logger.debug("Invocation de la resource : GET /showallusers");
+    	List<User> users = userinfoservice.getAllUsers();
+    	if(users.isEmpty()){
+        	return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    	}
+    	return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
 }

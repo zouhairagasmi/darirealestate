@@ -23,3 +23,92 @@
 2020-04-12 13:27:28.424  INFO 13620 --- [http-nio-8084-exec-2] o.a.c.c.C.[.[.[/SpringRegister]          : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2020-04-12 13:27:28.425  INFO 13620 --- [http-nio-8084-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2020-04-12 13:27:28.434  INFO 13620 --- [http-nio-8084-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2020-04-12 13:58:57.703  INFO 11616 --- [main] t.e.s.SpringBootDariOussemaApplication   : Starting SpringBootDariOussemaApplication on DESKTOP-PS48L21 with PID 11616 (C:\Users\dot\git\darirealestate\spring-boot-dari-oussema\target\classes started by dot in C:\Users\dot\git\darirealestate\spring-boot-dari-oussema)
+2020-04-12 13:58:57.706  INFO 11616 --- [main] t.e.s.SpringBootDariOussemaApplication   : No active profile set, falling back to default profiles: default
+2020-04-12 13:58:58.770  INFO 11616 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-12 13:58:58.844  INFO 11616 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 67ms. Found 1 repository interfaces.
+2020-04-12 13:58:59.036  INFO 11616 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-12 13:58:59.525  INFO 11616 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8084 (http)
+2020-04-12 13:58:59.533  INFO 11616 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-12 13:58:59.533  INFO 11616 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2020-04-12 13:58:59.675  INFO 11616 --- [main] o.a.c.c.C.[.[.[/SpringRegister]          : Initializing Spring embedded WebApplicationContext
+2020-04-12 13:58:59.675  INFO 11616 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1888 ms
+2020-04-12 13:58:59.912  INFO 11616 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-12 13:59:00.004  INFO 11616 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.8.Final}
+2020-04-12 13:59:00.244  INFO 11616 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-04-12 13:59:00.353  INFO 11616 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-12 13:59:00.691  INFO 11616 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-12 13:59:00.713  INFO 11616 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2020-04-12 13:59:01.544  INFO 11616 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-12 13:59:01.550  INFO 11616 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-12 13:59:02.269  WARN 11616 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-12 13:59:02.362  INFO 11616 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-12 13:59:02.550  INFO 11616 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8084 (http) with context path '/SpringRegister'
+2020-04-12 13:59:02.561  INFO 11616 --- [main] t.e.s.SpringBootDariOussemaApplication   : Started SpringBootDariOussemaApplication in 5.491 seconds (JVM running for 6.286)
+2020-04-12 13:59:07.290  INFO 11616 --- [http-nio-8084-exec-2] o.a.c.c.C.[.[.[/SpringRegister]          : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-12 13:59:07.291  INFO 11616 --- [http-nio-8084-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-12 13:59:07.300  INFO 11616 --- [http-nio-8084-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2020-04-12 14:15:27.353  WARN 11616 --- [http-nio-8084-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
+2020-04-12 14:28:23.737  INFO 11616 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2020-04-12 14:28:23.740  INFO 11616 --- [RMI TCP Connection(2)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-12 14:28:23.741  INFO 11616 --- [RMI TCP Connection(2)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-04-12 14:28:23.743  INFO 11616 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-04-12 14:28:23.748  INFO 11616 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-04-12 14:28:33.976  INFO 8924 --- [main] t.e.s.SpringBootDariOussemaApplication   : Starting SpringBootDariOussemaApplication on DESKTOP-PS48L21 with PID 8924 (C:\Users\dot\git\darirealestate\spring-boot-dari-oussema\target\classes started by dot in C:\Users\dot\git\darirealestate\spring-boot-dari-oussema)
+2020-04-12 14:28:33.978  INFO 8924 --- [main] t.e.s.SpringBootDariOussemaApplication   : No active profile set, falling back to default profiles: default
+2020-04-12 14:28:34.425  INFO 8924 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-12 14:28:34.460  INFO 8924 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30ms. Found 1 repository interfaces.
+2020-04-12 14:28:34.615  INFO 8924 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-12 14:28:34.763  INFO 8924 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8084 (http)
+2020-04-12 14:28:34.769  INFO 8924 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-12 14:28:34.769  INFO 8924 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2020-04-12 14:28:34.870  INFO 8924 --- [main] o.a.c.c.C.[.[.[/SpringRegister]          : Initializing Spring embedded WebApplicationContext
+2020-04-12 14:28:34.870  INFO 8924 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 868 ms
+2020-04-12 14:28:34.992  INFO 8924 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-12 14:28:35.037  INFO 8924 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.8.Final}
+2020-04-12 14:28:35.111  INFO 8924 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-04-12 14:28:35.166  INFO 8924 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-12 14:28:35.311  INFO 8924 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-12 14:28:35.317  INFO 8924 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2020-04-12 14:28:36.137  INFO 8924 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-12 14:28:36.143  INFO 8924 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-12 14:28:36.371  WARN 8924 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-12 14:28:36.438  INFO 8924 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-12 14:28:36.563  INFO 8924 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8084 (http) with context path '/SpringRegister'
+2020-04-12 14:28:36.564  INFO 8924 --- [main] t.e.s.SpringBootDariOussemaApplication   : Started SpringBootDariOussemaApplication in 2.808 seconds (JVM running for 4.897)
+2020-04-12 14:28:58.773  INFO 8924 --- [http-nio-8084-exec-1] o.a.c.c.C.[.[.[/SpringRegister]          : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-12 14:28:58.773  INFO 8924 --- [http-nio-8084-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-12 14:28:58.779  INFO 8924 --- [http-nio-8084-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2020-04-12 14:28:58.814  WARN 8924 --- [http-nio-8084-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity<java.lang.Void> tn.esprit.spring.controller.UserController.ban(java.lang.Long,tn.esprit.spring.entity.User)]
+2020-04-12 14:32:33.942  WARN 8924 --- [http-nio-8084-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity<java.lang.Void> tn.esprit.spring.controller.UserController.ban(java.lang.Long,tn.esprit.spring.entity.User)]
+2020-04-12 14:35:58.602  WARN 8924 --- [http-nio-8084-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity<java.lang.Void> tn.esprit.spring.controller.UserController.ban(java.lang.Long,tn.esprit.spring.entity.User)]
+2020-04-12 15:10:01.698  INFO 8924 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2020-04-12 15:10:01.704  INFO 8924 --- [RMI TCP Connection(2)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-12 15:10:01.708  INFO 8924 --- [RMI TCP Connection(2)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-04-12 15:10:01.715  INFO 8924 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-04-12 15:10:01.742  INFO 8924 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-04-12 15:10:15.328  INFO 13456 --- [main] t.e.s.SpringBootDariOussemaApplication   : Starting SpringBootDariOussemaApplication on DESKTOP-PS48L21 with PID 13456 (C:\Users\dot\git\darirealestate\spring-boot-dari-oussema\target\classes started by dot in C:\Users\dot\git\darirealestate\spring-boot-dari-oussema)
+2020-04-12 15:10:15.332  INFO 13456 --- [main] t.e.s.SpringBootDariOussemaApplication   : No active profile set, falling back to default profiles: default
+2020-04-12 15:10:16.587  INFO 13456 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-12 15:10:16.694  INFO 13456 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 95ms. Found 1 repository interfaces.
+2020-04-12 15:10:16.991  INFO 13456 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-12 15:10:17.173  INFO 13456 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8084 (http)
+2020-04-12 15:10:17.174  INFO 13456 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-12 15:10:17.178  INFO 13456 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2020-04-12 15:10:17.248  INFO 13456 --- [main] o.a.c.c.C.[.[.[/SpringRegister]          : Initializing Spring embedded WebApplicationContext
+2020-04-12 15:10:17.248  INFO 13456 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1875 ms
+2020-04-12 15:10:17.343  INFO 13456 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-12 15:10:17.384  INFO 13456 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.8.Final}
+2020-04-12 15:10:17.455  INFO 13456 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-04-12 15:10:17.560  INFO 13456 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-12 15:10:17.667  INFO 13456 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-12 15:10:17.674  INFO 13456 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2020-04-12 15:10:18.237  INFO 13456 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-12 15:10:18.242  INFO 13456 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-12 15:10:18.511  WARN 13456 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-12 15:10:18.584  INFO 13456 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-12 15:10:18.705  INFO 13456 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8084 (http) with context path '/SpringRegister'
+2020-04-12 15:10:18.707  INFO 13456 --- [main] t.e.s.SpringBootDariOussemaApplication   : Started SpringBootDariOussemaApplication in 3.815 seconds (JVM running for 4.644)
+2020-04-12 15:10:22.812  INFO 13456 --- [http-nio-8084-exec-2] o.a.c.c.C.[.[.[/SpringRegister]          : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-12 15:10:22.812  INFO 13456 --- [http-nio-8084-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-12 15:10:22.817  INFO 13456 --- [http-nio-8084-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
