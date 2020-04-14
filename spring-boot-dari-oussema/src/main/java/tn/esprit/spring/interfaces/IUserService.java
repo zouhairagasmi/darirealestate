@@ -11,7 +11,7 @@ import tn.esprit.spring.entity.User;
 
 
 public interface IUserService {
-	public void addUser(User user);
+	public void addUserAndAssignToSubscription(User user,Long idS);
 	//public void addProjectAndAssignToClient(Project project, Long clientId);
 	public User getUserById(Long idU);
 	public void updateUserById(User user, Long idU);
@@ -20,6 +20,5 @@ public interface IUserService {
 	public Long countUsers();
 	public void deleteAllUsers();
 	public List<User> getAllUsers();
-	//public void banUserById(Long idU);
 	//public void updateProject(Long projectId, Project project);
 }

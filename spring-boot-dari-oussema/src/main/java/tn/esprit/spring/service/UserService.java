@@ -5,9 +5,12 @@ import java.util.List;
 
 
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import tn.esprit.spring.entity.Subscription;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.interfaces.IUserService;
 import tn.esprit.spring.repository.UserRepository;
@@ -21,7 +24,8 @@ public class UserService implements IUserService {
 	
 	
 	@Override
-	public void addUser(User user) {
+	public void addUserAndAssignToSubscription(User user,Long idS) {
+		user.setSubscription(new Subscription(idS));
 		userRepository.save(user);
 	}
 	
@@ -31,7 +35,7 @@ public class UserService implements IUserService {
 	}
 	@Override
 	public void updateUserById(User user, Long idU) {
-		userRepository.updateUserById(user.getUsername()
+		userRepository.updateUserById(   user.getUsername()
 										,user.getPassword()
 										,user.getFirstname()
 										,user.getLastname()
@@ -42,12 +46,10 @@ public class UserService implements IUserService {
 										,user.getRating()
 										,user.getEmail()
 										,user.getRole()
+										,user.getStatus()
 										, idU);
 	}
-	/*@Override
-	public void banUserById(Long idU) {
-		userRepository.banUserById(idU);
-	}*/
+	
 	
 	
 	@Override
