@@ -2,12 +2,11 @@ package tn.esprit.spring.service;
 
 import java.util.List;
 
-
-
+import javax.persistence.NoResultException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
+import org.springframework.transaction.annotation.Transactional;
 
 import tn.esprit.spring.entity.Subscription;
 
@@ -66,15 +65,26 @@ public class SubscriptionService  implements ISubscriptionService{
 	/**
 	 * Mettre a jour les informations d'un abonnement
 	 */
-	@Override
-	public void updateSubscription(Long idS, Subscription subscription) {
-		subscriptioRepository.updateSubscriptionByIdS(subscription.getDescription()
-										,subscription.getName()
-										,subscription.getPrice()
-										, idS);
-	}
 
-	
+
+	@Override
+	@Transactional
+	public void updateSubscription(Long idS, Subscription subscription){
+		Subscription subscriptionManagedEntity = subscriptioRepository.findByIdS(idS);
+		if(subscriptionManagedEntity == null){
+			throw new NoResultException();
+		}
+		subscriptionManagedEntity.setDescription(subscription.getDescription());
+		subscriptionManagedEntity.setName(subscription.getName());
+		subscriptionManagedEntity.setPrice(subscription.getPrice());
+		
+		// Il faut faire attention lorsqu'on utilise save pour mettre a jour un enregistrement dans
+		// la base de données.
+		// Dans ce cas si on utilise save, tout l'objet va etre sauvegardé dans la base,
+		// y compris la valeur null de "client_id".
+		//project.setId(projectId);
+		//projectRepository.save(project);
+	}
 
 	
 	

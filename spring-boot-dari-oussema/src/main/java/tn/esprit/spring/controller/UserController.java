@@ -5,6 +5,7 @@ import java.util.List;
 
 
 
+
 import org.slf4j.Logger;
 
 
@@ -46,9 +47,9 @@ public class UserController {
     }
 	
 	//ajouter un user et l'affecter a un abonnement 
-	@RequestMapping(value = "/adduser/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/adduser/{idS}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> addUser(@org.springframework.web.bind.annotation.RequestBody User user, @RequestParam("idS") Long idS){
-    	logger.debug("Invocation de la resource : POST /adduser/");
+    	logger.debug("Invocation de la resource : POST /adduser/{idS}");
     	userinfoservice.addUserAndAssignToSubscription(user, idS);
     	return new ResponseEntity<>(HttpStatus.CREATED);
     }
