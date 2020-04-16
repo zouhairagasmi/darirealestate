@@ -11,7 +11,7 @@ import tn.esprit.spring.entity.User;
 
 
 public interface IUserService {
-	public void addUser(User user);
+	public User addUser(User user);
 	//public void addProjectAndAssignToClient(Project project, Long clientId);
 	public User getUserById(Long idU);
 	public void updateUserById(User user, Long idU);

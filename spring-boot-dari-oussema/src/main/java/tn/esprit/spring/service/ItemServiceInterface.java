@@ -1,8 +1,11 @@
 package tn.esprit.spring.service;
 
+import java.util.Optional;
+
 import tn.esprit.spring.entity.Item;
 
 public interface ItemServiceInterface {
-	public Item addNewItem(Item item);
+	public void addNewItem(Item item);
+	public Optional<Item> getItemById(long id);
 
 }

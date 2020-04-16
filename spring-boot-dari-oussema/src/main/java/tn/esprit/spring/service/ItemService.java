@@ -1,5 +1,7 @@
 package tn.esprit.spring.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +12,11 @@ import tn.esprit.spring.repository.ItemRepository;
 public class ItemService implements ItemServiceInterface{
 	@Autowired
 	ItemRepository itemrepository;
-	public Item addNewItem(Item item){
-		Item i=itemrepository.save(item);
-		return i;
+	
+	public void addNewItem(Item item){
+		itemrepository.save(item);
+	}
+	public Optional<Item> getItemById(long id){
+		return itemrepository.findById(id);
 	}
 }

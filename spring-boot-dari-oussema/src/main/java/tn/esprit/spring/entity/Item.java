@@ -8,18 +8,18 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Item implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class Item {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long ItemId;
-	@ManyToOne
-	@JoinColumn(name = "owner_id")
+    @JsonBackReference
+    @ManyToOne()
+    @JoinColumn(name = "owner_id")
 	private User user;
 	private String ItemName;
 	// @Column(columnDefinition="text")
@@ -31,9 +31,9 @@ public class Item implements Serializable {
 	// private MultipartFile Picture;
 	@Enumerated(value = EnumType.STRING)
 	private Category category;
-	@OneToMany(mappedBy = "item")
-	@JsonIgnore
-	private List<CartItem> CartItemList;
+	//@OneToMany(mappedBy = "item")
+	//@JsonIgnore
+	//private List<CartItem> CartItemList;
 
 	public Item() {
 		super();
@@ -107,17 +107,13 @@ public class Item implements Serializable {
 		this.category = category;
 	}
 
-	public List<CartItem> getCartItemList() {
+/*	public List<CartItem> getCartItemList() {
 		return CartItemList;
 	}
 
 	public void setCartItemList(List<CartItem> cartItemList) {
 		CartItemList = cartItemList;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+	}*/
 
 	public User getUser() {
 		return user;
