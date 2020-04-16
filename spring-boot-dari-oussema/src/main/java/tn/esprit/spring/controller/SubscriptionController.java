@@ -59,19 +59,5 @@ public class SubscriptionController {
 		}
     	return new ResponseEntity<>(HttpStatus.OK);
     }
-	/**
-	 * Retourner un abonnement s'il existe dans la base 
-	 * @param idS
-	 * @return subscription subscription
-	 */
-	@RequestMapping(value = "/showabo/{idS}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> getSubscription(@PathVariable("idS") Long idS) {
-    	logger.debug("Invocation de la resource : GET /showabo/{idS}");
-    	Subscription subscription = subscriptionService.getSubscriptionById(idS);
-        if (subscription == null) {
-        	logger.info("Impossible de récupérer l'abonnement ");
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(subscription, HttpStatus.OK);
-    }
+
 }

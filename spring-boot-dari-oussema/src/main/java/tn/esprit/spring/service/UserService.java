@@ -7,12 +7,15 @@ import java.util.List;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 
 import tn.esprit.spring.entity.Subscription;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.interfaces.IUserService;
+import tn.esprit.spring.repository.SubscriptionRepository;
 import tn.esprit.spring.repository.UserRepository;
 
 
@@ -21,11 +24,12 @@ import tn.esprit.spring.repository.UserRepository;
 public class UserService implements IUserService {
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private SubscriptionRepository subscriptionRepository;
 	
 	
 	@Override
-	public void addUserAndAssignToSubscription(User user,Long idS) {
-		user.setSubscription(new Subscription(idS));
+	public void addUser(User user) {
 		userRepository.save(user);
 	}
 	
@@ -70,6 +74,20 @@ public class UserService implements IUserService {
 		//https://jira.spring.io/browse/DATACMNS-21
 		//Ce cast n'est pas une bonne pratique ?
 		return (List<User>) userRepository.findAll();
+	}
+	
+	public void assignUserToSubscription(Long idU, Long idS) {
+		//Le bout Master de cette relation N:1 est User  
+				//donc il faut rajouter l'abonnement a User 
+				// ==> c'est l'objet User(le master) qui va mettre a jour l'association
+				//Rappel : la classe qui contient mappedBy represente le bout Slave
+				//Rappel : Dans une relation oneToMany le mappedBy doit etre du cote one.
+				Subscription subscriptionManagedEntity = subscriptionRepository.findById(idS).get();
+				User userManagedEntity = userRepository.findById(idU).get();
+				
+				userManagedEntity.setSubscription(subscriptionManagedEntity);
+				userRepository.save(userManagedEntity);
+		
 	}
 	
 	

@@ -6,6 +6,7 @@ import java.util.List;
 
 
 
+
 import org.slf4j.Logger;
 
 
@@ -15,9 +16,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -46,11 +47,11 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 	
-	//ajouter un user et l'affecter a un abonnement 
-	@RequestMapping(value = "/adduser/{idS}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> addUser(@org.springframework.web.bind.annotation.RequestBody User user, @RequestParam("idS") Long idS){
-    	logger.debug("Invocation de la resource : POST /adduser/{idS}");
-    	userinfoservice.addUserAndAssignToSubscription(user, idS);
+	//ajouter un user 
+	@RequestMapping(value = "/adduser/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> addUser(@org.springframework.web.bind.annotation.RequestBody User user){
+    	logger.debug("Invocation de la resource : POST /adduser/");
+    	userinfoservice.addUser(user);
     	return new ResponseEntity<>(HttpStatus.CREATED);
     }
 	
@@ -83,5 +84,10 @@ public class UserController {
     	}
     	return new ResponseEntity<>(users, HttpStatus.OK);
     }
+	//affecter un utilisateur a un abonnement 
+	 @PutMapping(value = "/assignuser/{idU}/{idS}") 
+		public void assignUserToSubscription(@PathVariable("idU")Long idU, @PathVariable("idS")Long idS) {
+		 userinfoservice.assignUserToSubscription(idU, idS);
+		}
 
 }

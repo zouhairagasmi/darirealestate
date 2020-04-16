@@ -2,16 +2,22 @@ package tn.esprit.spring.entity;
 
 
 
+
+
+
+
+import java.util.ArrayList;
 import java.util.List;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 
 @Entity
@@ -25,8 +31,11 @@ public class Subscription {
 	private float price;
 	
 	
-	@OneToMany(mappedBy="subscription")
-	private List<User> users;
+	
+	@OneToMany(mappedBy="subscription", 
+			cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, 
+			fetch=FetchType.EAGER)
+	private List<User> users = new ArrayList<>();
 
 
 	public Long getIdS() {
@@ -69,18 +78,26 @@ public class Subscription {
 	}
 
 
-	public List<User> getUsers() {
-		return users;
-	}
-
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
 
 
 	public Subscription() {
 		super();
+	}
+
+
+	public Subscription(Long idS, String description, String name, float price) {
+		super();
+		this.idS = idS;
+		this.description = description;
+		this.name = name;
+		this.price = price;
+	
+	}
+
+
+	public Subscription(Long idS) {
+		super();
+		this.idS = idS;
 	}
 
 
@@ -91,12 +108,6 @@ public class Subscription {
 		this.name = name;
 		this.price = price;
 		this.users = users;
-	}
-
-
-	public Subscription(Long idS) {
-		super();
-		this.idS = idS;
 	}
 
 	

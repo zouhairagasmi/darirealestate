@@ -6,6 +6,7 @@ package tn.esprit.spring.entity;
 import java.util.Date;
 
 
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -18,7 +19,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
@@ -43,7 +43,7 @@ public class User {
 	private String email;
 	public Role role;
 	private Integer status=1;
-	@JsonIgnore 
+	
 	@ManyToOne
 	private Subscription subscription;
 	
