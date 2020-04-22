@@ -6,6 +6,7 @@ package tn.esprit.spring.entity;
 
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Abonnement")
-public class Subscription {
+public class Subscription  implements Serializable{
+	private static final long serialVersionUID = 6191889143079520027L;
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	private Long idS;
@@ -36,6 +38,16 @@ public class Subscription {
 			cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, 
 			fetch=FetchType.EAGER)
 	private List<User> users = new ArrayList<>();
+
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
 
 
 	public Long getIdS() {

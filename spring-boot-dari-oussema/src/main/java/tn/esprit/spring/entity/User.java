@@ -3,9 +3,8 @@ package tn.esprit.spring.entity;
 
 
 
+import java.io.Serializable;
 import java.util.Date;
-
-
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -26,7 +25,8 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="Utilisateur")
-public class User {
+public class User implements Serializable {
+	private static final long serialVersionUID = 6191889143079598027L;
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	private Long idU;

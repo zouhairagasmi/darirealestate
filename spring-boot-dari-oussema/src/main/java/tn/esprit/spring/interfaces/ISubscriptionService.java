@@ -11,4 +11,5 @@ public interface ISubscriptionService {
 	public List<Subscription> getAllSubscriptions();
 	public void deleteAllSubscriptions();
 	public void updateSubscription(Long idS, Subscription subscription);
+	List<String> getAllUsersNamesBySubscription(Long idS);
 }

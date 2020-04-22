@@ -1,6 +1,8 @@
 package tn.esprit.spring.service;
 
+import java.util.ArrayList;
 import java.util.List;
+
 
 import javax.persistence.NoResultException;
 
@@ -8,16 +10,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import tn.esprit.spring.entity.Subscription;
 
+import tn.esprit.spring.entity.Subscription;
+import tn.esprit.spring.entity.User;
 import tn.esprit.spring.interfaces.ISubscriptionService;
 import tn.esprit.spring.repository.SubscriptionRepository;
+
 
 
 @Component
 public class SubscriptionService  implements ISubscriptionService{
 	@Autowired
-	private SubscriptionRepository subscriptioRepository;
+	private SubscriptionRepository subscriptionRepository;
+	
 	
 	
 	
@@ -26,7 +31,7 @@ public class SubscriptionService  implements ISubscriptionService{
 	 */
 	@Override
 	public void addSubscription(Subscription subscription) {
-		subscriptioRepository.save(subscription);
+		subscriptionRepository.save(subscription);
 	}
 	
 	
@@ -35,7 +40,7 @@ public class SubscriptionService  implements ISubscriptionService{
 	 */
 	@Override
 	public Subscription getSubscriptionById(Long idS){
-		return subscriptioRepository.findByIdS(idS);
+		return subscriptionRepository.findById(idS).get();
 	}
 	
 	
@@ -44,7 +49,7 @@ public class SubscriptionService  implements ISubscriptionService{
 	 */
 	@Override
 	public void deleteAllSubscriptions() {
-		subscriptioRepository.deleteAll();
+		subscriptionRepository.deleteAll();
 	}
 	
 	
@@ -55,7 +60,7 @@ public class SubscriptionService  implements ISubscriptionService{
 	public List<Subscription> getAllSubscriptions() {
 		//https://jira.spring.io/browse/DATACMNS-21
 		//Ce cast n'est pas une bonne pratique ?
-		return (List<Subscription>) subscriptioRepository.findAll();
+		return (List<Subscription>) subscriptionRepository.findAll();
 	}
 	
 	
@@ -70,7 +75,7 @@ public class SubscriptionService  implements ISubscriptionService{
 	@Override
 	@Transactional
 	public void updateSubscription(Long idS, Subscription subscription){
-		Subscription subscriptionManagedEntity = subscriptioRepository.findByIdS(idS);
+		Subscription subscriptionManagedEntity = subscriptionRepository.findById(idS).get();
 		if(subscriptionManagedEntity == null){
 			throw new NoResultException();
 		}
@@ -84,6 +89,16 @@ public class SubscriptionService  implements ISubscriptionService{
 		// y compris la valeur null de "client_id".
 		//project.setId(projectId);
 		//projectRepository.save(project);
+	}
+	
+	public List<String> getAllUsersNamesBySubscription(Long idS) {
+		Subscription subscriptionManagedEntity = subscriptionRepository.findById(idS).get();
+		List<String> userNames = new ArrayList<>();
+		for(User user : subscriptionManagedEntity.getUsers()){
+			userNames.add(user.getFirstname());
+		}
+		
+		return userNames;
 	}
 
 	
