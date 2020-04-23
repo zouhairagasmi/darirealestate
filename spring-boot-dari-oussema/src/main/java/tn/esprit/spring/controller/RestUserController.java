@@ -7,6 +7,7 @@ import java.util.List;
 
 
 
+
 import org.slf4j.Logger;
 
 
@@ -30,7 +31,7 @@ import tn.esprit.spring.interfaces.IUserService;
 
 
 @RestController
-public class UserController {
+public class RestUserController {
 	
 	@Autowired
 	private IUserService userinfoservice;

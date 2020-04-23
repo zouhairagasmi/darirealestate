@@ -34,7 +34,7 @@ import tn.esprit.spring.interfaces.ISubscriptionService;
 
 
 @RestController
-public class SubscriptionController {
+public class RestSubscriptionController {
 	@Autowired
 	private ISubscriptionService subscriptionService;
 	
