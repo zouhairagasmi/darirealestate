@@ -18,13 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 import tn.esprit.spring.entity.Item;
 import tn.esprit.spring.service.ItemServiceInterface;
 
-@RestController
-public class ItemControl {
+@RestController//same as @Controller and @ResponseBody together(@controller:marks the class as a web controller, capable of handling the HTTP requests.)
+public class ItemRestController {
 	@Autowired
 	ItemServiceInterface itemservice;
 
 	@PostMapping("/additem")
-	@ResponseBody
+	//@ResponseBody//convert your objects into JSON(commented because we are using restcontroller)
 	public Item addnewitem(@RequestBody Item item) {
 		return itemservice.addNewItem(item);
 	}
@@ -39,19 +39,16 @@ public class ItemControl {
 	}
 
 	@PutMapping("/updateitem")
-	@ResponseBody
 	public Item updateitem(@RequestBody Item item) {
 		return itemservice.updateItem(item);
 	}
 
 	@DeleteMapping("/deleteitem/{id}")
-	@ResponseBody
 	public void deleteUser(@PathVariable("id") long id) {
 		itemservice.deleteItem(id);
 	}
 
 	@GetMapping("/getallitems")
-	@ResponseBody
 	public ResponseEntity<List<Item>> getallitems() {
 		List<Item> items = itemservice.getAllItems();
 		if (items.isEmpty()) {

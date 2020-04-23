@@ -7,9 +7,13 @@ import tn.esprit.spring.entity.Item;
 
 public interface ItemServiceInterface {
 	public Item addNewItem(Item item);
+
 	public Optional<Item> getItemById(long id);
+
 	public Item updateItem(Item item);
+
 	public void deleteItem(long id);
+
 	public List<Item> getAllItems();
 
 }

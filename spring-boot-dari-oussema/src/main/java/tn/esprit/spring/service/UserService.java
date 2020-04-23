@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.interfaces.IUserService;
@@ -14,12 +15,15 @@ import tn.esprit.spring.repository.UserRepository;
 
 
 
-@Component
+@Service
 public class UserService implements IUserService {
 	@Autowired
 	private UserRepository userRepository;
 	
-	
+	public User getEmployeByEmailAndPassword(String login, String password) {
+
+		return userRepository.getEmployeByEmailAndPassword(login, password);
+		}
 	@Override
 	public User addUser(User user) {
 		return userRepository.save(user);
