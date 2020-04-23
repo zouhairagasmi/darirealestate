@@ -8,9 +8,10 @@ import java.util.List;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
+import org.springframework.transaction.annotation.Transactional;
 
 import tn.esprit.spring.entity.Subscription;
 import tn.esprit.spring.entity.User;
@@ -98,6 +99,24 @@ public class UserService implements IUserService {
 				return 0;
 		
 	}
+	@Transactional
+	public void unassignUserToSubscription(Long idU)
+	{
+		User user = userRepository.findById(idU).get();
+		user.setSubscription(null);
+		userRepository.save(user);
+			}
+	@Override
+	public void banUser(Long idU) {
+		User userManagedEntity = userRepository.findById(idU).get();
+		userManagedEntity.setStatus(0);
+		userRepository.save(userManagedEntity);
+	}
 	
-	
+	@Override
+	public void unbanUser(Long idU) {
+		User userManagedEntity = userRepository.findById(idU).get();
+		userManagedEntity.setStatus(1);
+		userRepository.save(userManagedEntity);
+	}
 }

@@ -19,4 +19,7 @@ public interface IUserService {
 	public void deleteAllUsers();
 	public List<User> getAllUsers();
 	public Integer assignUserToSubscription(Long idU, Long idS);
+	public void unassignUserToSubscription(Long idU);
+	public void banUser(Long idU);
+	public void unbanUser(Long idU);
 }

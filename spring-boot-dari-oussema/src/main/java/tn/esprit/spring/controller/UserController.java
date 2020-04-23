@@ -102,5 +102,26 @@ public class UserController {
 		 else
 			 return new ResponseEntity<>("Already assigned", HttpStatus.OK);
 		}
+	//annuler l'abonnement a un abonnement
+		 @PutMapping(value = "/unassignuser/{idU}") 
+			public ResponseEntity<String> unassignUserToSubscription(@PathVariable("idU")Long idU) {
+			 userinfoservice.unassignUserToSubscription(idU);
+				 return new ResponseEntity<>("unassigned successfully", HttpStatus.OK); 
+			}
+	 //ban user
+	 @PutMapping(value = "/banuser/{idU}") 
+		public ResponseEntity<String> banUser(@PathVariable("idU")Long idU) {
+		 userinfoservice.banUser(idU);
+			 return new ResponseEntity<>("User Banned successfully", HttpStatus.OK); 
+	
+		}
+	 
+	//unban user
+		 @PutMapping(value = "/unbanuser/{idU}") 
+			public ResponseEntity<String> unbanUser(@PathVariable("idU")Long idU) {
+			 userinfoservice.unbanUser(idU);
+				 return new ResponseEntity<>("User Unbanned successfully", HttpStatus.OK); 
+		
+			}
 
 }
