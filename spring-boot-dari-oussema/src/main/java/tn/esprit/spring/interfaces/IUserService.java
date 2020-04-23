@@ -18,5 +18,5 @@ public interface IUserService {
 	public Long countUsers();
 	public void deleteAllUsers();
 	public List<User> getAllUsers();
-	void assignUserToSubscription(Long idU, Long idS);
+	public Integer assignUserToSubscription(Long idU, Long idS);
 }

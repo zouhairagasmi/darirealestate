@@ -6,10 +6,12 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 
 
 @Entity
+@Table(name="AssuranceUser")
 public class InsuranceUser implements Serializable {
 	private static final long serialVersionUID = 6191889143321520027L;
 	

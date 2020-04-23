@@ -43,6 +43,7 @@ public class User implements Serializable {
 	private String email;
 	public Role role;
 	private Integer status=1;
+	private float balance;
 	
 	@ManyToOne
 	private Subscription subscription;
@@ -115,7 +116,8 @@ public class User implements Serializable {
 public String toString() {
 	return "User [idU=" + idU + ", username=" + username + ", password=" + password + ", firstname=" + firstname
 			+ ", lastname=" + lastname + ", gender=" + gender + ", phone=" + phone + ", adress=" + adress
-			+ ", dateofbirth=" + dateofbirth + ", rating=" + rating + ", email=" + email + ", role=" + role + "]";
+			+ ", dateofbirth=" + dateofbirth + ", rating=" + rating + ", email=" + email + ", role=" + role
+			+ ", status=" + status + ", balance=" + balance + ", subscription=" + subscription + "]";
 }
 
 
@@ -125,6 +127,7 @@ public int hashCode() {
 	final int prime = 31;
 	int result = 1;
 	result = prime * result + ((adress == null) ? 0 : adress.hashCode());
+	result = prime * result + Float.floatToIntBits(balance);
 	result = prime * result + ((dateofbirth == null) ? 0 : dateofbirth.hashCode());
 	result = prime * result + ((email == null) ? 0 : email.hashCode());
 	result = prime * result + ((firstname == null) ? 0 : firstname.hashCode());
@@ -135,6 +138,8 @@ public int hashCode() {
 	result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 	result = prime * result + rating;
 	result = prime * result + ((role == null) ? 0 : role.hashCode());
+	result = prime * result + ((status == null) ? 0 : status.hashCode());
+	result = prime * result + ((subscription == null) ? 0 : subscription.hashCode());
 	result = prime * result + ((username == null) ? 0 : username.hashCode());
 	return result;
 }
@@ -152,6 +157,8 @@ public boolean equals(Object obj) {
 		if (other.adress != null)
 			return false;
 	} else if (!adress.equals(other.adress))
+		return false;
+	if (Float.floatToIntBits(balance) != Float.floatToIntBits(other.balance))
 		return false;
 	if (dateofbirth == null) {
 		if (other.dateofbirth != null)
@@ -196,6 +203,16 @@ public boolean equals(Object obj) {
 	if (rating != other.rating)
 		return false;
 	if (role != other.role)
+		return false;
+	if (status == null) {
+		if (other.status != null)
+			return false;
+	} else if (!status.equals(other.status))
+		return false;
+	if (subscription == null) {
+		if (other.subscription != null)
+			return false;
+	} else if (!subscription.equals(other.subscription))
 		return false;
 	if (username == null) {
 		if (other.username != null)
@@ -313,4 +330,34 @@ public User(Long idU) {
 	super();
 	this.idU = idU;
 }
+
+public float getBalance() {
+	return balance;
+}
+
+public void setBalance(float balance) {
+	this.balance = balance;
+}
+
+public User(Long idU, String username, String password, String firstname, String lastname, String gender, Long phone,
+		String adress, Date dateofbirth, int rating, String email, Role role, Integer status, float balance,
+		Subscription subscription) {
+	super();
+	this.idU = idU;
+	this.username = username;
+	this.password = password;
+	this.firstname = firstname;
+	this.lastname = lastname;
+	this.gender = gender;
+	this.phone = phone;
+	this.adress = adress;
+	this.dateofbirth = dateofbirth;
+	this.rating = rating;
+	this.email = email;
+	this.role = role;
+	this.status = status;
+	this.balance = balance;
+	this.subscription = subscription;
+}
+
 }

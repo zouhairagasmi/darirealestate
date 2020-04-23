@@ -35,7 +35,7 @@ public class UserService implements IUserService {
 	
 	@Override
 	public User getUserById(Long idU){
-		return userRepository.findByIdU(idU);
+		return userRepository.findById(idU).get();
 	}
 	@Override
 	public void updateUserById(User user, Long idU) {
@@ -51,6 +51,7 @@ public class UserService implements IUserService {
 										,user.getEmail()
 										,user.getRole()
 										,user.getStatus()
+										,user.getBalance()
 										, idU);
 	}
 	
@@ -76,7 +77,7 @@ public class UserService implements IUserService {
 		return (List<User>) userRepository.findAll();
 	}
 	
-	public void assignUserToSubscription(Long idU, Long idS) {
+	public Integer assignUserToSubscription(Long idU, Long idS) {
 		//Le bout Master de cette relation N:1 est User  
 				//donc il faut rajouter l'abonnement a User 
 				// ==> c'est l'objet User(le master) qui va mettre a jour l'association
@@ -84,9 +85,17 @@ public class UserService implements IUserService {
 				//Rappel : Dans une relation oneToMany le mappedBy doit etre du cote one.
 				Subscription subscriptionManagedEntity = subscriptionRepository.findById(idS).get();
 				User userManagedEntity = userRepository.findById(idU).get();
-				
+				if(userManagedEntity.getSubscription()!=null)
+				return 2;
+				else if(userManagedEntity.getBalance()>=subscriptionManagedEntity.getPrice())
+				{
 				userManagedEntity.setSubscription(subscriptionManagedEntity);
+				userManagedEntity.setBalance(userManagedEntity.getBalance()-subscriptionManagedEntity.getPrice());
 				userRepository.save(userManagedEntity);
+				return 1;
+				}
+				else 
+				return 0;
 		
 	}
 	

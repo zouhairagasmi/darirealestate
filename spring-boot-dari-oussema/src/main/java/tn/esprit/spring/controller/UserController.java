@@ -15,10 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -35,7 +37,7 @@ public class UserController {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	//Afficher un user
+	/*//Afficher un user
 	@RequestMapping(value = "/showuser/{idU}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> getUser(@PathVariable("idU") Long idU) {
     	logger.debug("Invocation de la resource : GET /showuser/{idU}");
@@ -45,7 +47,13 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(user, HttpStatus.OK);
-    }
+    }*/
+	//afficher un utilisateur a travers son id
+	@GetMapping(value = "/showuser/{idU}")
+	   @ResponseBody
+	   public User getUsergetUserById(@PathVariable("idU")Long idU) {
+			return userinfoservice.getUserById(idU);
+		}
 	
 	//ajouter un user 
 	@RequestMapping(value = "/adduser/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -86,8 +94,13 @@ public class UserController {
     }
 	//affecter un utilisateur a un abonnement 
 	 @PutMapping(value = "/assignuser/{idU}/{idS}") 
-		public void assignUserToSubscription(@PathVariable("idU")Long idU, @PathVariable("idS")Long idS) {
-		 userinfoservice.assignUserToSubscription(idU, idS);
+		public ResponseEntity<String> assignUserToSubscription(@PathVariable("idU")Long idU, @PathVariable("idS")Long idS) {
+		 if(userinfoservice.assignUserToSubscription(idU, idS)==1)
+			 return new ResponseEntity<>("Assigned successfully", HttpStatus.OK); 
+		 else if(userinfoservice.assignUserToSubscription(idU, idS)==0)
+			 return new ResponseEntity<>("Not enough balance", HttpStatus.OK);
+		 else
+			 return new ResponseEntity<>("Already assigned", HttpStatus.OK);
 		}
 
 }
