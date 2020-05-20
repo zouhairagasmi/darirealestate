@@ -9,13 +9,16 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+
 @Entity
 	@Table(name = "files")
 	public class DBFile {
+
 	    @Id
+	    //@GeneratedValue(strategy = GenerationType.AUTO)
 	    @GeneratedValue(generator = "uuid")
 	    @GenericGenerator(name = "uuid", strategy = "uuid2")
-	    private String idPhoto;
+	    private String id;
 
 	    private String fileName;
 
@@ -39,18 +42,18 @@ import org.hibernate.annotations.GenericGenerator;
 
 		public DBFile(String id, String fileName, String fileType, byte[] data) {
 			super();
-			this.idPhoto = id;
+			this.id = id;
 			this.fileName = fileName;
 			this.fileType = fileType;
 			this.data = data;
 		}
 
 		public String getId() {
-			return idPhoto;
+			return id;
 		}
 
 		public void setId(String id) {
-			this.idPhoto = id;
+			this.id = id;
 		}
 
 		public String getFileName() {

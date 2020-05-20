@@ -1,15 +1,11 @@
 package tn.esprit.spring.entity;
 
-
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 /**
  * A Property.
@@ -26,7 +22,7 @@ public class Property implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
 
     @Column(name = "price")
@@ -44,7 +40,7 @@ public class Property implements Serializable {
     @Column(name = "service_type")
     private ServiceType serviceType;
 
-    @Column(name = "ref", nullable = false)
+    @Column(name = "ref")
     private String ref;
 
     @Column(name = "visible")
@@ -95,22 +91,16 @@ public class Property implements Serializable {
     @Column(name = "video")
     private String video;
     
+   
     @OneToMany(mappedBy="property")
 	private List<Vues> Vues;
     
-    @OneToMany(mappedBy="property")
-   	private List<DBFile> dBFile;
-    
-    @OneToOne
-    @JoinColumn(unique = true)
+    @OneToOne(mappedBy = "property")
     private Location location;
 
     @ManyToOne
     private User user;
-
-    @OneToMany(mappedBy = "property")
-    private Set<DBFile> DBFile = new HashSet<>();
-
+    
     public Long getId() {
         return id;
     }
@@ -391,34 +381,7 @@ public class Property implements Serializable {
         this.heating = heating;
     }
 
-    public Location getLocation() {
-        return location;
-    }
-
-    public Property location(Location location) {
-        this.location = location;
-        return this;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public Property user(User user) {
-        this.user = user;
-        return this;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-   
-
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -467,24 +430,6 @@ public class Property implements Serializable {
             '}';
     }
 
-	public List<Vues> getVues() {
-		return Vues;
-	}
 
-	public void setVues(List<Vues> vues) {
-		Vues = vues;
-	}
-
-	public List<DBFile> getdBFile() {
-		return dBFile;
-	}
-
-	public void setdBFile(List<DBFile> dBFile) {
-		this.dBFile = dBFile;
-	}
-
-	
-    
-    
     
 }

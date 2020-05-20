@@ -1,0 +1,77 @@
+package tn.esprit.spring.controller;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import tn.esprit.spring.entity.Property;
+import tn.esprit.spring.interfaces.IPropertyService;
+@Controller
+@RestController
+public class PropertyRestControlImpl {
+
+	@Autowired 
+	IPropertyService ServiceProperty; 
+	
+	// URL : http://localhost:8081/SpringMVC/servlet/retrieve-all-Property
+		@GetMapping("/retrieve-all-Property")
+		@ResponseBody
+		public List<Property> getProperty() {
+			List<Property> list = ServiceProperty.retrieveAll() ;
+			return list;
+		}
+		
+		// Ajouter Post: http://localhost:8081/SpringMVC/servlet/add-Property
+			@PostMapping("/add-Property")
+			@ResponseBody
+			public Property addProperty(@RequestBody Property P) {
+				LocalDate today = LocalDate.now();
+				P.created=today;
+				Property Property = ServiceProperty.addProperty(P); 
+				return Property;
+			}
+			
+			 // http://localhost:8081/SpringMVC/servlet/deleteById/1
+		    @DeleteMapping("/deleteById/{id}") 
+			@ResponseBody 
+			public void deleteById(@PathVariable("id")Long id)
+			{
+		    	ServiceProperty.deleteById(id);
+			}
+			
+		 // http://localhost:8081/SpringMVC/servlet/modify-Property
+		    @PutMapping("/modify-Property")
+		    @ResponseBody
+		    public Property updateProperty(@RequestBody Property Property) {
+		    return ServiceProperty.updateById(Property);
+		    }
+		    
+			
+			// http://localhost:8081/SpringMVC/servlet/affecterLocationAProperty/1/1
+		    @PutMapping(value = "/affecterLocationAProperty/{idLocation}/{id}") 
+		    
+			public void affecterLocationAProperty(@PathVariable("idLocation")Long idLocation, @PathVariable("id")Long Id) {
+		    	ServiceProperty.affecterLocationAProperty(idLocation, Id);
+			}
+		    
+		    
+		    // http://localhost:8081/SpringMVC/servlet/affecterDBFileAProperty/1/1
+		    @PutMapping("/affecterDBFileAProperty/{idFile}/{id}") 
+			public void affecterDBFileAProperty(@PathVariable("idFile")String idFile, @PathVariable("id")Long id) {
+		    	ServiceProperty.affecterPropertyAFile(idFile, id);
+			}
+		    
+	
+	
+} 
+ 

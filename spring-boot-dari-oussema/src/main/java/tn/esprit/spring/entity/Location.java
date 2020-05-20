@@ -1,6 +1,5 @@
 package tn.esprit.spring.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -17,7 +16,7 @@ public class Location implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
 
     @Column(name = "ref")
     private String ref;
@@ -37,19 +36,18 @@ public class Location implements Serializable {
     private Double longitude;
 
 
-    @OneToOne(mappedBy = "location")
-    @JsonIgnore
+    @OneToOne
     private Property property;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
