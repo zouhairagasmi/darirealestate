@@ -11,17 +11,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entity.Property;
 import tn.esprit.spring.interfaces.IPropertyService;
+import tn.esprit.spring.service.EmailService;
 @Controller
 @RestController
 public class PropertyRestControlImpl {
 
 	@Autowired 
 	IPropertyService ServiceProperty; 
+	
+	@Autowired 
+	EmailService emailService; 
 	
 	// URL : http://localhost:8081/SpringMVC/servlet/retrieve-all-Property
 		@GetMapping("/retrieve-all-Property")
@@ -71,6 +77,14 @@ public class PropertyRestControlImpl {
 		    	ServiceProperty.affecterPropertyAFile(idFile, id);
 			}
 		    
+		 // http://localhost:8081/SpringMVC/servlet/Mail/{to}/{subject}/{body}
+			@PostMapping("/Mail/{to}/{subject}/{body}")
+			@ResponseBody
+			@RequestMapping()
+			public void sendMail(@RequestParam("to") String to,@RequestParam("subject") String subject,@RequestParam("body") String body) {
+				
+				emailService.sendMail( to, subject,  body);
+			}
 	
 	
 } 
