@@ -10,15 +10,21 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-public class Item {
+public class Item implements Serializable{
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3147301344821350525L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long ItemId;
-    @JsonBackReference
-    @ManyToOne()
+	@JsonManagedReference
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "owner_id")
 	private User user;
 	private String ItemName;
@@ -39,12 +45,37 @@ public class Item {
 		super();
 	}
 	
+	public Item(long itemId, User user, String itemName, String description, double price, int availableQuantity,
+			double shippingWeight, Category category) {
+		super();
+		ItemId = itemId;
+		this.user = user;
+		ItemName = itemName;
+		Description = description;
+		Price = price;
+		AvailableQuantity = availableQuantity;
+		this.shippingWeight = shippingWeight;
+		this.category = category;
+	}
+
 	public Item(String itemn, String description, double price, int availableQuantity, double shippingWeight,
 			Category category) {
 		this.ItemName = itemn;
 		this.Description = description;
 		this.Price = price;
 		this.AvailableQuantity = availableQuantity;
+		this.shippingWeight = shippingWeight;
+		this.category = category;
+	}
+
+	public Item(User user, String itemName, String description, double price, int availableQuantity,
+			double shippingWeight, Category category) {
+		super();
+		this.user = user;
+		ItemName = itemName;
+		Description = description;
+		Price = price;
+		AvailableQuantity = availableQuantity;
 		this.shippingWeight = shippingWeight;
 		this.category = category;
 	}

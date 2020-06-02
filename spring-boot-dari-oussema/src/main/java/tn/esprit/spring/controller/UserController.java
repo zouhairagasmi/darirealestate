@@ -27,7 +27,7 @@ public class UserController {
 
 	private String login;
 	private String password;
-	private User user;
+	public static User user;
 	private Boolean loggedIn;
 	private String email;
 	private Role role;
@@ -38,7 +38,7 @@ public class UserController {
 	public String dologin() {
 
 		String navigateTo = "null";
-		User user = userservice.getEmployeByEmailAndPassword(login, password);
+		user = userservice.getEmployeByEmailAndPassword(login, password);
 		if (user != null && user.getRole() == Role.USER) {
 			navigateTo = "/welcome.xhtml?faces-redirect=true";
 			loggedIn = true;

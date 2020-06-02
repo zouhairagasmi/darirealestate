@@ -1,18 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:panelGroup>
-	<h:form>
-		<h:outputText value="Bonjour #{UserController.user.login}" />
-
-
-	</h:form>
-</h:panelGroup>
-
-</html>
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	template="/template/template.xhtml">
+	<ui:define name="content">
+		<h:panelGroup>
+			<h:form>
+				<h:outputText value="Bonjour #{UserController.login}" />
+				<h:panelGroup columns="2">
+					<h:form>
+						<table>
+							<tr>
+								<td><h:outputText value="name"></h:outputText></td>
+								<td><h:inputText value="#{itemController.itemName}"></h:inputText></td>
+							</tr>
+							<tr>
+								<td><h:outputText value="description"></h:outputText></td>
+								<td><h:inputSecret value="#{itemController.description}"></h:inputSecret></td>
+							</tr>
+							<tr>
+								<td><h:outputText value="price"></h:outputText></td>
+								<td><h:inputText value="#{itemController.price}"></h:inputText></td>
+							</tr>
+							<tr>
+								<td><h:outputText value="availableQuantity"></h:outputText></td>
+								<td><h:inputText
+										value="#{itemController.availableQuantity}"></h:inputText></td>
+							</tr>
+							<tr>
+								<td><h:outputText value="shippingWeight"></h:outputText></td>
+								<td><h:inputText
+										value="#{itemController.shippingWeight}"></h:inputText></td>
+							</tr>
+							<tr>
+								<td><h:outputText value="category"></h:outputText></td>
+								<td><h:inputText
+										value="#{itemController.category}"></h:inputText></td>
+							</tr>
+						</table>
+					</h:form>
+				</h:panelGroup>
+			</h:form>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>
 
