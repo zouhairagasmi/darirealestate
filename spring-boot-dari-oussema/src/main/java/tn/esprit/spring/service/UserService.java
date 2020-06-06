@@ -9,6 +9,7 @@ import java.util.List;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -119,4 +120,10 @@ public class UserService implements IUserService {
 		userManagedEntity.setStatus(1);
 		userRepository.save(userManagedEntity);
 	}
+	
+	public User getUserByUsernameAndPassword(String username, String password) {
+
+		return userRepository.getUserByUsernameAndPassword(username, password);
+		}
+
 }

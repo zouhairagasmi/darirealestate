@@ -1,9 +1,10 @@
 package tn.esprit.spring.entity;
 
 
-
-
 import java.io.Serializable;
+
+
+
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -41,7 +42,8 @@ public class User implements Serializable {
 	private Date dateofbirth;
 	private int rating;
 	private String email;
-	public Role role;
+	@Enumerated(EnumType.STRING)
+	private Role role;
 	private Integer status=1;
 	private float balance;
 	
@@ -301,7 +303,7 @@ public int getRating() {
 public void setRating(int rating) {
 	this.rating = rating;
 }
-@Enumerated(EnumType.STRING)
+
 public Role getRole() {
 	return role;
 }
