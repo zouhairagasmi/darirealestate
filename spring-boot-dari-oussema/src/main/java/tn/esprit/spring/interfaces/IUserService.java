@@ -24,4 +24,5 @@ public interface IUserService {
 	public void banUser(Long idU);
 	public void unbanUser(Long idU);
 	public User getUserByUsernameAndPassword(String username, String password) ;
+	public void deleteUser1(Long idU) ;
 }

@@ -1,6 +1,9 @@
 package tn.esprit.spring.controller;
 
+import java.util.List;
+
 import javax.faces.application.FacesMessage;
+
 
 
 import javax.faces.context.FacesContext;
@@ -27,10 +30,29 @@ public class UserController {
 @Autowired
 IUserService iUserService;
 
+private String email;
+public String getEmail() {
+	return email;
+}
+
+
+
+public void setEmail(String email) {
+	this.email = email;
+}
+
+
+
 private String username; 
 private String password; 
 private User user;
+private String firstname;
+private String lastname;
+private Boolean isActif;
+private Role role;
 private Boolean loggedIn;
+private List<User> users;
+private Long userIdToBeUpdated;
 
 public String dologin() {
 
@@ -56,6 +78,43 @@ public String doLogout()
 return "/login.xhtml?faces-redirect=true";
 }
 
+
+public String goToUsers() {
+
+String navigateTo = "null";
+navigateTo = "/users.xhtml?faces-redirect=true";
+return navigateTo;
+}
+
+public void ajouterUser(){
+	iUserService.addUser(new User(username,password, email, role, isActif));
+	}
+
+
+
+
+
+
+public void modifierUser(User user)
+{this.setEmail(user.getEmail());
+this.setIsActif(user.getIsActif());
+this.setUsername(user.getUsername());
+this.setPassword(user.getPassword());
+this.setRole(user.getRole());
+this.setUserIdToBeUpdated(user.getIdU());
+}
+
+public void removeUser(Long idU)
+{
+iUserService.deleteUser1(idU);
+}
+
+public void mettreAjourUser(){
+	User u= new User(userIdToBeUpdated, username,password, email, role ,isActif );
+	iUserService.updateUserById(u, userIdToBeUpdated);
+	}
+
+
 //Générer les Getters & les Setters
 
 
@@ -63,6 +122,84 @@ return "/login.xhtml?faces-redirect=true";
 public IUserService getiUserService() {
 	return iUserService;
 }
+
+
+
+public List<User> getUsers() {
+	users = iUserService.getAllUsers();
+	return users;
+}
+
+
+
+public void setUsers(List<User> users) {
+	this.users = users;
+}
+
+
+
+
+
+
+
+public Long getUserIdToBeUpdated() {
+	return userIdToBeUpdated;
+}
+
+
+
+public void setUserIdToBeUpdated(Long userIdToBeUpdated) {
+	this.userIdToBeUpdated = userIdToBeUpdated;
+}
+
+
+
+public Boolean getIsActif() {
+	return isActif;
+}
+
+
+
+public void setIsActif(Boolean isActif) {
+	this.isActif = isActif;
+}
+
+
+
+public Role getRole() {
+	return role;
+}
+
+
+
+public void setRole(Role role) {
+	this.role = role;
+}
+
+
+
+public String getFirstname() {
+	return firstname;
+}
+
+
+
+public void setFirstname(String firstname) {
+	this.firstname = firstname;
+}
+
+
+
+public String getLastname() {
+	return lastname;
+}
+
+
+
+public void setLastname(String lastname) {
+	this.lastname = lastname;
+}
+
 
 
 

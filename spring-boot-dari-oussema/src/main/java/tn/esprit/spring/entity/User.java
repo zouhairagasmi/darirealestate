@@ -46,6 +46,7 @@ public class User implements Serializable {
 	private Role role;
 	private Integer status=1;
 	private float balance;
+	private Boolean isActif; 
 	
 	@ManyToOne
 	private Subscription subscription;
@@ -55,6 +56,70 @@ public class User implements Serializable {
 	
 	
 	
+	public User(Long idU, String username, String password, String firstname, String lastname, String gender,
+			Long phone, String adress, Date dateofbirth, int rating, String email, Role role, Integer status,
+			float balance, Boolean isActif, Subscription subscription) {
+		super();
+		this.idU = idU;
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.gender = gender;
+		this.phone = phone;
+		this.adress = adress;
+		this.dateofbirth = dateofbirth;
+		this.rating = rating;
+		this.email = email;
+		this.role = role;
+		this.status = status;
+		this.balance = balance;
+		this.isActif = isActif;
+		this.subscription = subscription;
+	}
+
+	public Boolean getIsActif() {
+		return isActif;
+	}
+
+	public void setIsActif(Boolean isActif) {
+		this.isActif = isActif;
+	}
+	
+	
+	
+	
+
+	public User(Long idU, String username, String password, String email, Role role, Boolean isActif) {
+		super();
+		this.idU = idU;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.role = role;
+		this.isActif = isActif;
+	}
+
+	public User(String username, String password, String email, Role role, Boolean isActif) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.role= role;
+		this.isActif = isActif;
+	}
+
+	public User(String username, String password, String firstname, String lastname, Role role,
+			Integer status) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.role = role;
+		this.status = status;
+	}
+
 	public Subscription getSubscription() {
 		return subscription;
 	}
@@ -119,7 +184,8 @@ public String toString() {
 	return "User [idU=" + idU + ", username=" + username + ", password=" + password + ", firstname=" + firstname
 			+ ", lastname=" + lastname + ", gender=" + gender + ", phone=" + phone + ", adress=" + adress
 			+ ", dateofbirth=" + dateofbirth + ", rating=" + rating + ", email=" + email + ", role=" + role
-			+ ", status=" + status + ", balance=" + balance + ", subscription=" + subscription + "]";
+			+ ", status=" + status + ", balance=" + balance + ", isActif=" + isActif + ", subscription=" + subscription
+			+ "]";
 }
 
 
