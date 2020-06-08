@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tn.esprit.spring.entity.BuildingType;
 import tn.esprit.spring.entity.Property;
+import tn.esprit.spring.entity.ServiceType;
 import tn.esprit.spring.interfaces.IPropertyService;
 import tn.esprit.spring.service.EmailService;
 @Controller
@@ -61,7 +63,7 @@ public class PropertyRestControlImpl {
 		    public Property updateProperty(@RequestBody Property Property) {
 		    return ServiceProperty.updateById(Property);
 		    }
-		    
+		   /* 
 			
 			// http://localhost:8081/SpringMVC/servlet/affecterLocationAProperty/1/1
 		    @PutMapping(value = "/affecterLocationAProperty/{idLocation}/{id}") 
@@ -69,7 +71,7 @@ public class PropertyRestControlImpl {
 			public void affecterLocationAProperty(@PathVariable("idLocation")Long idLocation, @PathVariable("id")Long Id) {
 		    	ServiceProperty.affecterLocationAProperty(idLocation, Id);
 			}
-		    
+		    */
 		    
 		    // http://localhost:8081/SpringMVC/servlet/affecterDBFileAProperty/1/1
 		    @PutMapping("/affecterDBFileAProperty/{idFile}/{id}") 
@@ -77,7 +79,8 @@ public class PropertyRestControlImpl {
 		    	ServiceProperty.affecterPropertyAFile(idFile, id);
 			}
 		    
-		 // http://localhost:8081/SpringMVC/servlet/Mail/{to}/{subject}/{body}
+		    // API MAIL
+		    // http://localhost:8081/SpringMVC/servlet/Mail/{to}/{subject}/{body}
 			@PostMapping("/Mail/{to}/{subject}/{body}")
 			@ResponseBody
 			@RequestMapping()
@@ -86,6 +89,23 @@ public class PropertyRestControlImpl {
 				emailService.sendMail( to, subject,  body);
 			}
 	
-	
+			// RECHERCHE BY BuildingType & ServiceType
+			// URL : http://localhost:8081/SpringMVC/servlet/getAllPropertyByBuildingTypeEtServiceType/HOUSE/RENT
+		    @GetMapping(value = "getAllPropertyByBuildingTypeEtServiceType/{buildingType}/{serviceType}")
+		    @ResponseBody
+			public List<Property> getAllPropertyByBuildingTypeEtServiceType(@PathVariable("buildingType") BuildingType buildingType,@PathVariable("serviceType") ServiceType serviceType) {
+
+				return ServiceProperty.getAllPropertyByBuildingTypeEtServiceType(buildingType, serviceType);
+			}
+
+		    /*// find latitudes and longitudes in a distance less than 28 miles by kilometers
+		    //URL : http://localhost:8081/SpringMVC/servlet/getNearstLocation/{lat}/{lng}
+		    @GetMapping(value = "/getNearstLocation/{lat}/{lng}")
+		    @ResponseBody
+			public List<Property> getNearstLocation(@PathVariable("lat") Double latitude,@PathVariable("lng") Double longitude) {
+
+				return ServiceProperty.getNearstLocation(latitude, longitude);
+			}
+		    */
 } 
  

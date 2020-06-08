@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.esprit.spring.entity.BuildingType;
 import tn.esprit.spring.entity.DBFile;
-import tn.esprit.spring.entity.Location;
 import tn.esprit.spring.entity.Property;
+import tn.esprit.spring.entity.ServiceType;
 import tn.esprit.spring.interfaces.IPropertyService;
 import tn.esprit.spring.repository.DBFileRepository;
-import tn.esprit.spring.repository.LocationRepository;
 import tn.esprit.spring.repository.PropertyRepository;
 import tn.esprit.spring.repository.UserRepository;
 import tn.esprit.spring.repository.VuesRepository;
@@ -20,8 +20,6 @@ public class PropertyServiceImpl implements IPropertyService{
 	@Autowired
 	PropertyRepository propertyRepository;
 	
-	@Autowired
-	LocationRepository locationRepository;
 	
 	@Autowired
 	UserRepository userRepository;
@@ -59,14 +57,14 @@ public class PropertyServiceImpl implements IPropertyService{
 		return propertyRepository.save(P);
 	}
 	
-	@Override
+/*	@Override
 	public void affecterLocationAProperty(Long idLocation, Long Id) {
 		Location locationManagedEntity = locationRepository.findById(idLocation).get();
 		Property propertyManagedEntity = propertyRepository.findById( Id).get();
 		
 		locationManagedEntity.setProperty(propertyManagedEntity);
 		locationRepository.save(locationManagedEntity);
-	}
+	}*/
 
 	
 	@Override
@@ -78,7 +76,17 @@ public class PropertyServiceImpl implements IPropertyService{
 		dbFileManagedEntity.setProperty(propertyManagedEntity);
 		dbFileRepository.save(dbFileManagedEntity);
 	}
-    
 
-	
+	public List<Property> getAllPropertyByBuildingTypeEtServiceType(BuildingType buildingType,ServiceType serviceType) {
+		// TODO Auto-generated method stub
+		return propertyRepository.getAllPropertyByBuildingTypeEtServiceType(buildingType, serviceType);
+	}
+
+	/*
+	public List<Property> getNearstLocation(Double latitude,Double longitude){
+		
+		return propertyRepository.getNearstLocation(latitude, longitude);
+		
+	}
+*/
 }

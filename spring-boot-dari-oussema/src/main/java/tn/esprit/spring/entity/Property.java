@@ -90,13 +90,25 @@ public class Property implements Serializable {
     
     @Column(name = "video")
     private String video;
+
+    @NotNull
+    @Column(name = "province")
+    private String province;
+
+    @NotNull
+    @Column(name = "town")
+    private String town;
+
+    @Column(name = "latitude")
+    private Double latitude;
+
+    @Column(name = "longitude")
+    private Double longitude;
     
    
     @OneToMany(mappedBy="property")
 	private List<Vues> Vues;
     
-    @OneToOne(mappedBy = "property")
-    private Location location;
 
     @ManyToOne
     private User user;
@@ -382,7 +394,115 @@ public class Property implements Serializable {
     }
 
     
-    @Override
+    public String getVideo() {
+		return video;
+	}
+
+	public void setVideo(String video) {
+		this.video = video;
+	}
+
+	public String getProvince() {
+		return province;
+	}
+
+	public void setProvince(String province) {
+		this.province = province;
+	}
+
+	public String getTown() {
+		return town;
+	}
+
+	public void setTown(String town) {
+		this.town = town;
+	}
+
+	public Double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+	public Double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+
+	public List<Vues> getVues() {
+		return Vues;
+	}
+
+	public void setVues(List<Vues> vues) {
+		Vues = vues;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Boolean getVisible() {
+		return visible;
+	}
+
+	public Boolean getSold() {
+		return sold;
+	}
+
+	public Boolean getTerrace() {
+		return terrace;
+	}
+
+	public Boolean getElevator() {
+		return elevator;
+	}
+
+	public Boolean getFurnished() {
+		return furnished;
+	}
+
+	public Boolean getPool() {
+		return pool;
+	}
+
+	public Boolean getGarage() {
+		return garage;
+	}
+
+	public Boolean getAc() {
+		return ac;
+	}
+
+	public Boolean getNeartransport() {
+		return neartransport;
+	}
+
+	public Boolean getOffice() {
+		return office;
+	}
+
+	public Boolean getStorage() {
+		return storage;
+	}
+
+	public Boolean getHeating() {
+		return heating;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
