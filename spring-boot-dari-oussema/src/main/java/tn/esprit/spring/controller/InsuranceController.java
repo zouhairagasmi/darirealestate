@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 @Scope(value = "session")
 @Controller(value = "insuranceController")
 @ELBeanName(value = "insuranceController")
-@Join(path = "/", to = "/login.jsf")
+@Join(path = "/", to = "/loginn.jsf")
 
 public class InsuranceController {
 	

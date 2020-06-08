@@ -23,7 +23,7 @@ import tn.esprit.spring.interfaces.IUserService;
 @Scope(value = "session")
 @Controller(value = "userController")
 @ELBeanName(value = "userController")
-@Join(path = "/", to = "/login.jsf")
+@Join(path = "/", to = "/loginn.jsf")
 
 public class UserController {
     
@@ -48,6 +48,11 @@ private String password;
 private User user;
 private String firstname;
 private String lastname;
+private String gender;
+private Long phone;
+private String adress;
+private int rating;
+private float balance;
 private Boolean isActif;
 private Role role;
 private Boolean loggedIn;
@@ -59,7 +64,11 @@ public String dologin() {
 String navigateTo = "null";
 User user=iUserService.getUserByUsernameAndPassword(username, password);
 if (user != null && user.getRole() == Role.ADMIN) {
-navigateTo = "/welcome.xhtml?faces-redirect=true";
+navigateTo = "/index.xhtml?faces-redirect=true";
+loggedIn = true;}
+
+else if (user != null && user.getRole() == Role.USER) {
+navigateTo = "/welcomeuser.xhtml?faces-redirect=true";
 loggedIn = true;
 }
 else
@@ -86,8 +95,15 @@ navigateTo = "/users.xhtml?faces-redirect=true";
 return navigateTo;
 }
 
+public String goToSubscriptionsUser() {
+
+	String navigateTo = "null";
+	navigateTo = "/subscriptionuser.xhtml?faces-redirect=true";
+	return navigateTo;
+}
+
 public void ajouterUser(){
-	iUserService.addUser(new User(username,password, email, role, isActif));
+	iUserService.addUser(new User(username,password,firstname,lastname,email, role, isActif));
 	}
 
 
@@ -100,6 +116,8 @@ public void modifierUser(User user)
 this.setIsActif(user.getIsActif());
 this.setUsername(user.getUsername());
 this.setPassword(user.getPassword());
+this.setFirstname(user.getFirstname());
+this.setLastname(user.getLastname());
 this.setRole(user.getRole());
 this.setUserIdToBeUpdated(user.getIdU());
 }
@@ -110,7 +128,7 @@ iUserService.deleteUser1(idU);
 }
 
 public void mettreAjourUser(){
-	User u= new User(userIdToBeUpdated, username,password, email, role ,isActif );
+	User u= new User(userIdToBeUpdated, username,password,firstname,lastname, email, role ,isActif );
 	iUserService.updateUserById(u, userIdToBeUpdated);
 	}
 
@@ -121,6 +139,66 @@ public void mettreAjourUser(){
 
 public IUserService getiUserService() {
 	return iUserService;
+}
+
+
+
+public String getAdress() {
+	return adress;
+}
+
+
+
+public void setAdress(String adress) {
+	this.adress = adress;
+}
+
+
+
+public int getRating() {
+	return rating;
+}
+
+
+
+public void setRating(int rating) {
+	this.rating = rating;
+}
+
+
+
+public float getBalance() {
+	return balance;
+}
+
+
+
+public void setBalance(float balance) {
+	this.balance = balance;
+}
+
+
+
+public Long getPhone() {
+	return phone;
+}
+
+
+
+public void setPhone(Long phone) {
+	this.phone = phone;
+}
+
+
+
+public String getGender() {
+	return gender;
+}
+
+
+
+public void setGender(String gender) {
+	this.gender = gender;
 }
 
 

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 @Scope(value = "session")
 @Controller(value = "subscriptionController")
 @ELBeanName(value = "subscriptionController")
-@Join(path = "/", to = "/login.jsf")
+@Join(path = "/", to = "/loginn.jsf")
 public class SubscriptionController {
 	
 	public String goToSubscriptions() {

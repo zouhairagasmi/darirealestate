@@ -40,7 +40,7 @@ public class User implements Serializable {
 	private String adress;
 	@Temporal(TemporalType.DATE)
 	private Date dateofbirth;
-	private int rating;
+	private int rating=5;
 	private String email;
 	@Enumerated(EnumType.STRING)
 	private Role role;
@@ -56,6 +56,76 @@ public class User implements Serializable {
 	
 	
 	
+	public User(String username, String password, String firstname, String lastname, String gender, Long phone,
+			String adress, int rating, String email, Role role, float balance, Boolean isActif) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.gender = gender;
+		this.phone = phone;
+		this.adress = adress;
+		this.rating = rating;
+		this.email = email;
+		this.role = role;
+		this.balance = balance;
+		this.isActif = isActif;
+	}
+
+	public User(Long idU, String username, String password, String firstname, String lastname, String gender,
+			Long phone, String adress, int rating, String email, Role role, float balance, Boolean isActif) {
+		super();
+		this.idU = idU;
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.gender = gender;
+		this.phone = phone;
+		this.adress = adress;
+		this.rating = rating;
+		this.email = email;
+		this.role = role;
+		this.balance = balance;
+		this.isActif = isActif;
+	}
+
+	public User(String username, String password, String firstname, String lastname, String email, Role role,
+			Boolean isActif) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.role = role;
+		this.isActif = isActif;
+	}
+
+	public User(String username, String password, String firstname, String lastname, Role role, Boolean isActif) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.role = role;
+		this.isActif = isActif;
+	}
+
+	public User(Long idU, String username, String password, String firstname, String lastname, String email, Role role,
+			Boolean isActif) {
+		super();
+		this.idU = idU;
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.role = role;
+		this.isActif = isActif;
+	}
+
 	public User(Long idU, String username, String password, String firstname, String lastname, String gender,
 			Long phone, String adress, Date dateofbirth, int rating, String email, Role role, Integer status,
 			float balance, Boolean isActif, Subscription subscription) {
