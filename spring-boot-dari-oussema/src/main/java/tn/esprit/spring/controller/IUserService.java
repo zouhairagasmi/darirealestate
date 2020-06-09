@@ -15,5 +15,6 @@ public interface IUserService {
 	public void deleteUser(User user);
 	public Long countUsers();
 	public void deleteAllUsers();
+	public User getUserByUsernameAndPassword(String username, String password);
 	//public void updateProject(Long projectId, Project project);
 }

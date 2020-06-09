@@ -1,81 +1,131 @@
 package tn.esprit.spring.entity;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name="Visits")
 public class Visits {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long IdVisit;
-	
-	@ManyToMany
-	private List<User> users;
+	private Long idVisit;
 	
 	@ManyToOne
-	private House Property;
+	private User visitor;
+	
+	@ManyToOne
+	private House property;
 	
 	@Temporal(TemporalType.DATE)
-	private Date DateVisit;
+	private Date dateVisit;
 
+	@Enumerated(EnumType.STRING)
+	private VisitType visitType;
+	
 	public Visits() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
 	
-	public Visits(Long idVisit, House property, Date dateVisit) {
+	public Visits(House house, Date date) {
 		super();
-		this.IdVisit = idVisit;
-		Property = property;
-		DateVisit = dateVisit;
+		property = house;
+		dateVisit = date;
+	}
+
+
+	public Visits(Long id, House house, Date date) {
+		super();
+		this.idVisit = id;
+		property = house;
+		dateVisit = date;
 	}
 
 	
-	//public Visits(Long idVisit, User currentuser, House property, Date dateVisit) {
-		//super();
-		//IdVisit = idVisit;
-		//users.set(0, House.getOwner());
-		//users.set(1, currentuser);
-		//Property = property;
-		//DateVisit = dateVisit;}
+	public Visits(Long id, User user, House house, Date date) {
+		super();
+		idVisit = id;
+		setVisitor(user);
+		property = house;
+		dateVisit = date;}
+	
+	
+
+	public Visits(House property, Date dateVisit, VisitType visitType) {
+		super();
+		this.property = property;
+		this.dateVisit = dateVisit;
+		this.visitType = visitType;
+	}
+
+
+	public Visits(User visitor, House property, Date dateVisit, VisitType visitType) {
+		super();
+		this.visitor = visitor;
+		this.property = property;
+		this.dateVisit = dateVisit;
+		this.visitType = visitType;
+	}
 
 
 	public Long getIdVisit() {
-		return IdVisit;
+		return idVisit;
 	}
 
-	public void setIdVisit(Long idVisit) {
-		IdVisit = idVisit;
+	public void setIdVisit(Long id) {
+		idVisit = id;
 	}
 
 	public House getProperty() {
-		return Property;
+		return property;
 	}
 
-	public void setProperty(House property) {
-		Property = property;
+	public void setProperty(House house) {
+		property = house;
 	}
 
 	@Temporal(TemporalType.DATE)
 	public Date getDateVisit() {
-		return DateVisit;
+		return dateVisit;
 	}
 
-	public void setDateVisit(Date dateVisit) {
-		DateVisit = dateVisit;
+	public void setDateVisit(Date date) {
+		dateVisit = date;
+	}
+
+
+	public User getVisitor() {
+		return visitor;
+	}
+
+
+	public void setVisitor(User user) {
+		visitor = user;
+	}
+
+
+	public VisitType getVisitType() {
+		return visitType;
+	}
+
+
+	public void setVisitType(VisitType visitType) {
+		this.visitType = visitType;
 	}
 
 		

@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import tn.esprit.spring.entity.Role;
@@ -17,6 +18,8 @@ public interface UserRepository extends CrudRepository<User,Long> {
 	    void updateUserById(String username, String password, String firstname, String lastname, String gender, Long phone, String adress,Date date,Integer rating,String email,Role role, Long idU);
 	  
 	  User findByIdU(Long idU);
-
+	  
+	  @Query("select e from User e where e.username=:username and e.password=:password")
+	  public User getUserByUsernameAndPassword(@Param("username")String username, @Param("password")String password);
 
 }

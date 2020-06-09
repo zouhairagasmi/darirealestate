@@ -1,6 +1,5 @@
 package tn.esprit.spring.controller;
 
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,8 +18,8 @@ public class IContorllerVisits {
 	return visit;
 	}
 	
-	public void updateDateByVisitId(Date date, Long visitId) {
-		ivisitservice.updateDateByVisitId(date, visitId);
+	public void updateDateByVisitId(Visits visit) {
+		ivisitservice.updateDateByVisitId(visit);
 	}
 	
 	

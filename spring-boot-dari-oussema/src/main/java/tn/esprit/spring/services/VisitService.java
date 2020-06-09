@@ -1,10 +1,10 @@
 package tn.esprit.spring.services;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import tn.esprit.spring.entity.Visits;
 import tn.esprit.spring.repository.VisitRepository;
@@ -21,11 +21,9 @@ public class VisitService implements IVisitService{
 	}
 	
 	@Override
-	public Visits updateDateByVisitId(Date date, Long visitId) {
-		Visits visit = visitRepository.findById(visitId).get();
-		visit.setDateVisit(date);
+	@Transactional
+	public void updateDateByVisitId(Visits visit) {
 		visitRepository.save(visit);
-		return visit;
 	}
 	
 	@Override
@@ -37,6 +35,12 @@ public class VisitService implements IVisitService{
 	public Visits findByIdd(Long id) {
 		Visits visit = visitRepository.findById(id).get();
 		return visit;
+	}
+	
+	@Override
+	public List<Visits> findByuserId(Long id) {
+		//List<Visits> list = visitRepository.findVisitByIdVisitor(id);
+		return visitRepository.findVisitByIdVisitor(id);
 	}
 	
 	@Override

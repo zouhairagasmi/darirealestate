@@ -57,10 +57,14 @@ public class UserService implements IUserService {
 	public Long countUsers() {
 		return userRepository.count();
 	}
+	
 	@Override
 	public void deleteAllUsers() {
 		userRepository.deleteAll();
 	}
-	
+	public User getUserByUsernameAndPassword(String username, String password) {
+
+		return userRepository.getUserByUsernameAndPassword(username, password);
+		}
 	
 }

@@ -10,7 +10,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -33,12 +32,15 @@ public class User {
 	private Date dateofbirth;
 	private int rating;
 	private String email;
+	@Enumerated(EnumType.STRING)
 	public Role role;
 	private Integer status;
-	@ManyToMany
-	private List<Visits> visits;
+	@OneToMany
+	private List<Visits> visits= new ArrayList<>();
 	@OneToMany
 	private List<House> houses = new ArrayList<>();
+	private float balance;
+	private Boolean isActif; 
 	
 	
 	public User() {
@@ -49,16 +51,6 @@ public class User {
 		super();
 		this.username = username;
 		this.password = password;
-	}
-	
-	
-
-	public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
 	}
 
 	public User(Long idU, String username, String password, String firstname, String lastname, String gender,
@@ -78,19 +70,6 @@ public class User {
 		this.role = role;
 		this.status = status;
 	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	
-
-
-
 
 @Override
 public String toString() {
@@ -293,5 +272,36 @@ public User(Long idU, String username, String password, String firstname, String
 public User(Long idU) {
 	super();
 	this.idU = idU;
+}
+
+public float getBalance() {
+	return balance;
+}
+
+public void setBalance(float balance) {
+	this.balance = balance;
+}
+
+public Boolean getIsActif() {
+	return isActif;
+}
+
+public void setIsActif(Boolean isActif) {
+	this.isActif = isActif;
+}
+public String getEmail() {
+	return email;
+}
+
+public void setEmail(String email) {
+	this.email = email;
+}
+
+public Integer getStatus() {
+	return status;
+}
+
+public void setStatus(Integer status) {
+	this.status = status;
 }
 }

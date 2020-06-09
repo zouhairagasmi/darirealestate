@@ -20,7 +20,6 @@ public class HouseController {
 	public Long addHouse(@RequestBody House u) {
 		Long house  = houseService.addHouse (u);
 		return house ;
-		
 	}
 	
 	

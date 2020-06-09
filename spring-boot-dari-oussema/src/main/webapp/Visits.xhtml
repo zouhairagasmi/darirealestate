@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+<ui:composition template="template.xhtml">
+    <ui:define name="content">
+        <h:form>
+			<h:dataTable value="#{visitsController.visits}" var="Visits" border="1">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Property" />
+					</f:facet>
+					<h:outputText value="#{Visits.Property}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+					<h:outputText value="DateVisit" />
+				</f:facet>
+					<h:outputText value="#{Visits.DateVisit}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+					<h:outputText value="Users" />
+					</f:facet>
+					<h:outputText value=" #{Visits.users}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+					<h:outputText value="Action" />
+					</f:facet>
+					<!--  <h:commandButton action="#{visitsController.removeEmploye(employe.id)}"value="Supprimer" />
+					<h:commandButton action="#{visitsController.modifier(employe)}"value="Modifier" />-->
+				</h:column>
+			</h:dataTable>
+		</h:form>
+    </ui:define>
+</ui:composition>
+</html>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+ <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui template="/template/template.xhtml">
+
+<h:panelGroup>
+<h:form>
+<h:outputText value="All Visits" />
+</h:form>
+</h:panelGroup>
+
+<h:panelGroup columns="2">
+<h:form>
+<h:dataTable value="#{visitsController.visits}" var="Visit" border="1">
+<h:column>
+<f:facet name="header">
+<h:outputText value="Property" />
+</f:facet>
+<h:outputText value="#{visit.Property}" />
+</h:column>
+<h:column>
+<f:facet name="header">
+<h:outputText value="DateVisit" />
+</f:facet>
+<h:outputText value="#{visit.DateVisit}" />
+</h:column>
+<h:column>
+<f:facet name="header">
+<h:outputText value="Users" />
+</f:facet>
+<h:outputText value=" #{visit.users" />
+</h:column>
+<h:column>
+<f:facet name="header">
+<h:outputText value="Action" />
+</f:facet>
+<h:commandButton action="#{visitsController.removeEmploye(employe.id)}"
+value="Supprimer" />
+<h:commandButton action="#{visitsController.modifier(employe)}"
+value="Modifier" />
+</h:column>
+</h:dataTable>
+</h:form>
+</h:panelGroup>
+     
+</html>  --> 
+
+
+
+<!-- 
+<h:panelGroup>
+<h:form>
+<h:outputText value="Bonjour #{UserJsfController.username}" />
+<h:commandLink value="Déconnexion"
+action="#{UserJsfController.doLogout()}" />
+</h:form>
+</h:panelGroup>
+<h:panelGroup columns="2">
+<h:form>
+<h:dataTable value="#{VisitsJsfController.visits}" var="visit" border="1">
+<h:column>
+<f:facet name="header">
+<h:outputText value="login" />
+</f:facet>
+<h:outputText value="#{visit.Property.idHouse}" />
+</h:column>
+<h:column>
+<f:facet name="header">
+<h:outputText value="Role" />
+</f:facet>
+<h:outputText value="#{visit.DateVisit}" />
+</h:column>
+<!-- <h:column>
+<f:facet name="header">
+<h:outputText value="Action" />
+</f:facet>
+<h:commandButton
+action="#{employeController.removeEmploye(employe.id)}"
+value="Supprimer" />
+<h:commandButton action="#{employeController.modifier(employe)}"
+value="Modifier" /> 
+</h:column>
+</h:dataTable>
+</h:form>
+</h:panelGroup>
+
+</html>-->

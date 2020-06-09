@@ -1,8 +1,5 @@
 package tn.esprit.spring.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.xml.ws.ResponseWrapper;
@@ -26,6 +23,8 @@ import tn.esprit.spring.services.IVisitService;
 public class VisitController {
 	@Autowired
 	IVisitService visitService;
+	//@Autowired
+	//IUserService userService;
 
 		// http://localhost:8081/SpringMVC/servlet/
 		@RequestMapping("/")
@@ -44,8 +43,9 @@ public class VisitController {
 		@PostMapping("/add-visit")
 		@ResponseBody
 		public Visits addVisit(@RequestBody Visits u) {
-				Visits visit = visitService.addvisit(u);
-			return visit;
+			//if(u.getDateVisit().after(u.getProperty().getDateVisitDebut()) && u.getDateVisit().before(u.getProperty().getDateVisitFin()) )
+			Visits visit = visitService.addvisit(u);
+			return visit;				
 		}
 
 		//http://localhost:8081/SpringMVC/servlet/retrieve-visit /{visit-id}
@@ -54,20 +54,21 @@ public class VisitController {
 		public Visits getVisit(@PathVariable("visit-id") Long visitId) {
 			return visitService.findByIdd(visitId);
 		}
+	
+		//http://localhost:8081/SpringMVC/servlet/retrieve-visit /{visit-id}
+		@GetMapping("/retrieve-visit-user/{user-id}")
+		@ResponseBody
+		public List<Visits> getVisitById(@PathVariable("user-id") Long userId) {
+			//User visitor =userService.getUserById(userId);
+			List<Visits> list = visitService.findByuserId(userId);
+			return list;
+		}
 		
 		//http://localhost:8081/SpringMVC/servlet/modify-visit /{visit-id}
-		@PutMapping("/modify-visit/{visit-id}")
+		@PutMapping("/modify-visit/")
 		@ResponseBody
-		public Visits updateVisit(@PathVariable("visit-id") Long visitId,@RequestBody String date) {
-			System.out.println(date);
-			Date dated = null;
-			try {
-				dated = new SimpleDateFormat("yyyy/MM/dd").parse(date);//lenna problem
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		return visitService.updateDateByVisitId(dated, visitId);
+		public void updateVisit(@RequestBody Visits visit) {
+			visitService.updateDateByVisitId(visit);
 		}
 		
 		//http://localhost:8081/SpringMVC/servlet/delete-visit/{visit-id}
