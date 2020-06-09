@@ -59,12 +59,14 @@ private Boolean loggedIn;
 private List<User> users;
 private Long userIdToBeUpdated;
 
+
+
 public String dologin() {
 
 String navigateTo = "null";
 User user=iUserService.getUserByUsernameAndPassword(username, password);
 if (user != null && user.getRole() == Role.ADMIN) {
-navigateTo = "/index.xhtml?faces-redirect=true";
+navigateTo = "/welcome.xhtml?faces-redirect=true";
 loggedIn = true;}
 
 else if (user != null && user.getRole() == Role.USER) {
@@ -91,7 +93,7 @@ return "/login.xhtml?faces-redirect=true";
 public String goToUsers() {
 
 String navigateTo = "null";
-navigateTo = "/users.xhtml?faces-redirect=true";
+navigateTo = "/users1.xhtml?faces-redirect=true";
 return navigateTo;
 }
 
@@ -103,7 +105,7 @@ public String goToSubscriptionsUser() {
 }
 
 public void ajouterUser(){
-	iUserService.addUser(new User(username,password,firstname,lastname,email, role, isActif));
+	iUserService.addUser(new User(username,password,firstname,lastname,phone,email, role, isActif));
 	}
 
 
@@ -112,12 +114,16 @@ public void ajouterUser(){
 
 
 public void modifierUser(User user)
-{this.setEmail(user.getEmail());
+{
+
+	
+this.setEmail(user.getEmail());
 this.setIsActif(user.getIsActif());
 this.setUsername(user.getUsername());
 this.setPassword(user.getPassword());
 this.setFirstname(user.getFirstname());
 this.setLastname(user.getLastname());
+this.setPhone(user.getPhone());
 this.setRole(user.getRole());
 this.setUserIdToBeUpdated(user.getIdU());
 }
