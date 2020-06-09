@@ -73,7 +73,11 @@ template="/WEB-INF/template/template.xhtml">
                         <th>Engine version</th>
                         <th>CSS grade</th>
                         <th>CSS grade</th>
-                        <th>Action</th>
+                        <th>Update Action</th>
+                        <th>Update Action</th>
+                        
+                        
+                     
                     </tr>
                     </thead>
                     <tbody>
@@ -93,14 +97,16 @@ template="/WEB-INF/template/template.xhtml">
                       			    	<td class="center"><button class="btn btn-warning btn-circle" type="button"><i class="fa fa-times"></i> </button></td>
                             
       								</c:if>
-      								<td> <!--<div class="infont col-md-3 col-sm-4">
-										<h:link action="#{subscriptionController.goToSubscriptions()}"><i class="fa fa-edit"></i>  <span class="text-muted">
-										</span>
-										</h:link>
-										</div>-->
-										<h:commandButton action="#{userController.modifierUser(user)}" value="Update" />
+      								<td> 
+										  <h:commandButton action="#{userController.modifierUser(user)}" value="Update" />  
       								</td>
-      								<td><h:outputText value="#{userController.email}"></h:outputText></td>
+      								<td> 
+										  <h:commandButton action="#{userController.removeUser(user.idU)}" value="Delete" />  
+      								</td>
+      								<td hidden="true"></td>
+      								
+      							
+      								
                    				 </tr>
           				</c:forEach>
         			</h:form>
@@ -116,7 +122,9 @@ template="/WEB-INF/template/template.xhtml">
                         <th>Engine version</th>
                         <th>CSS grade</th>
                         <th>CSS grade</th>
-                        <th>Action</th>
+                        <th>Update Action</th>
+                        <th>Update Action</th>
+                        
                     </tr>
                     </tfoot>
                     </table>
@@ -124,11 +132,20 @@ template="/WEB-INF/template/template.xhtml">
                     <div class="wrapper wrapper-content animated fadeInRight">
            
           
-            <div class="row">
+            
+        </div>  
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            </div>
+        
+        <div class="row">
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Add User <small>for Adminastrator.</small></h5>
+                            <h5>Update User <small>for Adminastrator.</small></h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -147,13 +164,11 @@ template="/WEB-INF/template/template.xhtml">
                                     <div class="col-sm-10"><h:inputText p:type="text" class="form-control" value="#{userController.lastname}"/></div>
                                 </div>
                                 
-                                <div class="form-group"><label class="col-sm-2 control-label">Phone number</label>
-
-                                    <div class="col-sm-10"><h:inputText id="maxrecs" required="false"   value="#{userController.phone}" minlenght="8" maxlength="16" > <f:convertNumber longOnly="true"/></h:inputText>
-                                    <p:message for="maxrecs" />
-                                    </div>
-                                </div>
                                 
+                                <div class="form-group"><label class="col-sm-2 control-label">Lastname</label>
+
+                                    <div class="col-sm-10"><h:inputText p:type="text" class="form-control" value="#{userController.lastname}"/></div>
+                                </div>
                                
   
                                 <div class="hr-line-dashed"></div>
@@ -212,7 +227,7 @@ template="/WEB-INF/template/template.xhtml">
                                 <div class="form-group">
                                     <div class="col-sm-4 col-sm-offset-2">
                                         <h:commandButton class="btn btn-white" action="#{userController.goToUsers()}" value="Users List" ></h:commandButton>
-                                        <h:commandButton class="btn btn-primary" action="#{userController.ajouterUser()}" value="Save changes"></h:commandButton>
+                                        <h:commandButton class="btn btn-primary" action="#{userController.mettreAjourUser()}" value="Save changes"></h:commandButton>
                                     </div>
                                 </div>
                             </h:form>
@@ -221,13 +236,7 @@ template="/WEB-INF/template/template.xhtml">
                     </div>
                 </div>
             </div>
-        </div>  
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            </div>
+        
         </div>
      
      
@@ -235,18 +244,10 @@ template="/WEB-INF/template/template.xhtml">
       
 </ui:define>
 <ui:define name="js">
-<!-- Custom and plugin javascript -->
-    <script src="js/inspinia.js"></script>
-    <script src="js/plugins/pace/pace.min.js"></script>
-    
-    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
     <script src="js/plugins/dataTables/datatables.min.js"></script>
 
-    <!-- Custom and plugin javascript -->
-    <script src="js/inspinia.js"></script>
-    <script src="js/plugins/pace/pace.min.js"></script>
+    
 
 </ui:define>
 <ui:define name="scripts">
