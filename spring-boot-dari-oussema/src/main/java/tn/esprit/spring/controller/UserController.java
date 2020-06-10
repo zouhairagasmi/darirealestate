@@ -27,20 +27,14 @@ import tn.esprit.spring.interfaces.IUserService;
 
 public class UserController {
     
+	
+	
 @Autowired
 IUserService iUserService;
 
-private String email;
-public String getEmail() {
-	return email;
-}
 
 
-
-public void setEmail(String email) {
-	this.email = email;
-}
-
+private Long idCnx;
 
 
 private String username; 
@@ -61,25 +55,75 @@ private Long userIdToBeUpdated;
 
 
 
+
+public UserController() {
+	super();
+	
+}
+
+
+
+private String email;
+public String getEmail() {
+	return email;
+}
+
+
+
+public void setEmail(String email) {
+	this.email = email;
+}
+
+
+public Role getRoleById() {
+	return iUserService.getUserById(idCnx).getRole();
+}
+public String getFirstnameById() {
+	return iUserService.getUserById(idCnx).getFirstname();
+}
 public String dologin() {
 
 String navigateTo = "null";
 User user=iUserService.getUserByUsernameAndPassword(username, password);
-if (user != null && user.getRole() == Role.ADMIN) {
-navigateTo = "/welcome.xhtml?faces-redirect=true";
-loggedIn = true;}
-
-else if (user != null && user.getRole() == Role.USER) {
-navigateTo = "/welcomeuser.xhtml?faces-redirect=true";
-loggedIn = true;
-}
-else
+if(user == null)
 {
 FacesMessage facesMessage =
                 new FacesMessage("Login Failed: please check your username/password and try again.");
             FacesContext.getCurrentInstance().addMessage("form:btn",facesMessage);
 }
+else if(user.getIsActif()==false ) {
+	FacesMessage facesMessage =
+    new FacesMessage("Login Failed: Your account is banned ");
+    FacesContext.getCurrentInstance().addMessage("form:btn",facesMessage);
+}
+else if (user != null && user.getRole() == Role.ADMIN ) {
+navigateTo = "/welcome1.xhtml?faces-redirect=true";
+this.setIdCnx(user.getIdU());
+loggedIn = true;}
+
+else if (user != null && user.getRole() == Role.USER ) {
+navigateTo = "/indexuser.xhtml?faces-redirect=true";
+this.setIdCnx(user.getIdU());
+loggedIn = true;
+}
+
 return navigateTo;
+}
+
+
+
+
+public void createAccount() {
+if(email==null) {
+		
+	}
+else {
+	iUserService.addUser(new User(username,password,firstname,lastname,email, isActif=false));
+	
+	FacesMessage facesMessage =
+            new FacesMessage("Account created wait for Administrator to give you access");
+        FacesContext.getCurrentInstance().addMessage("form1:btn1",facesMessage);
+}
 }
 
 
@@ -105,7 +149,7 @@ public String goToSubscriptionsUser() {
 }
 
 public void ajouterUser(){
-	iUserService.addUser(new User(username,password,firstname,lastname,phone,email, role, isActif));
+	iUserService.addUser(new User(username,password,firstname,lastname,phone,email, role,balance, isActif));
 	}
 
 
@@ -114,10 +158,9 @@ public void ajouterUser(){
 
 
 public void modifierUser(User user)
-{
-
-	
+{	
 this.setEmail(user.getEmail());
+this.setBalance(user.getBalance());
 this.setIsActif(user.getIsActif());
 this.setUsername(user.getUsername());
 this.setPassword(user.getPassword());
@@ -134,7 +177,7 @@ iUserService.deleteUser1(idU);
 }
 
 public void mettreAjourUser(){
-	User u= new User(userIdToBeUpdated, username,password,firstname,lastname, email, role ,isActif );
+	User u= new User(userIdToBeUpdated, username,password,firstname,lastname, email, role,balance ,isActif );
 	iUserService.updateUserById(u, userIdToBeUpdated);
 	}
 
@@ -337,6 +380,18 @@ public Boolean getLoggedIn() {
 
 public void setLoggedIn(Boolean loggedIn) {
 	this.loggedIn = loggedIn;
+}
+
+
+
+public Long getIdCnx() {
+	return idCnx;
+}
+
+
+
+public void setIdCnx(Long idCnx) {
+	this.idCnx = idCnx;
 }
     
 }

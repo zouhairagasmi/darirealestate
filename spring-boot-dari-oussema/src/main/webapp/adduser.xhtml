@@ -46,7 +46,7 @@ template="/WEB-INF/template/template.xhtml">
                                     <p:message for="maxrecs" />
                                     </div>
                                 </div>
-  
+  							
                                 <div class="hr-line-dashed"></div>
                                 
                                   <div class="form-group"><label class="col-sm-2 control-label">Username</label>
@@ -55,6 +55,8 @@ template="/WEB-INF/template/template.xhtml">
                                         <div class="input-group m-b"><span class="input-group-addon">@</span> <h:inputText p:type="text" a:placeholder="Username" class="form-control" value="#{userController.username}"/></div>
                                        <!--	<div class="input-group m-b"><span class="input-group-addon">$</span> <h:inputText p:type="text" class="form-control"/> <span class="input-group-addon">.00</span></div> -->
                                     </div>
+                                    <label class="col-sm-2 control-label">Balance</label>
+                                     <div class="input-group m-b"><span class="input-group-addon">$</span> <h:inputText  p:type="text" a:placeholder="Balance" class="form-control" value="#{userController.balance}"/> <span class="input-group-addon">.00</span></div>
                                     </div>
                                     <div class="form-group"><label class="col-lg-2 control-label">Email Exemple</label>
 
@@ -102,7 +104,6 @@ template="/WEB-INF/template/template.xhtml">
                                                       
                                 <div class="form-group">
                                     <div class="col-sm-4 col-sm-offset-2">
-                                        <h:commandButton class="btn btn-white" action="#{userController.goToUsers()}" value="Users List" ></h:commandButton>
                                         <h:commandButton class="btn btn-primary" action="#{userController.ajouterUser()}" value="Save changes"></h:commandButton>
                                     </div>
                                 </div>

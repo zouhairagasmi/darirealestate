@@ -48,18 +48,14 @@ xmlns:p="http://primefaces.org/ui">
         </div>
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-sm-4">
-                    <h2><h:outputText value="Welcome #{userController.role}" /></h2>
+                    <h2><h:outputText value="Welcome #{userController.getRoleById()}" /></h2>
                     <ol class="breadcrumb">
                         <li class="active">
-                        <h:outputText value="Welcome #{userController.username}" />
+                        <h:outputText value="Welcome #{userController.getFirstnameById()}" />
                         </li>
                     </ol>
                 </div>
-                <div class="col-sm-8">
-                    <div class="title-action">
-                        <a href="" class="btn btn-primary">This is action area</a>
-                    </div>
-                </div>
+                
             </div>
 
 		<ui:insert name="menu" />

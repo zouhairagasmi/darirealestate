@@ -54,6 +54,7 @@ public class UserService implements IUserService {
 										,user.getRole()
 										,user.getStatus()
 										,user.getBalance()
+										,user.getIsActif()
 										, idU);
 	}
 	
