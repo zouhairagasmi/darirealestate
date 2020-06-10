@@ -5,6 +5,9 @@ package tn.esprit.spring.entity;
 import javax.persistence.*;
 
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
@@ -117,7 +120,9 @@ public class Property implements Serializable {
     @ManyToOne
     private User user;
     
-    @OneToMany(mappedBy = "property")
+    
+    @JsonBackReference
+	@OneToMany(mappedBy = "property",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
     private List<Favorits> favorits;
     
     
