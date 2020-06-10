@@ -27,6 +27,7 @@ public class Favorits {
 	 private Property property;
 	 @Temporal(TemporalType.DATE)
 	 private Date date;
+	 private String Title;
 	 
 
 	public User getUser() {
