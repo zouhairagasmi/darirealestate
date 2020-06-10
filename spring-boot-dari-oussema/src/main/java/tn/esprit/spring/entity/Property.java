@@ -117,11 +117,11 @@ public class Property implements Serializable {
     @ManyToOne
     private User user;
     
-    
+    @OneToMany(mappedBy = "property")
     private List<Favorits> favorits;
     
     
-    @OneToMany(mappedBy = "property")
+    
     public List<Favorits> getFavorits() {
 		return favorits;
 	}

@@ -41,9 +41,10 @@ public class User {
 	public Role role;
 	private Integer status;
 	
+	@OneToMany(mappedBy="user")
 	private List<Favorits> favorits;
 	
-	@OneToMany(mappedBy="user")
+	
 	public List<Favorits> getFavorits() {
 		return favorits;
 	}
