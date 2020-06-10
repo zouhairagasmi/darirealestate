@@ -32,7 +32,6 @@ public class Vues implements Serializable {
 
 	public Vues() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getIdVues() {

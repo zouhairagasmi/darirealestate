@@ -117,7 +117,20 @@ public class Property implements Serializable {
     @ManyToOne
     private User user;
     
-    public Long getId() {
+    
+    private List<Favorits> favorits;
+    
+    
+    @OneToMany(mappedBy = "property")
+    public List<Favorits> getFavorits() {
+		return favorits;
+	}
+
+	public void setFavorits(List<Favorits> favorits) {
+		this.favorits = favorits;
+	}
+
+	public Long getId() {
         return id;
     }
 

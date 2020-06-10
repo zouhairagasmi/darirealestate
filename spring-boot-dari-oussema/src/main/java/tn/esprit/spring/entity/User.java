@@ -4,9 +4,7 @@ package tn.esprit.spring.entity;
 
 
 import java.util.Date;
-
-
-
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -14,6 +12,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,7 +22,7 @@ import javax.persistence.TemporalType;
 
 
 @Entity
-@Table(name="Utilisateur")
+@Table(name="user")
 public class User {
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -42,9 +41,17 @@ public class User {
 	public Role role;
 	private Integer status;
 	
+	private List<Favorits> favorits;
 	
-	
-	
+	@OneToMany(mappedBy="user")
+	public List<Favorits> getFavorits() {
+		return favorits;
+	}
+
+	public void setFavorits(List<Favorits> favorits) {
+		this.favorits = favorits;
+	}
+
 	public User() {
 		super();
 	}
