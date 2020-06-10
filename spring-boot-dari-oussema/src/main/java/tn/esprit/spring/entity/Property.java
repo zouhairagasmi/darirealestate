@@ -3,17 +3,17 @@ package tn.esprit.spring.entity;
 
 
 import javax.persistence.*;
+
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 /**
  * A Property.
  */
+
 
 @Entity
 @Table(name = "property")
@@ -26,7 +26,7 @@ public class Property implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
 
     @Column(name = "price")
@@ -44,7 +44,7 @@ public class Property implements Serializable {
     @Column(name = "service_type")
     private ServiceType serviceType;
 
-    @Column(name = "ref", nullable = false)
+    @Column(name = "ref")
     private String ref;
 
     @Column(name = "visible")
@@ -94,23 +94,29 @@ public class Property implements Serializable {
     
     @Column(name = "video")
     private String video;
+
+    @NotNull
+    @Column(name = "province")
+    private String province;
+
+    @NotNull
+    @Column(name = "town")
+    private String town;
+
+    @Column(name = "latitude")
+    private Double latitude;
+
+    @Column(name = "longitude")
+    private Double longitude;
     
+   
     @OneToMany(mappedBy="property")
 	private List<Vues> Vues;
     
-    @OneToMany(mappedBy="property")
-   	private List<DBFile> dBFile;
-    
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Location location;
 
     @ManyToOne
     private User user;
-
-    @OneToMany(mappedBy = "property")
-    private Set<DBFile> DBFile = new HashSet<>();
-
+    
     public Long getId() {
         return id;
     }
@@ -391,35 +397,116 @@ public class Property implements Serializable {
         this.heating = heating;
     }
 
-    public Location getLocation() {
-        return location;
-    }
+    
+    public String getVideo() {
+		return video;
+	}
 
-    public Property location(Location location) {
-        this.location = location;
-        return this;
-    }
+	public void setVideo(String video) {
+		this.video = video;
+	}
 
-    public void setLocation(Location location) {
-        this.location = location;
-    }
+	public String getProvince() {
+		return province;
+	}
 
-    public User getUser() {
-        return user;
-    }
+	public void setProvince(String province) {
+		this.province = province;
+	}
 
-    public Property user(User user) {
-        this.user = user;
-        return this;
-    }
+	public String getTown() {
+		return town;
+	}
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+	public void setTown(String town) {
+		this.town = town;
+	}
 
-   
+	public Double getLatitude() {
+		return latitude;
+	}
 
-    @Override
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+	public Double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+
+	public List<Vues> getVues() {
+		return Vues;
+	}
+
+	public void setVues(List<Vues> vues) {
+		Vues = vues;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Boolean getVisible() {
+		return visible;
+	}
+
+	public Boolean getSold() {
+		return sold;
+	}
+
+	public Boolean getTerrace() {
+		return terrace;
+	}
+
+	public Boolean getElevator() {
+		return elevator;
+	}
+
+	public Boolean getFurnished() {
+		return furnished;
+	}
+
+	public Boolean getPool() {
+		return pool;
+	}
+
+	public Boolean getGarage() {
+		return garage;
+	}
+
+	public Boolean getAc() {
+		return ac;
+	}
+
+	public Boolean getNeartransport() {
+		return neartransport;
+	}
+
+	public Boolean getOffice() {
+		return office;
+	}
+
+	public Boolean getStorage() {
+		return storage;
+	}
+
+	public Boolean getHeating() {
+		return heating;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -466,25 +553,5 @@ public class Property implements Serializable {
             ", heating='" + heating + "'" +
             '}';
     }
-
-	public List<Vues> getVues() {
-		return Vues;
-	}
-
-	public void setVues(List<Vues> vues) {
-		Vues = vues;
-	}
-
-	public List<DBFile> getdBFile() {
-		return dBFile;
-	}
-
-	public void setdBFile(List<DBFile> dBFile) {
-		this.dBFile = dBFile;
-	}
-
-	
-    
-    
     
 }
