@@ -48,7 +48,19 @@ public void updateFavorits(Long id, String title) {
 	Favorits favorit = favoritsRepository.findById(id).get();
 	favorit.setTitle(title);
 	favoritsRepository.save(favorit);
+	
 }
+
+@Override
+public Favorits updateFavorit(Favorits favorit) {
+	Favorits favorit2 = favoritsRepository.findById(favorit.getId()).get();
+	favorit2.setTitle(favorit.getTitle());
+//	user1.setLastname(user.getLastname());
+//	user1.setDate(user.getDate());
+	favoritsRepository.save(favorit2);
+	return favorit2;
+}
+
 
 
 @Override

@@ -55,20 +55,19 @@ public class FavoritsRestController {
 	}
 
 
-//	// delete-user/{user-id}
-//	@DeleteMapping("/delete-user/{user-id}")
-//	@ResponseBody
-//	public void deleteEmployee(@PathVariable("user-id") Long userId) {
-//		userService.deleteUser(userId);
-//	}
-//
-//	// Modifier User
 
-//	@PutMapping("/modify-user")
-//	@ResponseBody
-//	public User updateUser(@RequestBody User user) {
-//	return userService.updateUser(user);
-//	}
+	@DeleteMapping("/deletefav/{id}")
+	public void deleteFav(@PathVariable("id") long id) {
+		favoritsService.deleteFavorit(id);
+	}
+	
+
+
+	@PutMapping("/updatefav")
+	@ResponseBody
+	public Favorits updateFavorit(@RequestBody Favorits favorit) {
+	return favoritsService.updateFavorit(favorit);
+	}
 
 
 }
