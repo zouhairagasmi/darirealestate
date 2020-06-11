@@ -37,6 +37,8 @@ public class UserService implements IUserService {
 
 		return userRepository.getEmployeByEmailAndPassword(login, password);
 		}
+	
+	
 	@Override
 	public User addUser(User user) {
 		return userRepository.save(user);

@@ -12,6 +12,7 @@ import tn.esprit.spring.entity.Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import tn.esprit.spring.repository.ReservationRepository;
 
 
@@ -19,13 +20,13 @@ import tn.esprit.spring.repository.ReservationRepository;
 public class ReservationService implements IReservationService {
 	
 	private static final String idd = null;
-	
+    
+    @Autowired
 	    private ReservationRepository reservationRepository;
 
-	    @Autowired
-	    public void setReservationRepository(ReservationRepository reservationRepository) {
-	        this.reservationRepository = reservationRepository;
-	    }
+
+
+
 	    
 	    @Override
 	    public List<Reservation> getAllReservations() {
