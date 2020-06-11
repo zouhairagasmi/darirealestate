@@ -1,8 +1,7 @@
 package tn.esprit.spring.entity;
 
-
-
 import javax.persistence.*;
+
 
 import javax.validation.constraints.NotNull;
 
@@ -17,117 +16,123 @@ import java.util.Objects;
  * A Property.
  */
 
-
 @Entity
 @Table(name = "property")
 public class Property implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-    @NotNull
-    @Column(name = "name")
-    private String name;
+	@NotNull
+	@Column(name = "name")
+	private String name;
 
-    @Column(name = "price")
-    private Double price;
+	@Column(name = "price")
+	private Double price;
 
-    @Lob
-    @Column(name = "description")
-    private String description;
+	@Lob
+	@Column(name = "description")
+	private String description;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "building_type")
-    private BuildingType buildingType;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "building_type")
+	private BuildingType buildingType;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "service_type")
-    private ServiceType serviceType;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "service_type")
+	private ServiceType serviceType;
 
-    @Column(name = "ref")
-    private String ref;
+	@Column(name = "ref")
+	private String ref;
 
-    @Column(name = "visible")
-    private Boolean visible;
+	@Column(name = "visible")
+	private Boolean visible;
 
-    @Column(name = "sold")
-    private Boolean sold;
+	@Column(name = "sold")
+	private Boolean sold;
 
-    @Column(name = "terrace")
-    private Boolean terrace;
+	@Column(name = "terrace")
+	private Boolean terrace;
 
-    @Column(name = "number_bedroom")
-    private Integer numberBedroom;
+	@Column(name = "number_bedroom")
+	private Integer numberBedroom;
 
-    @Column(name = "elevator")
-    private Boolean elevator;
+	@Column(name = "elevator")
+	private Boolean elevator;
 
-    @Column(name = "furnished")
-    private Boolean furnished;
+	@Column(name = "furnished")
+	private Boolean furnished;
 
-    @Column(name = "pool")
-    private Boolean pool;
+	@Column(name = "pool")
+	private Boolean pool;
 
-    @Column(name = "garage")
-    private Boolean garage;
+	@Column(name = "garage")
+	private Boolean garage;
 
-    @Column(name = "number_wc")
-    private Integer numberWc;
+	@Column(name = "number_wc")
+	private Integer numberWc;
 
-    @Column(name = "ac")
-    private Boolean ac;
+	@Column(name = "ac")
+	private Boolean ac;
 
-    @Column(name = "created")
+	@Column(name = "created")
 	public LocalDate created;
 
-    @Column(name = "neartransport")
-    private Boolean neartransport;
+	@Column(name = "neartransport")
+	private Boolean neartransport;
 
-    @Column(name = "office")
-    private Boolean office;
+	@Column(name = "office")
+	private Boolean office;
 
-    @Column(name = "storage")
-    private Boolean storage;
+	@Column(name = "storage")
+	private Boolean storage;
 
-    @Column(name = "heating")
-    private Boolean heating;
-    
-    @Column(name = "video")
-    private String video;
+	@Column(name = "heating")
+	private Boolean heating;
 
-    @NotNull
-    @Column(name = "province")
-    private String province;
+	@Column(name = "video")
+	private String video;
 
-    @NotNull
-    @Column(name = "town")
-    private String town;
+	@NotNull
+	@Column(name = "province")
+	private String province;
 
-    @Column(name = "latitude")
-    private Double latitude;
+	@NotNull
+	@Column(name = "town")
+	private String town;
 
-    @Column(name = "longitude")
-    private Double longitude;
-    
-   
-    @OneToMany(mappedBy="property")
+	@Column(name = "latitude")
+	private Double latitude;
+
+	@Column(name = "longitude")
+	private Double longitude;
+
+	@OneToMany(mappedBy = "property")
 	private List<Vues> Vues;
-    
 
-    @ManyToOne
-    private User user;
-    
-    
-    @JsonBackReference
-	@OneToMany(mappedBy = "property",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-    private List<Favorits> favorits;
-    
-    
-    
-    public List<Favorits> getFavorits() {
+	@ManyToOne
+	private User user;
+
+	@JsonBackReference
+	@OneToMany(mappedBy = "property", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Favorits> favorits;
+
+	@JsonBackReference
+	@OneToMany(mappedBy = "property", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Reservation> reservation;
+
+	public List<Reservation> getReservation() {
+		return reservation;
+	}
+
+	public void setReservation(List<Reservation> reservation) {
+		this.reservation = reservation;
+	}
+
+	public List<Favorits> getFavorits() {
 		return favorits;
 	}
 
@@ -136,226 +141,222 @@ public class Property implements Serializable {
 	}
 
 	public Long getId() {
-        return id;
-    }
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public Property name(String name) {
-        this.name = name;
-        return this;
-    }
+	public Property name(String name) {
+		this.name = name;
+		return this;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public Double getPrice() {
-        return price;
-    }
+	public Double getPrice() {
+		return price;
+	}
 
-    public Property price(Double price) {
-        this.price = price;
-        return this;
-    }
+	public Property price(Double price) {
+		this.price = price;
+		return this;
+	}
 
-    public void setPrice(Double price) {
-        this.price = price;
-    }
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public Property description(String description) {
-        this.description = description;
-        return this;
-    }
+	public Property description(String description) {
+		this.description = description;
+		return this;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public BuildingType getBuildingType() {
-        return buildingType;
-    }
+	public BuildingType getBuildingType() {
+		return buildingType;
+	}
 
-    public Property buildingType(BuildingType buildingType) {
-        this.buildingType = buildingType;
-        return this;
-    }
+	public Property buildingType(BuildingType buildingType) {
+		this.buildingType = buildingType;
+		return this;
+	}
 
-    public void setBuildingType(BuildingType buildingType) {
-        this.buildingType = buildingType;
-    }
+	public void setBuildingType(BuildingType buildingType) {
+		this.buildingType = buildingType;
+	}
 
-    public ServiceType getServiceType() {
-        return serviceType;
-    }
+	public ServiceType getServiceType() {
+		return serviceType;
+	}
 
-    public Property serviceType(ServiceType serviceType) {
-        this.serviceType = serviceType;
-        return this;
-    }
+	public Property serviceType(ServiceType serviceType) {
+		this.serviceType = serviceType;
+		return this;
+	}
 
-    public void setServiceType(ServiceType serviceType) {
-        this.serviceType = serviceType;
-    }
+	public void setServiceType(ServiceType serviceType) {
+		this.serviceType = serviceType;
+	}
 
-    public String getRef() {
-        return ref;
-    }
+	public String getRef() {
+		return ref;
+	}
 
-    public Property ref(String ref) {
-        this.ref = ref;
-        return this;
-    }
+	public Property ref(String ref) {
+		this.ref = ref;
+		return this;
+	}
 
-    public void setRef(String ref) {
-        this.ref = ref;
-    }
+	public void setRef(String ref) {
+		this.ref = ref;
+	}
 
-    public Boolean isVisible() {
-        return visible;
-    }
+	public Boolean isVisible() {
+		return visible;
+	}
 
-    public Property visible(Boolean visible) {
-        this.visible = visible;
-        return this;
-    }
+	public Property visible(Boolean visible) {
+		this.visible = visible;
+		return this;
+	}
 
-    public void setVisible(Boolean visible) {
-        this.visible = visible;
-    }
+	public void setVisible(Boolean visible) {
+		this.visible = visible;
+	}
 
-    public Boolean isSold() {
-        return sold;
-    }
+	public Boolean isSold() {
+		return sold;
+	}
 
-    public Property sold(Boolean sold) {
-        this.sold = sold;
-        return this;
-    }
+	public Property sold(Boolean sold) {
+		this.sold = sold;
+		return this;
+	}
 
-    public void setSold(Boolean sold) {
-        this.sold = sold;
-    }
+	public void setSold(Boolean sold) {
+		this.sold = sold;
+	}
 
-    public Boolean isTerrace() {
-        return terrace;
-    }
+	public Boolean isTerrace() {
+		return terrace;
+	}
 
-    public Property terrace(Boolean terrace) {
-        this.terrace = terrace;
-        return this;
-    }
+	public Property terrace(Boolean terrace) {
+		this.terrace = terrace;
+		return this;
+	}
 
-    public void setTerrace(Boolean terrace) {
-        this.terrace = terrace;
-    }
+	public void setTerrace(Boolean terrace) {
+		this.terrace = terrace;
+	}
 
+	public Integer getNumberBedroom() {
+		return numberBedroom;
+	}
 
-    public Integer getNumberBedroom() {
-        return numberBedroom;
-    }
+	public Property numberBedroom(Integer numberBedroom) {
+		this.numberBedroom = numberBedroom;
+		return this;
+	}
 
-    public Property numberBedroom(Integer numberBedroom) {
-        this.numberBedroom = numberBedroom;
-        return this;
-    }
+	public void setNumberBedroom(Integer numberBedroom) {
+		this.numberBedroom = numberBedroom;
+	}
 
-    public void setNumberBedroom(Integer numberBedroom) {
-        this.numberBedroom = numberBedroom;
-    }
+	public Boolean isElevator() {
+		return elevator;
+	}
 
-    public Boolean isElevator() {
-        return elevator;
-    }
+	public Property elevator(Boolean elevator) {
+		this.elevator = elevator;
+		return this;
+	}
 
-    public Property elevator(Boolean elevator) {
-        this.elevator = elevator;
-        return this;
-    }
+	public void setElevator(Boolean elevator) {
+		this.elevator = elevator;
+	}
 
-    public void setElevator(Boolean elevator) {
-        this.elevator = elevator;
-    }
+	public Boolean isFurnished() {
+		return furnished;
+	}
 
-    public Boolean isFurnished() {
-        return furnished;
-    }
+	public Property furnished(Boolean furnished) {
+		this.furnished = furnished;
+		return this;
+	}
 
-    public Property furnished(Boolean furnished) {
-        this.furnished = furnished;
-        return this;
-    }
+	public void setFurnished(Boolean furnished) {
+		this.furnished = furnished;
+	}
 
-    public void setFurnished(Boolean furnished) {
-        this.furnished = furnished;
-    }
+	public Boolean isPool() {
+		return pool;
+	}
 
-    public Boolean isPool() {
-        return pool;
-    }
+	public Property pool(Boolean pool) {
+		this.pool = pool;
+		return this;
+	}
 
-    public Property pool(Boolean pool) {
-        this.pool = pool;
-        return this;
-    }
+	public void setPool(Boolean pool) {
+		this.pool = pool;
+	}
 
-    public void setPool(Boolean pool) {
-        this.pool = pool;
-    }
+	public Boolean isGarage() {
+		return garage;
+	}
 
-    public Boolean isGarage() {
-        return garage;
-    }
+	public Property garage(Boolean garage) {
+		this.garage = garage;
+		return this;
+	}
 
-    public Property garage(Boolean garage) {
-        this.garage = garage;
-        return this;
-    }
+	public void setGarage(Boolean garage) {
+		this.garage = garage;
+	}
 
-    public void setGarage(Boolean garage) {
-        this.garage = garage;
-    }
+	public Integer getNumberWc() {
+		return numberWc;
+	}
 
-    public Integer getNumberWc() {
-        return numberWc;
-    }
+	public Property numberWc(Integer numberWc) {
+		this.numberWc = numberWc;
+		return this;
+	}
 
-    public Property numberWc(Integer numberWc) {
-        this.numberWc = numberWc;
-        return this;
-    }
+	public void setNumberWc(Integer numberWc) {
+		this.numberWc = numberWc;
+	}
 
-    public void setNumberWc(Integer numberWc) {
-        this.numberWc = numberWc;
-    }
+	public Boolean isAc() {
+		return ac;
+	}
 
-    public Boolean isAc() {
-        return ac;
-    }
+	public Property ac(Boolean ac) {
+		this.ac = ac;
+		return this;
+	}
 
-    public Property ac(Boolean ac) {
-        this.ac = ac;
-        return this;
-    }
+	public void setAc(Boolean ac) {
+		this.ac = ac;
+	}
 
-    public void setAc(Boolean ac) {
-        this.ac = ac;
-    }
-
- 
-
-
-    public LocalDate getCreated() {
+	public LocalDate getCreated() {
 		return created;
 	}
 
@@ -364,59 +365,58 @@ public class Property implements Serializable {
 	}
 
 	public Boolean isNeartransport() {
-        return neartransport;
-    }
+		return neartransport;
+	}
 
-    public Property neartransport(Boolean neartransport) {
-        this.neartransport = neartransport;
-        return this;
-    }
+	public Property neartransport(Boolean neartransport) {
+		this.neartransport = neartransport;
+		return this;
+	}
 
-    public void setNeartransport(Boolean neartransport) {
-        this.neartransport = neartransport;
-    }
+	public void setNeartransport(Boolean neartransport) {
+		this.neartransport = neartransport;
+	}
 
-    public Boolean isOffice() {
-        return office;
-    }
+	public Boolean isOffice() {
+		return office;
+	}
 
-    public Property office(Boolean office) {
-        this.office = office;
-        return this;
-    }
+	public Property office(Boolean office) {
+		this.office = office;
+		return this;
+	}
 
-    public void setOffice(Boolean office) {
-        this.office = office;
-    }
+	public void setOffice(Boolean office) {
+		this.office = office;
+	}
 
-    public Boolean isStorage() {
-        return storage;
-    }
+	public Boolean isStorage() {
+		return storage;
+	}
 
-    public Property storage(Boolean storage) {
-        this.storage = storage;
-        return this;
-    }
+	public Property storage(Boolean storage) {
+		this.storage = storage;
+		return this;
+	}
 
-    public void setStorage(Boolean storage) {
-        this.storage = storage;
-    }
+	public void setStorage(Boolean storage) {
+		this.storage = storage;
+	}
 
-    public Boolean isHeating() {
-        return heating;
-    }
+	public Boolean isHeating() {
+		return heating;
+	}
 
-    public Property heating(Boolean heating) {
-        this.heating = heating;
-        return this;
-    }
+	public Property heating(Boolean heating) {
+		this.heating = heating;
+		return this;
+	}
 
-    public void setHeating(Boolean heating) {
-        this.heating = heating;
-    }
+	public void setHeating(Boolean heating) {
+		this.heating = heating;
+	}
 
-    
-    public String getVideo() {
+	public String getVideo() {
 		return video;
 	}
 
@@ -525,51 +525,35 @@ public class Property implements Serializable {
 	}
 
 	@Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Property property = (Property) o;
-        if(property.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, property.id);
-    }
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Property property = (Property) o;
+		if (property.id == null || id == null) {
+			return false;
+		}
+		return Objects.equals(id, property.id);
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(id);
+	}
 
-    @Override
-    public String toString() {
-        return "Property{" +
-            "id=" + id +
-            ", name='" + name + "'" +
-            ", price='" + price + "'" +
-            ", description='" + description + "'" +
-            ", buildingType='" + buildingType + "'" +
-            ", serviceType='" + serviceType + "'" +
-            ", ref='" + ref + "'" +
-            ", visible='" + visible + "'" +
-            ", sold='" + sold + "'" +
-            ", terrace='" + terrace + "'" +
-            ", numberBedroom='" + numberBedroom + "'" +
-            ", elevator='" + elevator + "'" +
-            ", furnished='" + furnished + "'" +
-            ", pool='" + pool + "'" +
-            ", garage='" + garage + "'" +
-            ", numberWc='" + numberWc + "'" +
-            ", ac='" + ac + "'" +
-            ", created='" + created + "'" +
-            ", neartransport='" + neartransport + "'" +
-            ", office='" + office + "'" +
-            ", storage='" + storage + "'" +
-            ", heating='" + heating + "'" +
-            '}';
-    }
-    
+	@Override
+	public String toString() {
+		return "Property{" + "id=" + id + ", name='" + name + "'" + ", price='" + price + "'" + ", description='"
+				+ description + "'" + ", buildingType='" + buildingType + "'" + ", serviceType='" + serviceType + "'"
+				+ ", ref='" + ref + "'" + ", visible='" + visible + "'" + ", sold='" + sold + "'" + ", terrace='"
+				+ terrace + "'" + ", numberBedroom='" + numberBedroom + "'" + ", elevator='" + elevator + "'"
+				+ ", furnished='" + furnished + "'" + ", pool='" + pool + "'" + ", garage='" + garage + "'"
+				+ ", numberWc='" + numberWc + "'" + ", ac='" + ac + "'" + ", created='" + created + "'"
+				+ ", neartransport='" + neartransport + "'" + ", office='" + office + "'" + ", storage='" + storage
+				+ "'" + ", heating='" + heating + "'" + '}';
+	}
+
 }

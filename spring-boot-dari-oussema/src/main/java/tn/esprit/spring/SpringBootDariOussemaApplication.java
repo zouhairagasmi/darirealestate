@@ -1,6 +1,9 @@
 package tn.esprit.spring;
 
+
+
 import java.util.EnumSet;
+
 
 import javax.faces.webapp.FacesServlet;
 import javax.servlet.DispatcherType;
@@ -13,31 +16,30 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @SpringBootApplication
-@EnableAspectJAutoProxy
 @EnableAutoConfiguration
-@ComponentScan({ "tn.esprit.spring.controller,tn.esprit.spring.service" })
+@ComponentScan({"tn.esprit.spring.controller,tn.esprit.spring.service"})
 public class SpringBootDariOussemaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootDariOussemaApplication.class, args);
 	}
-
 	@Bean
-	public ServletRegistrationBean servletRegistrationBean() {
-		FacesServlet servlet = new FacesServlet();
-		return new ServletRegistrationBean(servlet, "*.jsf");
-	}
-
-	@Bean
-	public FilterRegistrationBean rewriteFilter() {
-		FilterRegistrationBean rwFilter = new FilterRegistrationBean(new RewriteFilter());
-		rwFilter.setDispatcherTypes(
-				EnumSet.of(DispatcherType.FORWARD, DispatcherType.REQUEST, DispatcherType.ASYNC, DispatcherType.ERROR));
-		rwFilter.addUrlPatterns("/*");
-		return rwFilter;
-	}
+    public ServletRegistrationBean servletRegistrationBean() {
+        FacesServlet servlet = new FacesServlet();
+        return new ServletRegistrationBean(servlet, "*.jsf");
+    }
+    @Bean
+    public FilterRegistrationBean rewriteFilter() {
+        FilterRegistrationBean rwFilter = new FilterRegistrationBean(new RewriteFilter());
+        rwFilter.setDispatcherTypes(EnumSet.of(DispatcherType.FORWARD, DispatcherType.REQUEST,
+                DispatcherType.ASYNC, DispatcherType.ERROR));
+        rwFilter.addUrlPatterns("/*");
+        return rwFilter;
+    }
 
 }
+
+
+

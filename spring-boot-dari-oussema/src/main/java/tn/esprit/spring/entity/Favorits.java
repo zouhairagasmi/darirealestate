@@ -1,6 +1,9 @@
 package tn.esprit.spring.entity;
 
-import java.util.Date;
+import java.util.Date
+;
+
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,7 +31,7 @@ public class Favorits {
 	 @JoinColumn(name="idP", referencedColumnName="id")
 	 private Property property;
 	 
-	 @Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.DATE)
 	 private Date date;
 	 
 	 private String Title;
