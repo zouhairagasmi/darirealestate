@@ -18,5 +18,7 @@ public interface IReservationService {
     Reservation save(Reservation reservation);
      void deleteRes(Long id);
      Reservation updateRes(Reservation res);
+     List<Reservation> getAllReservations();
+     List<Reservation> findAllReservationByUser(int UId);
 
 }

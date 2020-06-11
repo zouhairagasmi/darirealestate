@@ -1,10 +1,12 @@
 package tn.esprit.spring.service;
 
 import java.util.Date;
+
 import java.util.List;
 import tn.esprit.spring.entity.Reservation;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.interfaces.IReservationService;
+import tn.esprit.spring.entity.Favorits;
 import tn.esprit.spring.entity.Property;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,11 @@ public class ReservationService implements IReservationService {
 	    @Autowired
 	    public void setReservationRepository(ReservationRepository reservationRepository) {
 	        this.reservationRepository = reservationRepository;
+	    }
+	    
+	    @Override
+	    public List<Reservation> getAllReservations() {
+	    	return (List<Reservation>)reservationRepository.findAll();
 	    }
 
 	    @Override
@@ -59,5 +66,10 @@ public class ReservationService implements IReservationService {
 	    	reservationRepository.save(res1);
 	    	return res1;
 	    }
+	    
+	    @Override
+	    public List<Reservation> findAllReservationByUser(int UId) {
+			return reservationRepository.findAllReservationByUser(UId);
+		}
 	}
 
