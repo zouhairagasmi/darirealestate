@@ -46,12 +46,17 @@ public class User implements Serializable {
 	private String email;
 	public Role role;
 	private Integer status;
-    @JsonBackReference
+    //@JsonBackReference
     @OneToMany(mappedBy = "user",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
     private List<Item> ItemList;
-
+    @OneToMany(mappedBy = "user1",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    private List<Orders> OrderList ;
 	public User() {
 		super();
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public User(String username, String password) {

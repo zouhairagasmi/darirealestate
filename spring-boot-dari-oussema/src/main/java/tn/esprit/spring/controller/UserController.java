@@ -34,13 +34,13 @@ public class UserController {
 	private Boolean isActif;
 	private List<User> users;
 	private Integer userIdToBeUpdated;
-
+//
 	public String dologin() {
 
 		String navigateTo = "null";
 		user = userservice.getEmployeByEmailAndPassword(login, password);
 		if (user != null && user.getRole() == Role.USER) {
-			navigateTo = "/welcome.xhtml?faces-redirect=true";
+			navigateTo = "pages/welcome.xhtml?faces-redirect=true";
 			loggedIn = true;
 		} else {
 			FacesMessage facesMessage = new FacesMessage(

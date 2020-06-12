@@ -13,9 +13,10 @@ import tn.esprit.spring.repository.ItemRepository;
 public class ItemService implements ItemServiceInterface {
 	@Autowired
 	ItemRepository itemrepository;
-
-	public Item addNewItem(Item item) {
-		return itemrepository.save(item);
+	@Override
+	public long addNewItem(Item item) {
+		 itemrepository.save(item);
+		 return item.getItemId();
 	}
 
 	public Optional<Item> getItemById(long id) {
@@ -31,6 +32,8 @@ public class ItemService implements ItemServiceInterface {
 		item.setPrice(item.getPrice());
 		item.setShippingWeight(item.getShippingWeight());
 		item.setUser(item.getUser());
+		item.setLocation(item.getLocation());
+		item.setPic(item.getPic());
 		return itemrepository.save(item);
 	}
 

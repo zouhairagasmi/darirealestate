@@ -15,60 +15,29 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 public class Item implements Serializable{
 
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3147301344821350525L;
+	private static final long serialVersionUID = 1134745019353479667L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long ItemId;
-	@JsonManagedReference
-    @ManyToOne(fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "item",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    private List<Orders> orderlist;
+    @ManyToOne()
     @JoinColumn(name = "owner_id")
 	private User user;
 	private String ItemName;
-	// @Column(columnDefinition="text")
 	private String Description;
 	private double Price;
 	private int AvailableQuantity;
 	private double shippingWeight;
-	// @Transient
-	// private MultipartFile Picture;
+	private String location;
 	@Enumerated(value = EnumType.STRING)
 	private Category category;
-	//@OneToMany(mappedBy = "item")
-	//@JsonIgnore
-	//private List<CartItem> CartItemList;
-
+	private String pic;
 	public Item() {
 		super();
 	}
-	
-	public Item(long itemId, User user, String itemName, String description, double price, int availableQuantity,
-			double shippingWeight, Category category) {
-		super();
-		ItemId = itemId;
-		this.user = user;
-		ItemName = itemName;
-		Description = description;
-		Price = price;
-		AvailableQuantity = availableQuantity;
-		this.shippingWeight = shippingWeight;
-		this.category = category;
-	}
 
-	public Item(String itemn, String description, double price, int availableQuantity, double shippingWeight,
-			Category category) {
-		this.ItemName = itemn;
-		this.Description = description;
-		this.Price = price;
-		this.AvailableQuantity = availableQuantity;
-		this.shippingWeight = shippingWeight;
-		this.category = category;
-	}
-
-	public Item(User user, String itemName, String description, double price, int availableQuantity,
+	public Item(User user, String itemName, String description, double price, int availableQuantity,String location,String pic,
 			double shippingWeight, Category category) {
 		super();
 		this.user = user;
@@ -78,7 +47,25 @@ public class Item implements Serializable{
 		AvailableQuantity = availableQuantity;
 		this.shippingWeight = shippingWeight;
 		this.category = category;
+		this.location = location;
+		this.pic =pic;
 	}
+	public Item(long ItemId,User user, String itemName, String description, double price, int availableQuantity,String location,String pic,
+			double shippingWeight, Category category) {
+		super();
+		this.ItemId = ItemId;
+		this.user = user;
+		ItemName = itemName;
+		Description = description;
+		Price = price;
+		AvailableQuantity = availableQuantity;
+		this.shippingWeight = shippingWeight;
+		this.category = category;
+		this.location = location;
+		this.pic =pic;
+	}
+
+
 
 	public long getItemId() {
 		return ItemId;
@@ -138,20 +125,94 @@ public class Item implements Serializable{
 		this.category = category;
 	}
 
-/*	public List<CartItem> getCartItemList() {
-		return CartItemList;
-	}
-
-	public void setCartItemList(List<CartItem> cartItemList) {
-		CartItemList = cartItemList;
-	}*/
-
 	public User getUser() {
 		return user;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + AvailableQuantity;
+		result = prime * result + ((Description == null) ? 0 : Description.hashCode());
+		result = prime * result + (int) (ItemId ^ (ItemId >>> 32));
+		result = prime * result + ((ItemName == null) ? 0 : ItemName.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(Price);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((category == null) ? 0 : category.hashCode());
+		temp = Double.doubleToLongBits(shippingWeight);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Item other = (Item) obj;
+		if (AvailableQuantity != other.AvailableQuantity)
+			return false;
+		if (Description == null) {
+			if (other.Description != null)
+				return false;
+		} else if (!Description.equals(other.Description))
+			return false;
+		if (ItemId != other.ItemId)
+			return false;
+		if (ItemName == null) {
+			if (other.ItemName != null)
+				return false;
+		} else if (!ItemName.equals(other.ItemName))
+			return false;
+		if (Double.doubleToLongBits(Price) != Double.doubleToLongBits(other.Price))
+			return false;
+		if (category != other.category)
+			return false;
+		if (Double.doubleToLongBits(shippingWeight) != Double.doubleToLongBits(other.shippingWeight))
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
+		return true;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	@Override
+	public String toString() {
+		return "Item [ItemId=" + ItemId + ", orderlist=" + orderlist + ", user=" + user + ", ItemName=" + ItemName
+				+ ", Description=" + Description + ", Price=" + Price + ", AvailableQuantity=" + AvailableQuantity
+				+ ", shippingWeight=" + shippingWeight + ", location=" + location + ", category=" + category + "]";
+	}
+
+	public String getPic() {
+		return pic;
+	}
+
+	public void setPic(String pic) {
+		this.pic = pic;
 	}
 
 }
