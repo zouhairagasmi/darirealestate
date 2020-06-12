@@ -42,6 +42,13 @@ public class Visits {
 	}
 	
 	
+	public Visits(Date dateVisit,VisitType visitType) {
+		super();
+		this.dateVisit = dateVisit;
+		this.visitType=visitType;
+	}
+
+
 	public Visits(House house, Date date) {
 		super();
 		property = house;
@@ -81,7 +88,6 @@ public class Visits {
 		this.dateVisit = dateVisit;
 		this.visitType = visitType;
 	}
-
 
 	public Long getIdVisit() {
 		return idVisit;

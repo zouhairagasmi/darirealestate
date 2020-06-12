@@ -1,6 +1,6 @@
 package tn.esprit.spring.services;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,9 +20,14 @@ public class HouseService implements IHouseService{
 	}
 	
 	@Override
-    public Optional<House> findByIdd(Long id) {
+	public List<House> getAllHouses() {
+		return (List<House>)houseRepository.findAll();
+	}
+	
+	@Override
+    public House findByIdd(Long id) {
 
-        return houseRepository.findById(id);
+        return houseRepository.findHouseById(id);
     }
 	
 }

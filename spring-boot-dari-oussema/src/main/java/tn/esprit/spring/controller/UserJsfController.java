@@ -18,8 +18,6 @@ import tn.esprit.spring.entity.User;
 @Controller(value = "userjsfController")
 @ELBeanName(value = "userjsfController")
 @Join(path = "/", to = "/loginn.jsf")
-
-
 public class UserJsfController {
 	
 	@Autowired
@@ -29,7 +27,7 @@ public class UserJsfController {
 	private String password; 
 	private User user;
 	private Boolean loggedIn;
-	private Long Iduser;
+	public static Long iduser;
 	
 	
 
@@ -44,9 +42,9 @@ public class UserJsfController {
 	String navigateTo = "null";
 	User user=iUserService.getUserByUsernameAndPassword(username, password);
 	if (user != null && user.getRole() == Role.Client) {
-	navigateTo = "/Client.xhtml?faces-redirect=true";
+	navigateTo = "/ClientProperties.xhtml?faces-redirect=true";
 	loggedIn = true;
-	Iduser=user.getIdU();
+	this.setIduser(user.getIdU());
 	}
 	else
 	{
@@ -125,11 +123,11 @@ public class UserJsfController {
 	}
 
 	public Long getIduser() {
-		return Iduser;
+		return iduser;
 	}
 
-	public void setIduser(Long iduser) {
-		Iduser = iduser;
+	public void setIduser(Long id) {
+		iduser = id;
 	}
 	
 }

@@ -3,11 +3,12 @@ xmlns:f="http://java.sun.com/jsf/core"
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:ui="http://java.sun.com/jsf/facelets"
 xmlns:c="http://java.sun.com/jsp/jstl/core"
+xmlns:p="http://primefaces.org/ui"
 template="/WEB-INF/template/template.xhtml">
 
 
 <ui:define name="title">
-
+Masmoudi Real Estate Agency
 </ui:define>
 
 <ui:define name="stylesheets">
@@ -19,17 +20,13 @@ template="/WEB-INF/template/template.xhtml">
 <ui:define name="content">
 
 <div class="wrapper wrapper-content animated fadeInRight">
-
+		<c:forEach var="house" items="#{visitJsfController.getProperties()}">
             <div class="row">
                 <div class="col-lg-12">
-
                     <div class="ibox product-detail">
                         <div class="ibox-content">
-
                             <div class="row">
                                 <div class="col-md-5">
-
-
                                     <div class="product-images slick-initialized slick-slider" role="toolbar"><button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: block;">Previous</button>
 
                                         <div aria-live="polite" class="slick-list draggable"><div class="slick-track" role="listbox" style="opacity: 1; width: 2120px; transform: translate3d(-1272px, 0px, 0px);"><div class="slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" tabindex="-1" style="width: 424px;">
@@ -53,74 +50,66 @@ template="/WEB-INF/template/template.xhtml">
                                                 [IMAGE 1]
                                             </div>
                                         </div></div></div>
-                                        
-                                        
-
-
                                     <button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;">Next</button><ul class="slick-dots" style="display: block;" role="tablist"><li class="" aria-hidden="true" role="presentation" aria-selected="true" aria-controls="navigation00" id="slick-slide00"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">1</button></li><li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation01" id="slick-slide01" class=""><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">2</button></li><li aria-hidden="false" role="presentation" aria-selected="false" aria-controls="navigation02" id="slick-slide02" class="slick-active"><button type="button" data-role="none" role="button" aria-required="false" tabindex="0">3</button></li></ul></div>
-
                                 </div>
                                 <div class="col-md-7">
 
                                     <h2 class="font-bold m-b-xs">
-                                        Desktop publishing software
+                                        #{house.name}
                                     </h2>
-                                    <small>Many desktop publishing packages and web page editors now.</small>
+                                    <small>#{house.buildingType}</small>
                                     <div class="m-t-md">
-                                        <h2 class="product-main-price">$406,602 <small class="text-muted">Exclude Tax</small> </h2>
+                                        <h2 class="product-main-price"><h:outputText value="#{house.price}">
+    									<f:convertNumber type="currency" currencySymbol="€"/>
+									</h:outputText><small class="text-muted">Exclude Tax</small> </h2>
                                     </div>
                                     <hr></hr>
-
-                                    <h4>Product description</h4>
-
+                                    <h4>Take A Tour</h4>
                                     <div class="small text-muted">
-                                        It is a long established fact that a reader will be distracted by the readable
-                                        content of a page when looking at its layout. The point of using Lorem Ipsum is
-
-                                        <br></br>
-                                        <br></br>
-                                        There are many variations of passages of Lorem Ipsum available, but the majority
-                                        have suffered alteration in some form, by injected humour, or randomised words
-                                        which don't look even slightly believable.
+                                        #{house.description}
+                                        <p:datePicker id="inline" value="#{visitJsfController.datePicker}" inline="true" />
+                                        <h:selectOneMenu class="form-control m-b" value="#{visitJsfController.visitType1}" required="true">
+            								<f:selectItems value="#{data.visitTypes}"/>
+        								</h:selectOneMenu> 
+        								<h:commandButton action="#{visitJsfController.AddVisit()}" value="Take A Visit">
+                                	 		<f:setPropertyActionListener target="#{visitJsfController.idHouse}" value="#{house.idHouse}" />
+                                		</h:commandButton>
+        							
                                     </div>
-                                    <dl class="small m-t-md">
-                                        <dt>Description lists</dt>
-                                        <dd>A description list is perfect for defining terms.</dd>
-                                        <dt>Euismod</dt>
-                                        <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-                                        <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-                                        <dt>Malesuada porta</dt>
-                                        <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-                                    </dl>
                                     <hr></hr>
-
+                                    <h4>Loan Calculator</h4>
+                                    <h:selectOneMenu class="form-control m-b" value="#{visitJsfController.loanyears}" required="true">
+            								<f:selectItem itemValue="3" itemLabel="3 Years" />
+            								<f:selectItem itemValue="5" itemLabel="5 Years" />
+            								<f:selectItem itemValue="8" itemLabel="8 Years" />
+            								<f:selectItem itemValue="10" itemLabel="10 Years" />
+            								<f:selectItem itemValue="15" itemLabel="15 Years" />
+            								<f:selectItem itemValue="30" itemLabel="30 Years" />
+        							</h:selectOneMenu>
+                                    	<h:commandButton id = "submitButton" value = "Calculate" action = "#{visitJsfController.monthlycost}" actionListener = "#{visitJsfController.updateData()}"></h:commandButton>
+                                    	<h:outputLabel value="#{visitJsfController.monthlycost}" />
+                                    <hr></hr>
                                     <div>
                                         <div class="btn-group">
-                                            <button class="btn btn-primary btn-sm"><i class="fa fa-cart-plus"></i> Add to cart</button>
-                                            <button class="btn btn-white btn-sm"><i class="fa fa-star"></i> Add to wishlist </button>
-                                            <button class="btn btn-white btn-sm"><i class="fa fa-envelope"></i> Contact with author </button>
+	                                        <h:button class="btn btn-primary btn-sm" outcome="/VRvisit.jsf" value="Take A VR Visit"></h:button>
                                         </div>
+                                        
                                     </div>
-
-
-
                                 </div>
                             </div>
-
                         </div>
                         <div class="ibox-footer">
                             <span class="pull-right">
-                                Full stock - <i class="fa fa-clock-o"></i> 14.04.2016 10:04 pm
+                                #{house.dateVisitDebut} <i class="fa fa-clock-o"></i> To #{house.dateVisitFin}
                             </span>
-                            The generated Lorem Ipsum is therefore always free
+                            The house is open from  
                         </div>
                     </div>
 
                 </div>
             </div>
+		  </c:forEach>
         </div>
-
-	
 	</ui:define>
 
 <ui:define name="jsproduct">

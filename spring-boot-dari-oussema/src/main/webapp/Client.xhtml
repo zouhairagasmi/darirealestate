@@ -9,7 +9,7 @@ template="/WEB-INF/template/template.xhtml">
 
 
 <ui:define name="title">
-
+Masmoudi Real Estate Agency | My Visits
 </ui:define>
 <ui:define name="stylesheets">
 <link href="css/plugins/dataTables/datatables.min.css" rel="stylesheet"/>
@@ -72,26 +72,51 @@ template="/WEB-INF/template/template.xhtml">
                     </thead>
                     <tbody>
                     <h:form>
-                         <c:forEach var="visit" items="#{visitJsfController.visits}">
+                         <c:forEach var="visit" items="#{visitJsfController.visits1}">
                                 <tr class="gradeX">
                                     <td>#{visit.dateVisit}</td>
                                     <td>#{visit.property.name}</td>
-                                    <td>#{visit.property.price}</td>
+                                    <td><h:outputText value="#{visit.property.price}">
+    									<f:convertNumber type="currency" currencySymbol="€"/>
+									</h:outputText></td>
                                     <td>#{visit.property.buildingType}</td>
                                     <td>#{visit.visitType}</td>
-                                    <td> <!--<div class="infont col-md-3 col-sm-4">
-                                        <h:link action="#{subscriptionController.goToSubscriptions()}"><i class="fa fa-edit"></i>  <span class="text-muted">
-                                        </span>
-                                        </h:link>
-                                        </div>-->
-                                        <h:commandButton action="#{visitJsfController.updateVisit(visit)}" value="Update" />
+                                    <td> 
+                                    <h:commandButton action="#{visitJsfController.update(visit)}" value="Update this Visit" />
+                                    <h:commandButton action="#{visitJsfController.deleteVisit(visit.idVisit)}" value="Delete This Visit" />
                                     </td>
+                                    <td hidden="true"></td>
                                  </tr>
                         </c:forEach>
-                    </h:form>
-                    
-                    
-                    
+                        <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <div class="col-sm-4">
+                    <div class="input-group date">
+                    	<label class="control-label" for="date_added">Date of Visit </label>
+                    	<div class="input-group date">
+			         	<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+			         	<input type="text" class="form-control" value="#{visitJsfController.dateToChange}"></input>
+             			</div>
+             		</div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="control-label" for="amount">Type of Visit</label>
+                            <div class="input-group date">
+        					<h:selectOneMenu class="form-control m-b" value="#{visitJsfController.visitType}" required="true">
+            					<f:selectItems value="#{data.visitTypes}"/>
+        					</h:selectOneMenu>  
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                             <h:commandButton action="#{visitJsfController.updateVisit()}" value="Update The Visit" />
+                        </div>
+                    </div>
+                </div>
+		</div>             
+                    </h:form>   
                     </tbody>
                     <tfoot>
                     <tr>
@@ -110,55 +135,9 @@ template="/WEB-INF/template/template.xhtml">
             </div>
         </div>
         </div>
-        <div class="wrapper wrapper-content animated fadeInRight ecommerce">
-        <div class="ibox-content m-b-sm border-bottom">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label class="control-label" for="order_id">Order ID</label>
-                            <input type="text" id="order_id" name="order_id" value="" placeholder="Order ID" class="form-control"></input>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label class="control-label" for="status">Order status</label>
-                            <input type="text" id="status" name="status" value="" placeholder="Status" class="form-control"></input>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label class="control-label" for="customer">Customer</label>
-                            <input type="text" id="customer" name="customer" value="" placeholder="Customer" class="form-control"></input>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label class="control-label" for="date_added">Date added</label>
-                            <div class="input-group date">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="date_added" type="text" class="form-control" value="03/04/2014"></input>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label class="control-label" for="date_modified">Date modified</label>
-                            <div class="input-group date">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="date_modified" type="text" class="form-control" value="03/06/2014"></input>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label class="control-label" for="amount">Amount</label>
-                            <input type="text" id="amount" name="amount" value="" placeholder="Amount" class="form-control"></input>
-                        </div>
-                    </div>
-                </div>
-		</div>
-		</div>
-            
+	      
+          
+        					   
     </ui:define>
     <ui:define name="js">
 <!-- Custom and plugin javascript -->
