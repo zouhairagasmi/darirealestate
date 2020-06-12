@@ -34,6 +34,7 @@ public class Subscription  implements Serializable{
 	
 	
 	
+	
 	@OneToMany(mappedBy="subscription", 
 			cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, 
 			fetch=FetchType.EAGER)

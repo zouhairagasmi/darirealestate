@@ -16,6 +16,8 @@ import org.springframework.stereotype.Controller;
 
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.entity.Role;
+import tn.esprit.spring.entity.Subscription;
+import tn.esprit.spring.interfaces.ISubscriptionService;
 import tn.esprit.spring.interfaces.IUserService;
 
 
@@ -31,6 +33,9 @@ public class UserController {
 	
 @Autowired
 IUserService iUserService;
+
+@Autowired
+ISubscriptionService iSubscriptionService;
 
 
 
@@ -52,7 +57,32 @@ private Role role;
 private Boolean loggedIn;
 private List<User> users;
 private Long userIdToBeUpdated;
+private Long idS;
 
+
+
+
+public ISubscriptionService getiSubscriptionService() {
+	return iSubscriptionService;
+}
+
+
+
+public void setiSubscriptionService(ISubscriptionService iSubscriptionService) {
+	this.iSubscriptionService = iSubscriptionService;
+}
+
+
+
+public Long getIdS() {
+	return idS;
+}
+
+
+
+public void setIdS(Long idS) {
+	this.idS = idS;
+}
 
 
 
@@ -81,6 +111,8 @@ public Role getRoleById() {
 public String getFirstnameById() {
 	return iUserService.getUserById(idCnx).getFirstname();
 }
+
+
 public String dologin() {
 
 String navigateTo = "null";
@@ -124,6 +156,12 @@ else {
             new FacesMessage("Account created wait for Administrator to give you access");
         FacesContext.getCurrentInstance().addMessage("form1:btn1",facesMessage);
 }
+}
+
+public String subscribe(Long idCnx,Long idS) {
+
+iUserService.assignUserToSubscription(idCnx, idS);
+return "/oursubscriptions.xhtml?faces-redirect=true";
 }
 
 
