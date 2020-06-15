@@ -1,29 +1,25 @@
 package tn.esprit.spring.entity;
 
-
-
-
 import java.util.Date;
+import java.util.List;
 
-
-
+import javax.persistence.CascadeType;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 
-
-
-
 @Entity
-@Table(name="Utilisateur")
+@Table(name="User")
 public class User {
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -39,10 +35,21 @@ public class User {
 	private Date dateofbirth;
 	private int rating;
 	private String email;
+	@Enumerated(EnumType.STRING)
 	public Role role;
 	private Integer status;
 	
+	private float balance;
+	private Boolean isActif; 
 	
+//
+//	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	private List<Favorits> favorits;
+//
+//
+//	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	private List<Reservation> reservation;
+
 	
 	
 	public User() {
@@ -53,16 +60,6 @@ public class User {
 		super();
 		this.username = username;
 		this.password = password;
-	}
-	
-	
-
-	public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
 	}
 
 	public User(Long idU, String username, String password, String firstname, String lastname, String gender,
@@ -82,19 +79,6 @@ public class User {
 		this.role = role;
 		this.status = status;
 	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	
-
-
-
 
 @Override
 public String toString() {
@@ -297,5 +281,36 @@ public User(Long idU, String username, String password, String firstname, String
 public User(Long idU) {
 	super();
 	this.idU = idU;
+}
+
+public float getBalance() {
+	return balance;
+}
+
+public void setBalance(float balance) {
+	this.balance = balance;
+}
+
+public Boolean getIsActif() {
+	return isActif;
+}
+
+public void setIsActif(Boolean isActif) {
+	this.isActif = isActif;
+}
+public String getEmail() {
+	return email;
+}
+
+public void setEmail(String email) {
+	this.email = email;
+}
+
+public Integer getStatus() {
+	return status;
+}
+
+public void setStatus(Integer status) {
+	this.status = status;
 }
 }
