@@ -1,0 +1,54 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:c="http://java.sun.com/jsp/jstl/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+template="/WEB-INF/template/templateuser.xhtml">
+
+
+<ui:define name="title">
+
+</ui:define>
+
+
+
+<ui:define name="content">
+<div class="wrapper wrapper-content">
+          <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+            <c:forEach var="subscription" items="#{subscriptionController.getSubscriptions()}">
+                <div class="col-md-3">
+                    <div class="ibox">
+                        <div class="ibox-content product-box">
+
+                            <div class="product-imitation">
+                                [ INFO ]
+                            </div>
+                            <div class="product-desc">
+                                <span class="product-price">
+                                    <h:outputText value="#{subscription.price}">
+    									<f:convertNumber type="currency" currencySymbol="€"/>
+									</h:outputText>
+                                </span>
+                                
+                                <a href="#" class="product-name"> #{subscription.name}</a>
+                                <div class="small m-t-xs">
+                                   #{subscription.description}
+                                </div>
+                                <div class="m-t text-righ">
+                                <c:set var="myVar" value="#{house.idHouse}" />
+                                <h:commandButton action="#{visitJsfController.goToHouseDetails('myVar')}" value="Update The Visit" />
+									<a href="/ClientPropertyDetails.xhtml?faces-redirect=true" class="btn btn-xs btn-outline btn-primary">Details <i class="fa fa-long-arrow-right"></i> </a>							
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </c:forEach>
+            </div>
+        </div>
+    </div>
+</ui:define>
+
+
+</ui:composition>
