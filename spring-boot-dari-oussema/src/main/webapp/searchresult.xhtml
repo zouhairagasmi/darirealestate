@@ -57,7 +57,9 @@
 											<div class="small m-t-xs">Big #{house.buildingType}
 												with #{house.serviceType} Bed rooms, Big garden and pool.</div>
 												
-											<h:commandButton value="View" />
+											<h:commandButton
+							action="#{propertyzController.showProperty(house)}"
+							value="View" />
 										</div>
 									</div>
 								</div>
