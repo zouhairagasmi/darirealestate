@@ -3,12 +3,14 @@ package tn.esprit.spring.entity;
 import javax.persistence.*;
 
 
+
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 import java.io.Serializable;
-import java.time.LocalDate;
+
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -79,7 +81,7 @@ public class Property implements Serializable {
 	private Boolean ac;
 
 	@Column(name = "created")
-	public LocalDate created;
+	public Date createdDate;
 
 	@Column(name = "neartransport")
 	private Boolean neartransport;
@@ -93,8 +95,8 @@ public class Property implements Serializable {
 	@Column(name = "heating")
 	private Boolean heating;
 
-	@Column(name = "video")
-	private String video;
+	@Column(name = "photo")
+	private String photo;
 
 	@NotNull
 	@Column(name = "province")
@@ -110,8 +112,6 @@ public class Property implements Serializable {
 	@Column(name = "longitude")
 	private Double longitude;
 
-	@OneToMany(mappedBy = "property")
-	private List<Vues> Vues;
 
 	@ManyToOne
 	private User user;
@@ -124,6 +124,87 @@ public class Property implements Serializable {
 	@OneToMany(mappedBy = "property", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Reservation> reservation;
 
+	 public Property(String name, Double price, BuildingType buildingType, ServiceType serviceType,
+				String description, Integer numberBedroom, Integer numberWc, Boolean furnished
+				, Boolean garage,Date createdDate, 
+				String province, String town, Double latitude, Double longitude) {
+			super();
+			this.name = name;
+			this.price = price;
+			this.buildingType = buildingType;
+			this.serviceType = serviceType;
+			this.description = description;
+			this.numberBedroom = numberBedroom;
+			this.numberWc = numberWc;
+			this.furnished = furnished;
+			this.garage = garage;
+			this.createdDate=createdDate;
+			this.province = province;
+			this.town = town;
+			this.latitude = latitude;
+			this.longitude = longitude;
+		}
+	    
+		public Property(Long propertyIdToBeUpdated, String name, Double price, BuildingType buildingType, ServiceType serviceType,
+				String description, Integer numberBedroom, Integer numberWc, Boolean furnished,Boolean garage,Date createdDate,
+				String province, String town, Double latitude, Double longitude) {
+			super();
+			this.id = propertyIdToBeUpdated;
+			this.name = name;
+			this.price = price;
+			this.buildingType = buildingType;
+			this.serviceType = serviceType;
+			this.description = description;
+			this.numberBedroom = numberBedroom;
+			this.numberWc = numberWc;
+			this.furnished = furnished;
+			this.garage = garage;
+			this.createdDate= createdDate;
+			this.province = province;
+			this.town = town;
+			this.latitude = latitude;
+			this.longitude = longitude;
+		}
+	   /*
+	    @OneToMany(mappedBy="property")
+		private List<DBFile> DBFile;
+	   */
+
+	    
+	    public Property(Long propertyIdToBeUpdated,String name, Double price, BuildingType buildingType, ServiceType serviceType, String description,
+	    		String province,String town,Double latitude,Double longitude)
+	    {
+	    	super();
+	    	this.id=propertyIdToBeUpdated;
+			this.name = name;
+			this.price = price;
+			this.buildingType = buildingType;
+			this.serviceType = serviceType;
+			this.description = description;
+			this.province = province;
+			this.town = town;
+			this.latitude = latitude;
+			this.longitude = longitude;
+				}
+	    
+		public Property(String name, Double price, BuildingType buildingType, ServiceType serviceType, String description,
+				String province,String town,Double latitude,Double longitude) {
+			super();
+			this.name = name;
+			this.price = price;
+			this.buildingType = buildingType;
+			this.serviceType = serviceType;
+			this.description = description;
+			this.province = province;
+			this.town = town;
+			this.latitude = latitude;
+			this.longitude = longitude;
+		}
+
+		public Property() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
 	public List<Reservation> getReservation() {
 		return reservation;
 	}
@@ -356,12 +437,12 @@ public class Property implements Serializable {
 		this.ac = ac;
 	}
 
-	public LocalDate getCreated() {
-		return created;
+	public Date getCreatedDate() {
+		return createdDate;
 	}
 
-	public void setCreated(LocalDate created) {
-		this.created = created;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
 	public Boolean isNeartransport() {
@@ -416,13 +497,7 @@ public class Property implements Serializable {
 		this.heating = heating;
 	}
 
-	public String getVideo() {
-		return video;
-	}
 
-	public void setVideo(String video) {
-		this.video = video;
-	}
 
 	public String getProvince() {
 		return province;
@@ -456,12 +531,14 @@ public class Property implements Serializable {
 		this.longitude = longitude;
 	}
 
-	public List<Vues> getVues() {
-		return Vues;
+	
+
+	public String getPhoto() {
+		return photo;
 	}
 
-	public void setVues(List<Vues> vues) {
-		Vues = vues;
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 
 	public User getUser() {
@@ -551,7 +628,7 @@ public class Property implements Serializable {
 				+ ", ref='" + ref + "'" + ", visible='" + visible + "'" + ", sold='" + sold + "'" + ", terrace='"
 				+ terrace + "'" + ", numberBedroom='" + numberBedroom + "'" + ", elevator='" + elevator + "'"
 				+ ", furnished='" + furnished + "'" + ", pool='" + pool + "'" + ", garage='" + garage + "'"
-				+ ", numberWc='" + numberWc + "'" + ", ac='" + ac + "'" + ", created='" + created + "'"
+				+ ", numberWc='" + numberWc + "'" + ", ac='" + ac + "'" + ", created='" + createdDate + "'"
 				+ ", neartransport='" + neartransport + "'" + ", office='" + office + "'" + ", storage='" + storage
 				+ "'" + ", heating='" + heating + "'" + '}';
 	}
