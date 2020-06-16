@@ -28,7 +28,8 @@
 		</div>
 		<div class="wrapper wrapper-content animated fadeInRight">
 			<h:form>
-				<p:dataGrid var="prop" value="#{propertyzController.getPropertyid()}">
+				<p:dataGrid var="prop"
+					value="#{propertyzController.getPropertyid()}">
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="ibox product-detail">
@@ -38,25 +39,26 @@
 										<div class="col-md-5">
 											<div class="product-images">
 												<div>
-													<div class="image-imitation"><h:graphicImage alt="image" class="img-responsive"
-												value="#{prop.photo}" /></div>
+													<div class="image-imitation">
+														<h:graphicImage alt="image" class="img-responsive"
+															value="#{prop.photo}" />
+													</div>
 												</div>
 											</div>
 										</div>
 										<div class="col-md-7">
-											<h2 class="font-bold m-b-xs">#{prop.name}
-											</h2>
-											<small>A #{prop.numberBedroom} bedrooms #{prop.buildingType} for #{prop.serviceType}</small>
+											<h2 class="font-bold m-b-xs">#{prop.name}</h2>
+											<small>A #{prop.numberBedroom} bedrooms
+												#{prop.buildingType} for #{prop.serviceType}</small>
 											<div class="m-t-md">
 												<h2 class="product-main-price">
-													#{prop.price} €<small class="text-muted">Exclude Tax</small>
+													#{prop.price} €<small class="text-muted">Exclude
+														Tax</small>
 												</h2>
 											</div>
 											<hr></hr>
 											<h4>Property description</h4>
-											<div class="small text-muted">
-												#{prop.description}
-											</div>
+											<div class="small text-muted">#{prop.description}</div>
 											<dl class="small m-t-md">
 												<dt>Description lists</dt>
 												<dd>A description list is perfect for defining terms.</dd>
@@ -70,19 +72,20 @@
 											<hr></hr>
 											<div>
 												<div class="btn-group">
-												<button class="btn btn-white btn-sm">
+													<button class="btn btn-white btn-sm">
 														<i class="fa fa-star"></i> Add to wishlist
 													</button>
 													<button class="btn btn-primary btn-sm">
-														<i class="fa fa-cart-plus"></i> Add to cart
+														<i class="fa fa-cart-plus"></i> Book
 													</button>
-													
+
 													<button class="btn btn-white btn-sm">
 														<i class="fa fa-envelope"></i> Request a tour
 													</button>
 													<button class="btn btn-white btn-sm">
 														<i class="fa fa-envelope"></i> 3D tour
 													</button>
+
 												</div>
 											</div>
 										</div>
