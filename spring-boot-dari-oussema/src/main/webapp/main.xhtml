@@ -106,6 +106,113 @@
 					</div>
 			</div>
 		</div>
+		
+		
+		
+		
+		
+		<div class="wrapper wrapper-content animated fadeInRight" >
+					<div class="row" style="background-image: url('img/house1.jpg');">
+						<div class="col-lg-12">
+							<div class="ibox float-e-margins">
+								<div class="ibox-title">
+									<h5>
+										Find <small>a home</small>
+									</h5>
+								</div>
+								<div class="ibox-content">
+									<h:form method="get" class="form-horizontal">
+
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Enter an address</label>
+											<div class="col-sm-10">
+												<h:inputText p:type="text" class="form-control"
+													value="#{propertyController.town}" />
+											</div>
+										</div>
+
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Building Type</label>
+											<div class="col-sm-10">
+												<h:selectOneMenu class="form-control m-b" name="account"
+													value="#{propertyController.buildingType}" required="true">
+													<f:selectItems value="#{data.buildingTypes}" />
+												</h:selectOneMenu>
+											</div>
+										</div>
+
+
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Service</label>
+
+											<div class="col-sm-10">
+												<h:selectOneMenu class="form-control m-b" name="account"
+													value="#{propertyController.serviceType}" required="true">
+													<f:selectItems value="#{data.serviceTypes}" />
+												</h:selectOneMenu>
+
+											</div>
+										</div>
+
+										<h:commandButton value="SEARCH NOW..."
+											action="#{propertyController.dorecherche()}" />
+									</h:form>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+		
+		
+		
+		
+		
+		
+		<div  class="col-lg-12" style="background-image: url('img/house1.jpg');">
+		
+											<h:form method="get" class="form-horizontal">
+
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Enter an address</label>
+											<div class="col-sm-10">
+												<h:inputText p:type="text" class="form-control"
+													value="#{propertyController.town}" />
+											</div>
+										</div>
+
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Building Type</label>
+											<div class="col-sm-10">
+												<h:selectOneMenu class="form-control m-b" name="account"
+													value="#{propertyController.buildingType}" required="true">
+													<f:selectItems value="#{data.buildingTypes}" />
+												</h:selectOneMenu>
+											</div>
+										</div>
+
+
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Service</label>
+
+											<div class="col-sm-10">
+												<h:selectOneMenu class="form-control m-b" name="account"
+													value="#{propertyController.serviceType}" required="true">
+													<f:selectItems value="#{data.serviceTypes}" />
+												</h:selectOneMenu>
+
+											</div>
+										</div>
+
+										<h:commandButton value="SEARCH NOW..."
+											action="#{propertyController.dorecherche()}" />
+									</h:form>
+		</div>
 	</ui:define>
 
 	<ui:define name="js">
