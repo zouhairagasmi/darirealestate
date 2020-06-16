@@ -92,7 +92,7 @@ public class PropertyController {
 	 public String dorecherche() {
 
 			String navigateTo = "null";
-			navigateTo = "/nouvelle.xhtml?faces-redirect=true";
+			navigateTo = "/searchresult.xhtml?faces-redirect=true";
 			return navigateTo;
 			}
 	 
