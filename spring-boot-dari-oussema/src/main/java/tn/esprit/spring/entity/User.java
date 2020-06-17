@@ -1,29 +1,25 @@
 package tn.esprit.spring.entity;
 
-
-
-
 import java.util.Date;
+import java.util.List;
 
-
-
+import javax.persistence.CascadeType;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 
-
-
-
 @Entity
-@Table(name="Utilisateur")
+@Table(name="User")
 public class User {
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -39,34 +35,181 @@ public class User {
 	private Date dateofbirth;
 	private int rating;
 	private String email;
+	@Enumerated(EnumType.STRING)
 	public Role role;
 	private Integer status;
 	
+	private float balance;
+	private Boolean isActif; 
+	
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Favorits> favorits;
+
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Reservation> reservation;
+
 	
 	
 	
+	
+	public List<Favorits> getFavorits() {
+		return favorits;
+	}
+
+	public void setFavorits(List<Favorits> favorits) {
+		this.favorits = favorits;
+	}
+
+	public List<Reservation> getReservation() {
+		return reservation;
+	}
+
+	public void setReservation(List<Reservation> reservation) {
+		this.reservation = reservation;
+	}
+
 	public User() {
 		super();
 	}
 
-	public User(String username, String password) {
+	public User(Long idU, String username, String password, String firstname, String lastname, String email, Role role,
+			float balance, Boolean isActif) {
+		super();
+		this.idU = idU;
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.role = role;
+		this.balance = balance;
+		this.isActif = isActif;
+	}
+
+	public User(String username, String password, String firstname, String lastname, Long phone, String email,
+			Role role, float balance, Boolean isActif) {
 		super();
 		this.username = username;
 		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.phone = phone;
+		this.email = email;
+		this.role = role;
+		this.balance = balance;
+		this.isActif = isActif;
 	}
-	
-	
 
-	public Integer getStatus() {
-		return status;
+	public User(Long idU, String username, String firstname, String lastname, String email, Role role,
+			Boolean isActif) {
+		super();
+		this.idU = idU;
+		this.username = username;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.role = role;
+		this.isActif = isActif;
 	}
 
-	public void setStatus(Integer status) {
-		this.status = status;
+	public User(String username, String password, String firstname, String lastname, String email, Boolean isActif) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.isActif = isActif;
+	}
+
+	public User(String username, String password, String firstname, String lastname, Long phone,
+			String email, Role role, Boolean isActif) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.phone = phone;
+		this.email = email;
+		this.role = role;
+		this.isActif = isActif;
+	}
+
+	public User(String username, String password, String firstname, String lastname, String gender, Long phone,
+			String adress, int rating, String email, Role role, float balance, Boolean isActif) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.gender = gender;
+		this.phone = phone;
+		this.adress = adress;
+		this.rating = rating;
+		this.email = email;
+		this.role = role;
+		this.balance = balance;
+		this.isActif = isActif;
 	}
 
 	public User(Long idU, String username, String password, String firstname, String lastname, String gender,
-			Long phone, String adress, Date dateofbirth, int rating, String email, Role role, Integer status) {
+			Long phone, String adress, int rating, String email, Role role, float balance, Boolean isActif) {
+		super();
+		this.idU = idU;
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.gender = gender;
+		this.phone = phone;
+		this.adress = adress;
+		this.rating = rating;
+		this.email = email;
+		this.role = role;
+		this.balance = balance;
+		this.isActif = isActif;
+	}
+
+	public User(String username, String password, String firstname, String lastname, String email, Role role,
+			Boolean isActif) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.role = role;
+		this.isActif = isActif;
+	}
+
+	public User(String username, String password, String firstname, String lastname, Role role, Boolean isActif) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.role = role;
+		this.isActif = isActif;
+	}
+
+	public User(Long idU, String username, String password, String firstname, String lastname, String email, Role role,
+			Boolean isActif) {
+		super();
+		this.idU = idU;
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.role = role;
+		this.isActif = isActif;
+	}
+
+	public User(Long idU, String username, String password, String firstname, String lastname, String gender,
+			Long phone, String adress, Date dateofbirth, int rating, String email, Role role, Integer status,
+			float balance, Boolean isActif) {
 		super();
 		this.idU = idU;
 		this.username = username;
@@ -81,20 +224,9 @@ public class User {
 		this.email = email;
 		this.role = role;
 		this.status = status;
+		this.balance = balance;
+		this.isActif = isActif;
 	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	
-
-
-
 
 @Override
 public String toString() {
@@ -297,5 +429,36 @@ public User(Long idU, String username, String password, String firstname, String
 public User(Long idU) {
 	super();
 	this.idU = idU;
+}
+
+public float getBalance() {
+	return balance;
+}
+
+public void setBalance(float balance) {
+	this.balance = balance;
+}
+
+public Boolean getIsActif() {
+	return isActif;
+}
+
+public void setIsActif(Boolean isActif) {
+	this.isActif = isActif;
+}
+public String getEmail() {
+	return email;
+}
+
+public void setEmail(String email) {
+	this.email = email;
+}
+
+public Integer getStatus() {
+	return status;
+}
+
+public void setStatus(Integer status) {
+	this.status = status;
 }
 }

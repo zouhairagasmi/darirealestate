@@ -4,6 +4,7 @@ package tn.esprit.spring.controller;
 import java.util.List;
 
 
+
 import org.slf4j.Logger;
 
 
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import tn.esprit.spring.entity.User;
-import tn.esprit.spring.interfaces.IUserService;
+import tn.esprit.spring.service.IUserService;
 
 
 

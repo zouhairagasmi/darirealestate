@@ -1,0 +1,239 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	template="/WEB-INF/template/template.xhtml">
+
+
+	<h:form>
+		<h:outputText value="Bonjour #{UserJsfController.usrn}" />
+		<h:commandLink value="Déconnexion"
+			action="#{UserJsfController.doLogout()}" />
+	</h:form>
+	<ui:define name="content">
+		<div class="wrapper wrapper-content">
+
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<h5>Big gallery carousel</h5>
+							<div class="ibox-tools">
+								<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
+								</a> <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+									<i class="fa fa-wrench"></i>
+								</a>
+								<ul class="dropdown-menu dropdown-user">
+									<li><a href="#">Config option 1</a></li>
+									<li><a href="#">Config option 2</a></li>
+								</ul>
+								<a class="close-link"> <i class="fa fa-times"></i>
+								</a>
+							</div>
+						</div>
+						<div class="ibox-content">
+
+
+							<div class="row">
+								<div class="col-sm-12">
+									<h:graphicImage alt="image" class="img-responsive"
+										value="img/house2.jpg" width="1500" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="wrapper wrapper-content animated fadeInRight">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="ibox float-e-margins">
+								<div class="ibox-title">
+									<h5>
+										Find <small>a home</small>
+									</h5>
+									<div class="ibox-tools">
+										<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
+										</a>
+									</div>
+								</div>
+								<div class="ibox-content">
+									<h:form method="get" class="form-horizontal">
+
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Enter an address</label>
+											<div class="col-sm-10">
+												<h:inputText p:type="text" class="form-control"
+													value="#{propertyController.town}" />
+											</div>
+										</div>
+
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Building Type</label>
+											<div class="col-sm-10">
+												<h:selectOneMenu class="form-control m-b" name="account"
+													value="#{propertyController.buildingType}" required="true">
+													<f:selectItems value="#{data.buildingTypes}" />
+												</h:selectOneMenu>
+											</div>
+										</div>
+
+
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Service</label>
+
+											<div class="col-sm-10">
+												<h:selectOneMenu class="form-control m-b" name="account"
+													value="#{propertyController.serviceType}" required="true">
+													<f:selectItems value="#{data.serviceTypes}" />
+												</h:selectOneMenu>
+
+											</div>
+										</div>
+
+										<h:commandButton value="SEARCH NOW..."
+											action="#{propertyController.dorecherche()}" />
+									</h:form>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		<div class="wrapper wrapper-content animated fadeInRight" >
+					<div class="row" style="background-image: url('img/house1.jpg');">
+						<div class="col-lg-12">
+							<div class="ibox float-e-margins">
+								<div class="ibox-title">
+									<h5>
+										Find <small>a home</small>
+									</h5>
+								</div>
+								<div class="ibox-content">
+									<h:form method="get" class="form-horizontal">
+
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Enter an address</label>
+											<div class="col-sm-10">
+												<h:inputText p:type="text" class="form-control"
+													value="#{propertyController.town}" />
+											</div>
+										</div>
+
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Building Type</label>
+											<div class="col-sm-10">
+												<h:selectOneMenu class="form-control m-b" name="account"
+													value="#{propertyController.buildingType}" required="true">
+													<f:selectItems value="#{data.buildingTypes}" />
+												</h:selectOneMenu>
+											</div>
+										</div>
+
+
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Service</label>
+
+											<div class="col-sm-10">
+												<h:selectOneMenu class="form-control m-b" name="account"
+													value="#{propertyController.serviceType}" required="true">
+													<f:selectItems value="#{data.serviceTypes}" />
+												</h:selectOneMenu>
+
+											</div>
+										</div>
+
+										<h:commandButton value="SEARCH NOW..."
+											action="#{propertyController.dorecherche()}" />
+									</h:form>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+		
+		
+		
+		
+		
+		
+		<div  class="col-lg-12" style="background-image: url('img/house1.jpg');">
+		
+											<h:form method="get" class="form-horizontal">
+
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Enter an address</label>
+											<div class="col-sm-10">
+												<h:inputText p:type="text" class="form-control"
+													value="#{propertyController.town}" />
+											</div>
+										</div>
+
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Building Type</label>
+											<div class="col-sm-10">
+												<h:selectOneMenu class="form-control m-b" name="account"
+													value="#{propertyController.buildingType}" required="true">
+													<f:selectItems value="#{data.buildingTypes}" />
+												</h:selectOneMenu>
+											</div>
+										</div>
+
+
+
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Service</label>
+
+											<div class="col-sm-10">
+												<h:selectOneMenu class="form-control m-b" name="account"
+													value="#{propertyController.serviceType}" required="true">
+													<f:selectItems value="#{data.serviceTypes}" />
+												</h:selectOneMenu>
+
+											</div>
+										</div>
+
+										<h:commandButton value="SEARCH NOW..."
+											action="#{propertyController.dorecherche()}" />
+									</h:form>
+		</div>
+	</ui:define>
+
+	<ui:define name="js">
+		<!-- Mainly scripts -->
+		<script src="js/jquery-2.1.1.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+		<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+		<!-- Custom and plugin javascript -->
+		<script src="js/inspinia.js"></script>
+		<script src="js/plugins/pace/pace.min.js"></script>
+		<script src="js/jquery-2.1.1.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+		<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+		<!-- Custom and plugin javascript -->
+		<script src="js/inspinia.js"></script>
+		<script src="js/plugins/pace/pace.min.js"></script>
+
+	</ui:define>
+
+</ui:composition>

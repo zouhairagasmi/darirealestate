@@ -1,0 +1,24 @@
+package tn.esprit.spring.controller;
+
+import org.ocpsoft.rewrite.el.ELBeanName;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import tn.esprit.spring.entity.BuildingType;
+import tn.esprit.spring.entity.ServiceType;
+
+@Scope(value = "session")
+@Controller(value = "data")
+@ELBeanName(value = "data")
+public class Data {
+	
+	public ServiceType[] getServiceTypes()
+	{
+		return ServiceType.values();
+	}
+	
+	public BuildingType[] getBuildingTypes()
+	{
+		return BuildingType.values();
+	}
+}
