@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entity.Favorits;
 import tn.esprit.spring.entity.User;
+import tn.esprit.spring.entity.Visits;
 import tn.esprit.spring.repository.FavoritsRepository;
 
 @Service
@@ -27,7 +28,11 @@ public Favorits addFavorit(Favorits favorit) {
 	return favoritsRepository.save(favorit);
 }
 
-
+@Override
+public List<Favorits> findByuserId(Long id) {
+	//List<Visits> list = visitRepository.findVisitByIdVisitor(id);
+	return favoritsRepository.findFavByIdUser(id);
+}
 
 @Override
 public void deleteFavorit(Long id) {

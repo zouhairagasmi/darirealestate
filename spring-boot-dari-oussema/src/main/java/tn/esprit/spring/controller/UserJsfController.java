@@ -135,7 +135,7 @@ public class UserJsfController {
 
 	public String doLogout() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return "/login.xhtml?faces-redirect=true";
+		return "/loginn.xhtml?faces-redirect=true";
 	}
 
 	public String goToUsers() {
