@@ -32,4 +32,6 @@ public interface IPropertyJSFService {
 	public List<Property> getPropertyWithLocation();
 	
 	public void updatePropertyById(Property prop, Long id);
+	
+	public List<Property> findPropByIdUser(Long id);
 }
