@@ -1,11 +1,11 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-xmlns:f="http://java.sun.com/jsf/core"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:ui="http://java.sun.com/jsf/facelets"
-xmlns:c="http://java.sun.com/jsp/jstl/core"
-xmlns:p="http://primefaces.org/ui"
-xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-template="/WEB-INF/template/template.xhtml">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	template="/WEB-INF/template/template.xhtml">
 
 
 	<ui:define name="content">
@@ -63,7 +63,7 @@ template="/WEB-INF/template/template.xhtml">
 												<dt>
 													<i class="fa fa-circle text-navy"></i>Heating
 												</dt>
-												
+
 												<dd>Donec id elit non mi porta gravida at eget metus.</dd>
 												<dt>Malesuada porta</dt>
 												<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
@@ -114,6 +114,7 @@ template="/WEB-INF/template/template.xhtml">
 									</div>
 								</div>
 
+
 								<div class="ibox-content">
 
 									<div class="form-group">
@@ -131,7 +132,7 @@ template="/WEB-INF/template/template.xhtml">
 											appointment type</label>
 										<div class="col-sm-10">
 											<h:selectOneMenu class="form-control m-b" name="account"
-												value="#{visitJsfController.buildingType}" required="true">
+												value="#{visitJsfController.visitType1}" required="true">
 												<f:selectItems value="#{data.visitTypes}" />
 											</h:selectOneMenu>
 										</div>
@@ -149,6 +150,7 @@ template="/WEB-INF/template/template.xhtml">
 									</div>
 
 								</div>
+
 							</div>
 						</div>
 					</div>
