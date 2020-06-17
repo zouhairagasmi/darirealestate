@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import tn.esprit.spring.entity.BuildingType;
 import tn.esprit.spring.entity.Property;
 import tn.esprit.spring.entity.ServiceType;
+import tn.esprit.spring.entity.User;
 import tn.esprit.spring.repository.PropertyJSFRepository;
 
 @Service
@@ -47,6 +48,30 @@ public class PropertyJSFService implements IPropertyJSFService{
 		List<Property> properties = (List<Property>) propertyRepository.findAll();
 		return properties;
 	}
+	
+	@Override
+	public void updatePropertyById(Property prop, Long id) {
+		propertyRepository.updatePropertyById(prop.getName()
+										,prop.getPrice()
+										,prop.getDescription()
+										,prop.getProvince()
+										,prop.getTown()
+										,prop.getNumberBedroom()
+										,prop.getNumberWc()
+										,prop.getFurnished()
+										,prop.getGarage()
+										,prop.getPool()
+										,prop.getAc()
+										,prop.getHeating()
+										,prop.getElevator()
+										,prop.getNeartransport()
+										,prop.getStorage()
+										,prop.getOffice()
+										,prop.getTerrace()
+										, id);
+		
+	}
+	
 
 	@Override
 	public void deleteProperty(Long propertyid) {

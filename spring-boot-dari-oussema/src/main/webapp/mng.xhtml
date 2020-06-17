@@ -1,11 +1,18 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-	template="/WEB-INF/template/template.xhtml">
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:c="http://java.sun.com/jsp/jstl/core"
+xmlns:p="http://primefaces.org/ui"
+xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+template="/WEB-INF/template/template.xhtml">
+
+<ui:define name="title">
+
+</ui:define>
+<ui:define name="stylesheets">
+<link href="css/plugins/dataTables/datatables.min.css" rel="stylesheet"/>
+</ui:define>
 
 
 
@@ -262,36 +269,10 @@
 
 
 									</tbody>
-									<tfoot>
-										<tr>
-											<th>Name</th>
-											<th>Price</th>
-											<th>Building Type</th>
-											<th>Service Type</th>
-											<th>Town</th>
-											<th>Bedrooms</th>
-											<th>Bathrooms</th>
-											<th>Furniture</th>
-											<th>Pool</th>
-											<th>Garage</th>
-											<th>AC</th>
-											<th>Heating</th>
-											<th>Elevator</th>
-											<th>Near transportation</th>
-											<th>Storage</th>
-											<th>Office</th>
-											<th>Terrace</th>
-											<th>Update</th>
-											<th>Delete</th>
-
-										</tr>
-									</tfoot>
+				
 								</table>
 
 								<div class="wrapper wrapper-content animated fadeInRight">
-
-
-
 								</div>
 							</div>
 
@@ -327,7 +308,7 @@
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Price</label>
 									<div class="input-group m-b">
-										<span class="input-group-addon">£</span>
+										<span class="input-group-addon">ï¿½</span>
 										<h:inputText p:type="text" a:placeholder="Balance"
 											class="form-control" value="#{propertyController.price}" />
 										<span class="input-group-addon">.00</span>
@@ -388,7 +369,7 @@
 									</label>
 									<div>
 										<label> <h:selectBooleanCheckbox
-												value="#{userController.furnished}"></h:selectBooleanCheckbox></label>
+												value="#{propertyController.furnished}"></h:selectBooleanCheckbox></label>
 									</div>
 								</div>
 
@@ -398,7 +379,7 @@
 									</label>
 									<div>
 										<label> <h:selectBooleanCheckbox
-												value="#{userController.garage}"></h:selectBooleanCheckbox></label>
+												value="#{propertyController.garage}"></h:selectBooleanCheckbox></label>
 									</div>
 								</div>
 
@@ -408,7 +389,7 @@
 									</label>
 									<div>
 										<label> <h:selectBooleanCheckbox
-												value="#{userController.pool}"></h:selectBooleanCheckbox></label>
+												value="#{propertyController.pool}"></h:selectBooleanCheckbox></label>
 									</div>
 								</div>
 
@@ -418,7 +399,7 @@
 									</label>
 									<div>
 										<label> <h:selectBooleanCheckbox
-												value="#{userController.ac}"></h:selectBooleanCheckbox></label>
+												value="#{propertyController.ac}"></h:selectBooleanCheckbox></label>
 									</div>
 								</div>
 
@@ -428,7 +409,7 @@
 									</label>
 									<div>
 										<label><h:selectBooleanCheckbox
-												value="#{userController.heating}"></h:selectBooleanCheckbox></label>
+												value="#{propertyController.heating}"></h:selectBooleanCheckbox></label>
 									</div>
 								</div>
 
@@ -438,7 +419,7 @@
 									</label>
 									<div>
 										<label> <h:selectBooleanCheckbox
-												value="#{userController.elevator}"></h:selectBooleanCheckbox></label>
+												value="#{propertyController.elevator}"></h:selectBooleanCheckbox></label>
 									</div>
 								</div>
 
@@ -448,7 +429,7 @@
 									</label>
 									<div>
 										<label> <h:selectBooleanCheckbox
-												value="#{userController.neartransport}"></h:selectBooleanCheckbox></label>
+												value="#{propertyController.neartransport}"></h:selectBooleanCheckbox></label>
 									</div>
 								</div>
 								<div class="form-group">
@@ -457,7 +438,7 @@
 									</label>
 									<div>
 										<label> <h:selectBooleanCheckbox
-												value="#{userController.storage}"></h:selectBooleanCheckbox></label>
+												value="#{propertyController.storage}"></h:selectBooleanCheckbox></label>
 									</div>
 								</div>
 								<div class="form-group">
@@ -466,7 +447,7 @@
 									</label>
 									<div>
 										<label> <h:selectBooleanCheckbox
-												value="#{userController.office}"></h:selectBooleanCheckbox></label>
+												value="#{propertyController.office}"></h:selectBooleanCheckbox></label>
 									</div>
 								</div>
 
@@ -476,7 +457,7 @@
 									</label>
 									<div>
 										<label> <h:selectBooleanCheckbox
-												value="#{userController.terrace}"></h:selectBooleanCheckbox></label>
+												value="#{propertyController.terrace}"></h:selectBooleanCheckbox></label>
 									</div>
 								</div>
 
@@ -485,7 +466,7 @@
 								<div class="form-group">
 									<div class="col-sm-4 col-sm-offset-2">
 										<h:commandButton class="btn btn-primary"
-											action="#{userController.mettreAjourProperty()}"
+											action="#{propertyController.mettreAjourProperty()}"
 											value="Save changes"></h:commandButton>
 									</div>
 								</div>

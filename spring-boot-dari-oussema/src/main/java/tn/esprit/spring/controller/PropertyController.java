@@ -213,7 +213,7 @@ public class PropertyController {
 		Property e = new Property(propertyIdToBeUpdated,name, price,
 				 description,numberBedroom, numberWc,furnished, garage,
 			 province, town, pool, ac, heating, elevator, neartransport, storage, office, terrace);
-		propertyService.updateProperty(e);
+		propertyService.updatePropertyById(e, propertyIdToBeUpdated  ); 
 	}
 
 	
