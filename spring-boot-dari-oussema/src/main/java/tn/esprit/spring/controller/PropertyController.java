@@ -51,17 +51,19 @@ public class PropertyController {
     private Boolean furnished;
     private Boolean pool;
     private Boolean garage;
-	public Date createdDate;
+    Date datesys = new Date();
+	public Date createdDate = datesys;
+	
     private Boolean neartransport;
     private Boolean heating;
     private String photo;
     private String province;
     private String town;
-    private Double latitude;
-    private Double longitude;
-	private String ref;
-	private Boolean visible;
-	private Boolean sold;
+    private Double latitude = 1.1;
+    private Double longitude = 1.1;
+	private String ref = "MsReal1";
+	private Boolean visible = true;
+	private Boolean sold = false;
 	private Boolean terrace;
 	private Boolean ac;
 	private Boolean office;
@@ -71,6 +73,7 @@ public class PropertyController {
 	private List<Property> properties1;
 	private List<Property> properties2;
 	private Property property;
+	private User Current = UserJsfController.user;
 	//private Boolean loggedIn;
 	
 	private String login;
@@ -179,6 +182,13 @@ public class PropertyController {
 		loggedIn = false;
 		}
 	
+//	public void ajouterUser() {
+//		iUserService.addUser(new User(username, password, firstname, lastname, phone, email, role, balance, isActif));
+//	}
+//	
+	public void ajouterProp() {
+		propertyService.ajouterProperty(new Property(name, price, description, buildingType, serviceType, ref, visible, sold, terrace, numberBedroom, numberWc, elevator, furnished, pool, garage, ac, createdDate, neartransport, office, storage, heating, photo, province, town, latitude, longitude, Current));
+	}
 	
 
 	/*

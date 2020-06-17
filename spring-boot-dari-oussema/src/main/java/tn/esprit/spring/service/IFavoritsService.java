@@ -15,5 +15,6 @@ public interface IFavoritsService {
 	public Favorits findByIdd(Long id);
 	public Favorits updateFavorit(Favorits favorit); 
 	public List<Favorits> findByUserr (User user);
+	public List<Favorits> findByuserId(Long id);
 	
 }

@@ -51,10 +51,11 @@ public class FavoritsController {
 
 	}
 
+
+
 	
-//working but needs to be based on user
 	public List<Favorits> getFavorits() {
-		favorits = ifavservice.getAllFavorits();
+		favorits = ifavservice.findByuserId(Current.getIdU());
 		return favorits;
 	}
 	

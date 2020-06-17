@@ -50,7 +50,10 @@ public class User {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Reservation> reservation;
 
-	
+    @OneToMany(mappedBy = "user",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    private List<Item> ItemList;
+    @OneToMany(mappedBy = "user1",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    private List<Orders> OrderList ;
 	
 	
 	

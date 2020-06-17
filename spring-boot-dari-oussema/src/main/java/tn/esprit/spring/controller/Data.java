@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 
 import tn.esprit.spring.entity.BuildingType;
 import tn.esprit.spring.entity.ServiceType;
+import tn.esprit.spring.entity.VisitType;
 
 @Scope(value = "session")
 @Controller(value = "data")
@@ -20,5 +21,10 @@ public class Data {
 	public BuildingType[] getBuildingTypes()
 	{
 		return BuildingType.values();
+	}
+	
+	public VisitType[] getVisitTypes()
+	{
+	return VisitType.values();
 	}
 }

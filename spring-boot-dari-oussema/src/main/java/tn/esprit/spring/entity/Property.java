@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 
 import java.io.Serializable;
-
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -123,7 +123,11 @@ public class Property implements Serializable {
 	
 	@OneToMany(mappedBy = "property", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Reservation> reservation;
-
+	
+	@OneToMany
+	private List<Visits> visits = new ArrayList<>();
+	
+	
 	 public Property(String name, Double price, BuildingType buildingType, ServiceType serviceType,
 				String description, Integer numberBedroom, Integer numberWc, Boolean furnished
 				, Boolean garage,Date createdDate, 
@@ -218,6 +222,43 @@ public class Property implements Serializable {
 
 	public Property() {
 		super();
+	}
+
+	public Property(String name, Double price, String description, BuildingType buildingType,
+			ServiceType serviceType, String ref, Boolean visible, Boolean sold, Boolean terrace,
+			Integer numberBedroom, Integer numberWc, Boolean elevator, Boolean furnished, Boolean pool,
+			Boolean garage, Boolean ac, Date createdDate, Boolean neartransport, Boolean office, Boolean storage,
+			Boolean heating, String photo, String province, String town, Double latitude, Double longitude,
+			User current) {
+		super();
+		this.name = name;
+		this.price = price;
+		this.description = description;
+		this.terrace = terrace;
+		this.numberBedroom = numberBedroom;
+		this.elevator = elevator;
+		this.furnished = furnished;
+		this.pool = pool;
+		this.garage = garage;
+		this.numberWc = numberWc;
+		this.ac = ac;
+		this.neartransport = neartransport;
+		this.office = office;
+		this.storage = storage;
+		this.heating = heating;
+		this.province = province;
+		this.town = town;
+		this.province= province;
+		this.longitude = longitude;
+		this.latitude = latitude;
+		this.photo = photo;
+		this.buildingType = buildingType;
+		this.serviceType = serviceType;
+		this.createdDate = createdDate;
+		this.sold = sold;
+		this.visible = visible;
+		this.ref = ref;
+		
 	}
 
 	public List<Reservation> getReservation() {
