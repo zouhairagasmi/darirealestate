@@ -12,6 +12,8 @@ public interface IVisitService {
 	public Visits findByIdd(Long id);
 	public List<Visits> findByuserId(Long id);
 	public void deleteVisit(Long visitId);
+	public void updateVisitById(Visits prop, Long id);
+	public List<Visits> findViByIdUser(Long id);
 	
 	
 }

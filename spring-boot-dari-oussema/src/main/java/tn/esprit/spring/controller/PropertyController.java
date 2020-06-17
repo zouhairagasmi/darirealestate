@@ -19,6 +19,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import tn.esprit.spring.entity.BuildingType;
+import tn.esprit.spring.entity.Favorits;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.entity.Property;
 import tn.esprit.spring.entity.Role;
@@ -56,7 +57,7 @@ public class PropertyController {
 	
     private Boolean neartransport;
     private Boolean heating;
-    private String photo;
+    private String photo = "img/house2.jpg";
     private String province;
     private String town;
     private Double latitude = 1.1;
@@ -70,9 +71,11 @@ public class PropertyController {
 	private Boolean storage;
     private Long propertyIdToBeUpdated;
 	private List<Property> properties;
+	private List<Property> propertiesu;
 	private List<Property> properties1;
 	private List<Property> properties2;
 	private Property property;
+	
 	private User Current = UserJsfController.user;
 	//private Boolean loggedIn;
 	
@@ -87,6 +90,26 @@ public class PropertyController {
 	private List<User> employes;
 	
 	
+	
+	
+	
+	public List<Property> getPropertiesu() {
+		propertiesu = propertyService.findPropByIdUser(Current.getIdU());
+		return propertiesu;
+	}
+
+	public void setPropertiesu(List<Property> propertiesu) {
+		this.propertiesu = propertiesu;
+	}
+
+	public User getCurrent() {
+		return Current;
+	}
+
+	public void setCurrent(User current) {
+		Current = current;
+	}
+
 	public List<Property> getProperties() {
 		properties = propertyService.getAllProperty();
 		return properties;
@@ -108,6 +131,11 @@ public class PropertyController {
 			
 			return navigateTo;
 			}
+	 
+	 public List<Property> getuserProps() {
+		 properties = propertyService.findPropByIdUser(Current.getIdU());
+			return properties;
+		}
 
 	 
 	 public String dorecherche() {
@@ -187,7 +215,11 @@ public class PropertyController {
 //	}
 //	
 	public void ajouterProp() {
-		propertyService.ajouterProperty(new Property(name, price, description, buildingType, serviceType, ref, visible, sold, terrace, numberBedroom, numberWc, elevator, furnished, pool, garage, ac, createdDate, neartransport, office, storage, heating, photo, province, town, latitude, longitude, Current));
+		propertyService.ajouterProperty(new Property(name, price,description, buildingType,
+				serviceType, ref, visible, sold, terrace,  numberBedroom,
+				 elevator,  furnished,  pool,  garage,  numberWc,  ac,
+				createdDate,  neartransport,  office, storage,  heating,  photo,
+				 province,  town,  latitude,  longitude, Current));
 	}
 	
 

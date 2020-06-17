@@ -224,16 +224,22 @@ public class Property implements Serializable {
 		super();
 	}
 
-	public Property(String name, Double price, String description, BuildingType buildingType,
-			ServiceType serviceType, String ref, Boolean visible, Boolean sold, Boolean terrace,
-			Integer numberBedroom, Integer numberWc, Boolean elevator, Boolean furnished, Boolean pool,
-			Boolean garage, Boolean ac, Date createdDate, Boolean neartransport, Boolean office, Boolean storage,
-			Boolean heating, String photo, String province, String town, Double latitude, Double longitude,
-			User current) {
+	
+
+	public Property(@NotNull String name, Double price, String description, BuildingType buildingType,
+			ServiceType serviceType, String ref, Boolean visible, Boolean sold, Boolean terrace, Integer numberBedroom,
+			Boolean elevator, Boolean furnished, Boolean pool, Boolean garage, Integer numberWc, Boolean ac,
+			Date createdDate, Boolean neartransport, Boolean office, Boolean storage, Boolean heating, String photo,
+			@NotNull String province, @NotNull String town, Double latitude, Double longitude, User user) {
 		super();
 		this.name = name;
 		this.price = price;
 		this.description = description;
+		this.buildingType = buildingType;
+		this.serviceType = serviceType;
+		this.ref = ref;
+		this.visible = visible;
+		this.sold = sold;
 		this.terrace = terrace;
 		this.numberBedroom = numberBedroom;
 		this.elevator = elevator;
@@ -242,23 +248,17 @@ public class Property implements Serializable {
 		this.garage = garage;
 		this.numberWc = numberWc;
 		this.ac = ac;
+		this.createdDate = createdDate;
 		this.neartransport = neartransport;
 		this.office = office;
 		this.storage = storage;
 		this.heating = heating;
+		this.photo = photo;
 		this.province = province;
 		this.town = town;
-		this.province= province;
-		this.longitude = longitude;
 		this.latitude = latitude;
-		this.photo = photo;
-		this.buildingType = buildingType;
-		this.serviceType = serviceType;
-		this.createdDate = createdDate;
-		this.sold = sold;
-		this.visible = visible;
-		this.ref = ref;
-		
+		this.longitude = longitude;
+		this.user = user;
 	}
 
 	public List<Reservation> getReservation() {

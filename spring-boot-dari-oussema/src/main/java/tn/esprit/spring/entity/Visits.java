@@ -89,6 +89,13 @@ public class Visits {
 		this.visitType = visitType;
 	}
 
+	public Visits(Long visitIdToBeUpdated, Date dateVisit) {
+		super();
+		this.setIdVisit(visitIdToBeUpdated);
+		this.dateVisit = dateVisit;
+	}
+
+
 	public Long getIdVisit() {
 		return idVisit;
 	}

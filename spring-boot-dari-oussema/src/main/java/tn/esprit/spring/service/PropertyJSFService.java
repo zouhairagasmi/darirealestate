@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entity.BuildingType;
+import tn.esprit.spring.entity.Favorits;
 import tn.esprit.spring.entity.Property;
 import tn.esprit.spring.entity.ServiceType;
 import tn.esprit.spring.entity.User;
@@ -25,6 +26,14 @@ public class PropertyJSFService implements IPropertyJSFService{
 		return propertyRepository.getPropertyByDescriptionAndRef(description, ref); 
 	}*/
 
+	
+	
+	@Override
+	public List<Property> findPropByIdUser(Long id) {
+		//List<Visits> list = visitRepository.findVisitByIdVisitor(id);
+		return propertyRepository.findPropByIdUser(id);
+	}
+	
 	@Override
 	public void ajouterProperty(Property e) {
 		// TODO Auto-generated method stub

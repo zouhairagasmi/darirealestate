@@ -1,11 +1,11 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-xmlns:f="http://java.sun.com/jsf/core"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:ui="http://java.sun.com/jsf/facelets"
-xmlns:c="http://java.sun.com/jsp/jstl/core"
-xmlns:p="http://primefaces.org/ui"
-xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-template="/WEB-INF/template/template.xhtml">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	template="/WEB-INF/template/template.xhtml">
 
 
 	<ui:define name="content">
@@ -63,7 +63,7 @@ template="/WEB-INF/template/template.xhtml">
 												<dt>
 													<i class="fa fa-circle text-navy"></i>Heating
 												</dt>
-												
+
 												<dd>Donec id elit non mi porta gravida at eget metus.</dd>
 												<dt>Malesuada porta</dt>
 												<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
@@ -73,7 +73,7 @@ template="/WEB-INF/template/template.xhtml">
 												<div class="btn-group">
 													<h:commandButton class="btn btn-white btn-sm"
 														value="Add to wishlist"
-														action="#{favoritsController.addfav(prop)}" />
+														action="#{favoritsController.addfav(prop)}" onclick="alert('Added to my wishlist');" />
 
 													<h:commandButton value="Click Me!"
 														onclick="alert('Hello World!');" />
@@ -86,10 +86,6 @@ template="/WEB-INF/template/template.xhtml">
 													<a href="VRvisit.jsf" class="btn btn-white btn-sm"> <i
 														class="fa fa-eye"></i> 3D tour
 													</a>
-
-
-
-
 
 												</div>
 											</div>
@@ -113,6 +109,7 @@ template="/WEB-INF/template/template.xhtml">
 										</a>
 									</div>
 								</div>
+
 
 								<div class="ibox-content">
 
@@ -149,6 +146,7 @@ template="/WEB-INF/template/template.xhtml">
 									</div>
 
 								</div>
+
 							</div>
 						</div>
 					</div>
