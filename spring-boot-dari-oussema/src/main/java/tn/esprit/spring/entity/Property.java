@@ -171,21 +171,7 @@ public class Property implements Serializable {
 	   */
 
 	    
-	    public Property(Long propertyIdToBeUpdated,String name, Double price, BuildingType buildingType, ServiceType serviceType, String description,
-	    		String province,String town,Double latitude,Double longitude)
-	    {
-	    	super();
-	    	this.id=propertyIdToBeUpdated;
-			this.name = name;
-			this.price = price;
-			this.buildingType = buildingType;
-			this.serviceType = serviceType;
-			this.description = description;
-			this.province = province;
-			this.town = town;
-			this.latitude = latitude;
-			this.longitude = longitude;
-				}
+
 	    
 		public Property(String name, Double price, BuildingType buildingType, ServiceType serviceType, String description,
 				String province,String town,Double latitude,Double longitude) {
@@ -201,10 +187,39 @@ public class Property implements Serializable {
 			this.longitude = longitude;
 		}
 
-		public Property() {
-			super();
-			// TODO Auto-generated constructor stub
-		}
+		
+		
+
+	public Property(Long propertyIdToBeUpdated, String name, Double price, String description,
+			Integer numberBedroom, Integer numberWc, Boolean furnished, Boolean garage, String province,
+			String town, Boolean pool, Boolean ac, Boolean heating, Boolean elevator, Boolean neartransport,
+			Boolean storage, Boolean office, Boolean terrace) {
+		super();
+		this.name = name;
+		this.price = price;
+		this.description = description;
+		this.terrace = terrace;
+		this.numberBedroom = numberBedroom;
+		this.elevator = elevator;
+		this.furnished = furnished;
+		this.pool = pool;
+		this.garage = garage;
+		this.numberWc = numberWc;
+		this.ac = ac;
+		this.neartransport = neartransport;
+		this.office = office;
+		this.storage = storage;
+		this.heating = heating;
+		this.province = province;
+		this.town = town;
+	}
+	
+	
+
+	public Property() {
+		super();
+	}
+
 	public List<Reservation> getReservation() {
 		return reservation;
 	}

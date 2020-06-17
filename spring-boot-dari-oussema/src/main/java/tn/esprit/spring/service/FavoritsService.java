@@ -42,7 +42,6 @@ public List<Favorits> getAllFavorits() {
 @Override
 public void updateFavorits(Long id, String title) {
 	Favorits favorit = favoritsRepository.findById(id).get();
-	favorit.setTitle(title);
 	favoritsRepository.save(favorit);
 	
 }
@@ -50,7 +49,6 @@ public void updateFavorits(Long id, String title) {
 @Override
 public Favorits updateFavorit(Favorits favorit) {
 	Favorits favorit2 = favoritsRepository.findById(favorit.getId()).get();
-	favorit2.setTitle(favorit.getTitle());
 	favoritsRepository.save(favorit2);
 	return favorit2;
 }
