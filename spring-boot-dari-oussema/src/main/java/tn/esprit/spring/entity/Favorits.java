@@ -31,27 +31,25 @@ public class Favorits {
 	@Temporal(TemporalType.DATE)
 	 private Date date;
 	 
-	 private String Title;
+
 	 
 	 
 	 
 
-	public Favorits(Long id, User user, Property property, Date date, String title) {
+	public Favorits(Long id, User user, Property property, Date date) {
 		super();
 		this.id = id;
 		this.user = user;
 		this.property = property;
 		this.date = date;
-		Title = title;
 	}
 	public Favorits() {
 		super();
 	}
-	public Favorits(User user, Property property, String title) {
+	public Favorits(User user, Property property) {
 		super();
 		this.user = user;
 		this.property = property;
-		Title = title;
 	}
 	public Long getId() {
 		return id;
@@ -59,12 +57,7 @@ public class Favorits {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getTitle() {
-		return Title;
-	}
-	public void setTitle(String title) {
-		Title = title;
-	}
+
 	public User getUser() {
 		return user;
 	}
@@ -87,11 +80,11 @@ public class Favorits {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Title == null) ? 0 : Title.hashCode());
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((property == null) ? 0 : property.hashCode());
@@ -107,11 +100,6 @@ public class Favorits {
 		if (getClass() != obj.getClass())
 			return false;
 		Favorits other = (Favorits) obj;
-		if (Title == null) {
-			if (other.Title != null)
-				return false;
-		} else if (!Title.equals(other.Title))
-			return false;
 		if (date == null) {
 			if (other.date != null)
 				return false;
@@ -136,8 +124,7 @@ public class Favorits {
 	}
 	@Override
 	public String toString() {
-		return "Favorits [id=" + id + ", user=" + user + ", property=" + property + ", date=" + date + ", Title="
-				+ Title + "]";
+		return "Favorits [id=" + id + ", user=" + user + ", property=" + property + ", date=" + date + "]";
 	}
 	
 }

@@ -72,9 +72,15 @@
 											<hr></hr>
 											<div>
 												<div class="btn-group">
-													<button class="btn btn-white btn-sm">
-														<i class="fa fa-star"></i> Add to wishlist
-													</button>
+<!-- 													<h:commandbutton class="btn btn-white btn-sm" -->
+<!-- 														action="#{favoritsController.addfav(prop)}"> -->
+<!-- 														<i class="fa fa-star"></i> Add to wishlist -->
+<!-- 													</h:commandbutton> -->
+
+													<h:commandButton class="btn btn-white btn-sm" value="Add to wishlist"
+														action="#{favoritsController.addfav(prop)}" />
+														
+														
 													<button class="btn btn-primary btn-sm">
 														<i class="fa fa-cart-plus"></i> Book
 													</button>
@@ -86,6 +92,10 @@
 														<i class="fa fa-envelope"></i> 3D tour
 													</button>
 
+
+
+
+
 												</div>
 											</div>
 										</div>
@@ -96,19 +106,24 @@
 						</div>
 					</div>
 				</div>
+
+
 				<div class="wrapper wrapper-content animated fadeInRight">
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="ibox product-detail">
 								<div class="ibox-content">
-								
-								<H>9ardh lbanka hne ya Moomen </H>
+
+									<H>9ardh lbanka hne ya Moomen </H>
 								</div>
 							</div>
 						</div>
 					</div>
 
 				</div>
+
+
+
 			</p:dataGrid>
 		</h:form>
 	</ui:define>

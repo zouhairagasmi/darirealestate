@@ -12,7 +12,7 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <title>Masmoudi Real Estate Agency | Login</title>
+    <title>RMEA | Login</title>
 	
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet"/>
@@ -28,14 +28,14 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
         <div>
             <div>
 
-                <h1 class="logo-name">RMA</h1>
+                <h1 class="logo-name">RMEA</h1>
             </div>
-            <h3>Welcome to RMA</h3>
-            <p>Perfectly designed and precisely prepared Web App EyeButts.
+            <h3>Welcome to RMEA</h3>
+            <p>Perfectly designed and precisely prepared Real estate agency website .
                 <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
             </p>
             <p>Login in. To see it in action.</p>
-            <h:form class="m-t" role="form" action="index.html">
+            <h:form id="form" class="m-t" role="form" action="index.html">
                 <div class="form-group">
                     <h:inputText  class="form-control" a:placeholder="Username"  required="" value="#{userjsfController.username}"></h:inputText>
                 </div>
@@ -43,15 +43,22 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
                     <h:inputSecret  class="form-control" a:placeholder="Password" required="" value="#{userjsfController.password}" ></h:inputSecret>
                 </div>
                 <h:commandButton id="btn" class="btn btn-primary block full-width m-b" value="Connexion"  action="#{userjsfController.dologin()}"/>
+                <p:message for="btn" />
+				<p:tooltip />
+
+                <a href="#"><small>Forgot password?</small></a>
+                <p class="text-muted text-center"><small>Do not have an account?</small></p>
+                <a class="btn btn-sm btn-white btn-block" href="register.jsf">Create an account</a>
+                
             </h:form>
-            <p class="m-t"> <small>EyeButt we app framework base on Buttstrap 3 &copy; 2020</small> </p>
+            <p class="m-t"> <small>RMEA  &copy; 2020</small> </p>
         </div>
     </div>
 
     <!-- Mainly scripts -->
     <script src="js/jquery-2.1.1.js"></script>
     <script src="js/bootstrap.min.js"></script>
-	<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
     <!-- Custom and plugin javascript -->
