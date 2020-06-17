@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import tn.esprit.spring.entity.Property;
 import tn.esprit.spring.entity.Visits;
 import tn.esprit.spring.repository.VisitRepository;
 
@@ -26,6 +27,14 @@ public class VisitService implements IVisitService{
 		visitRepository.save(visit);
 	}
 	
+	
+	@Override
+	public List<Visits> findViByIdUser(Long id) {
+		//List<Visits> list = visitRepository.findVisitByIdVisitor(id);
+		return visitRepository.findViByIdUser(id);
+	}
+	
+	
 	@Override
 	public List<Visits> getAllVisits() {
 		return (List<Visits>)visitRepository.findAll();
@@ -37,9 +46,15 @@ public class VisitService implements IVisitService{
 		return visit;
 	}
 	
+	
+	@Override
+	public void updateVisitById(Visits prop, Long id) {
+		visitRepository.updateVisitById(prop.getDateVisit(), id);
+		
+	}
+	
 	@Override
 	public List<Visits> findByuserId(Long id) {
-		//List<Visits> list = visitRepository.findVisitByIdVisitor(id);
 		return visitRepository.findVisitByIdVisitor(id);
 	}
 	

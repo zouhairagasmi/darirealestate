@@ -64,8 +64,50 @@ public class VisitsJsfController {
 	private String loanyear;
 	private String monthlycost;
 	private User Current = UserJsfController.user;
+	private Long visitIdToBeUpdated;
+	private List<Visits> visitsu;
+	
+	
+	
 
 	
+	
+	
+	
+	
+	
+	
+	public List<Visits> getVisitsu() {
+		visitsu = iVisitsService.findViByIdUser(Current.getIdU());
+		return visitsu;
+	}
+
+
+	public void setVisitsu(List<Visits> visitsu) {
+		this.visitsu = visitsu;
+	}
+
+
+	public User getCurrent() {
+		return Current;
+	}
+
+
+	public void setCurrent(User current) {
+		Current = current;
+	}
+
+
+	public Long getVisitIdToBeUpdated() {
+		return visitIdToBeUpdated;
+	}
+
+
+	public void setVisitIdToBeUpdated(Long visitIdToBeUpdated) {
+		this.visitIdToBeUpdated = visitIdToBeUpdated;
+	}
+
+
 	public VisitsJsfController() {
 		super();
 		setVisit(new Visits());
@@ -105,6 +147,17 @@ public void addtourreq(Property prop) {
 		this.setDateToChange(dateFormat.format(visit.getDateVisit()));
 		this.setDateVisit(visit.getDateVisit());
 		this.setVisitType(visit.getVisitType());
+	}
+	
+	public void modifier(Visits visitx) {
+		this.setDateVisit(visitx.getDateVisit());
+		this.setVisitType(visitx.getVisitType());
+		this.setVisitIdToBeUpdated(visitx.getIdVisit());
+	}
+	
+	public void mettreAjourVisit() {
+		Visits e = new Visits(visitIdToBeUpdated,dateVisit);
+		iVisitsService.updateVisitById(e, visitIdToBeUpdated); 
 	}
 	
 	public void updateData(Double price) {
