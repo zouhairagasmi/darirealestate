@@ -2,6 +2,7 @@ package tn.esprit.spring.controller;
 
 import java.util.Date;
 
+
 import java.util.List;
 
 
@@ -12,7 +13,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import tn.esprit.spring.entity.Favorits;
-import tn.esprit.spring.entity.Item;
 import tn.esprit.spring.entity.Property;
 
 import tn.esprit.spring.entity.User;

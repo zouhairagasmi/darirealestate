@@ -6,6 +6,11 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Lob;
+import javax.validation.constraints.NotNull;
 
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.el.ELBeanName;
@@ -27,7 +32,7 @@ import tn.esprit.spring.service.PropertyJSFService;
 @Scope(value = "session")
 @Controller(value = "propertyController")
 @ELBeanName(value = "propertyController")
-@Join(path = "/", to = "/loginn.jsf")
+@Join(path = "/", to = "/manageproperties.jsf")
 public class PropertyController {
 	
 	@Autowired
@@ -54,6 +59,13 @@ public class PropertyController {
     private String town;
     private Double latitude;
     private Double longitude;
+	private String ref;
+	private Boolean visible;
+	private Boolean sold;
+	private Boolean terrace;
+	private Boolean ac;
+	private Boolean office;
+	private Boolean storage;
     private Long propertyIdToBeUpdated;
 	private List<Property> properties;
 	private List<Property> properties1;
@@ -70,6 +82,12 @@ public class PropertyController {
 	private Role role;
 	private Integer employeIdToBeUpdated;
 	private List<User> employes;
+	
+	
+	public List<Property> getProperties() {
+		properties = propertyService.getAllProperty();
+		return properties;
+	}
 	
 	 public String getProperties1(String name) {
 
@@ -141,11 +159,7 @@ public class PropertyController {
 	}
 
 	
-	
-	public List<Property> getProperties() {
-		List<Property> properties = propertyService.getAllProperty();
-		return properties;
-	}
+
 	
 	public void deleteProperty(Long propertyid) {
 		propertyService.deleteProperty(propertyid);
@@ -164,6 +178,9 @@ public class PropertyController {
 		property=new Property();
 		loggedIn = false;
 		}
+	
+	
+
 	/*
 	public void ajouterProperty() {
 		propertyService.ajouterProperty(new PropertyJSF(name,price, buildingType, serviceType,description, province, town, latitude, longitude));
@@ -193,31 +210,44 @@ public class PropertyController {
 */
 
 	public void mettreAjourProperty() {
-		Property e = new Property(propertyIdToBeUpdated,name, price, buildingType, serviceType,
-				 description,numberBedroom, numberWc,furnished, garage, createdDate,
-			 province, town, latitude, longitude);
-		propertyService.updateProperty(e);
+		Property e = new Property(propertyIdToBeUpdated,name, price,
+				 description,numberBedroom, numberWc,furnished, garage,
+			 province, town, pool, ac, heating, elevator, neartransport, storage, office, terrace);
+		propertyService.updatePropertyById(e, propertyIdToBeUpdated  ); 
 	}
 
 	
-
 	public void modifier(Property property) {
 		this.setName(property.getName());
 		this.setPrice(property.getPrice());
-		this.setBuildingType(property.getBuildingType());
-		this.setServiceType(property.getServiceType());
 		this.setDescription(property.getDescription());
 		this.setNumberBedroom(property.getNumberBedroom());
 		this.setNumberWc(property.getNumberWc());
 		this.setFurnished(property.getFurnished());
 		this.setGarage(property.getGarage());
-		this.setCreatedDate(property.getCreatedDate());
 		this.setProvince(property.getProvince());
 		this.setTown(property.getTown());
-		this.setLatitude(property.getLatitude());
-		this.setLongitude(property.getLongitude());
+		this.setPool(property.getPool());
+		this.setAc(property.getAc());
+		this.setHeating(property.getHeating());
+		this.setElevator(property.getElevator());
+		this.setNeartransport(property.getNeartransport());
+		this.setStorage(property.getStorage());
+		this.setOffice(property.getOffice());
+		this.setTerrace(property.getTerrace());
+		
+		
+
 		this.setPropertyIdToBeUpdated(property.getId());
 	}
+	
+
+
+	
+	
+	
+	
+	
 	
 //	public String dologin() {
 //
@@ -240,6 +270,68 @@ public class PropertyController {
 //		}
 
 		
+	public String getRef() {
+		return ref;
+	}
+
+	public void setRef(String ref) {
+		this.ref = ref;
+	}
+
+	public Boolean getVisible() {
+		return visible;
+	}
+
+	public void setVisible(Boolean visible) {
+		this.visible = visible;
+	}
+
+	public Boolean getSold() {
+		return sold;
+	}
+
+	public void setSold(Boolean sold) {
+		this.sold = sold;
+	}
+
+	public Boolean getTerrace() {
+		return terrace;
+	}
+
+	public void setTerrace(Boolean terrace) {
+		this.terrace = terrace;
+	}
+
+	public Boolean getAc() {
+		return ac;
+	}
+
+	public void setAc(Boolean ac) {
+		this.ac = ac;
+	}
+
+	public Boolean getOffice() {
+		return office;
+	}
+
+	public void setOffice(Boolean office) {
+		this.office = office;
+	}
+
+	public Boolean getStorage() {
+		return storage;
+	}
+
+	public void setStorage(Boolean storage) {
+		this.storage = storage;
+	}
+
+
+
+	public IUserService getiEmployeService() {
+		return iEmployeService;
+	}
+
 	public PropertyJSFService getPropertyService() {
 		return propertyService;
 	}

@@ -11,50 +11,49 @@
 
 	<ui:define name="content">
 
-
-
 		<div class="wrapper wrapper-content">
 			<div class="row wrapper border-bottom white-bg page-heading">
 				<div class="col-lg-10">
-					<h2>Search Result</h2>
+					<h2>My Favorits</h2>
 					<ol class="breadcrumb">
-						<li><a href="index.html">Ariana</a></li>
-						<li><a>RENT</a></li>
-						<li class="active"><strong>FLAT</strong></li>
+						<li><a href="index.html">#{userjsfController.user.username}</a></li>
+						<li class="active"><strong>Favorits List</strong></li>
 					</ol>
 				</div>
 				<div class="col-lg-2"></div>
 			</div>
 
 
+
 			<div class="wrapper wrapper-content animated fadeInRight">
 				<div class="row">
 					<h:form>
-						<c:forEach var="house" items="#{propertyController.properties1}">
+						<c:forEach var="favorit" items="#{favoritsController.getFavorits()}">
 							<div class="col-md-3">
+								<i class="fa fa-star"></i>
 								<div class="ibox">
 									<div class="ibox-content product-box">
 
 										<div class="product-imitation">
 											<h:graphicImage alt="image" class="img-responsive"
-												value="#{house.photo}" />
+												value="#{favorit.property.photo}" />
 										</div>
 
 										<div class="product-desc">
 											<span class="product-price"> <h:outputText
-													value="#{house.price}">
+													value="#{favorit.property.price}">
 													<f:convertNumber type="currency" currencySymbol="€" />
 												</h:outputText>
-											</span> <small class="text-muted">#{house.buildingType}</small>&#160;<small
-												class="text-muted">for #{house.serviceType}</small> <a
-												href="#" class="product-name"> #{house.name}</a>
+											</span> <small class="text-muted">#{favorit.property.buildingType}</small>&#160;<small
+												class="text-muted">for #{favorit.property.serviceType}</small> <a
+												href="#" class="product-name"> #{favorit.property.name}</a>
 
-											<div class="small m-t-xs">Big #{house.buildingType}
-												with #{house.serviceType} Bed rooms, Big garden and pool.</div>
+											<div class="small m-t-xs">Big #{favorit.property.buildingType}
+												with #{favorit.property.numberBedrooms} Bed rooms, Big garden and pool.</div>
 
 											<h:commandButton
-												action="#{propertyzController.showProperty(house)}"
-												value="View" />
+												action="#{favoritsController.deleteFav(house.id)}"
+												value="Delete" />
 										</div>
 									</div>
 								</div>
@@ -65,6 +64,7 @@
 			</div>
 
 		</div>
+
 
 	</ui:define>
 

@@ -1,16 +1,19 @@
 package tn.esprit.spring.repository;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.Date;
 
+import java.util.List;
+
+
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import tn.esprit.spring.entity.BuildingType;
+
 import tn.esprit.spring.entity.Property;
-import tn.esprit.spring.entity.ServiceType;
 
 @Repository
 public interface PropertyRepository  extends CrudRepository<Property, Long> {
@@ -23,5 +26,6 @@ public interface PropertyRepository  extends CrudRepository<Property, Long> {
 		Property findHouseById(Long id);
 		
 		List<Property> findByName(String nom);
-	
+		
+		
 	}

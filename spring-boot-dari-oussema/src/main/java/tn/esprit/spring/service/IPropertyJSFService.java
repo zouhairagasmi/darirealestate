@@ -30,4 +30,6 @@ public interface IPropertyJSFService {
 	//public void affecterPropertyAFile(String idFile, Long id);
 	
 	public List<Property> getPropertyWithLocation();
+	
+	public void updatePropertyById(Property prop, Long id);
 }

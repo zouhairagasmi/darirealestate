@@ -8,11 +8,6 @@
 	template="/WEB-INF/template/template.xhtml">
 
 
-	<h:form>
-		<h:outputText value="Bonjour #{UserJsfController.username}" />
-		<h:commandLink value="Déconnexion"
-			action="#{UserJsfController.doLogout()}" />
-	</h:form>
 	<ui:define name="content">
 
 		<div class="row wrapper border-bottom white-bg page-heading">
@@ -79,7 +74,7 @@
 
 													<h:commandButton class="btn btn-white btn-sm" value="Add to wishlist"
 														action="#{favoritsController.addfav(prop)}" />
-														
+													<h:commandButton value = "Click Me!" onclick = "alert('Hello World!');" /> 	
 														
 													<button class="btn btn-primary btn-sm">
 														<i class="fa fa-cart-plus"></i> Book
