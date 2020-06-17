@@ -37,11 +37,12 @@ xmlns:p="http://primefaces.org/ui">
                 
               
 
-                <li>
-                    <a href="loginn.jsf">
-                        <i class="fa fa-sign-out"></i> Log out
-                    </a>
-                </li>
+					<li><i class="fa fa-sign-out"></i> <h:panelGroup>
+							<h:form>
+								<h:commandButton id="btn" value="Logout"
+									action="#{userController.doLogout}" />
+							</h:form>
+						</h:panelGroup></li>
             </ul>
 
         </nav>

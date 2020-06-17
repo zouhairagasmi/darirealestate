@@ -2,6 +2,9 @@
 package tn.esprit.spring.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 import org.ocpsoft.rewrite.el.ELBeanName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -31,33 +34,45 @@ public class OrderController {
 	private double Distance;
 	private String from;
 	private String pic;
-
+	List<Integer> range;
 	public Deliverytype[] getDeliverytypes() {
 		return Deliverytype.values();
 	}
 
 
-	public void addorder() {
+	public String addorder() {
 		Item item = itemservice.getItemById(idi).get();
 		orderservice.addNewOrder(new Orders(item, Current, quantity, shippingdestination, deliverytype));
+		return "myorders?faces-redirect=true";
 	}
-
+	public String buyitem(Item item) {
+		this.setIdi(item.getItemId());
+		this.setQuantity(item.getAvailableQuantity());
+		this.setRange(IntStream.rangeClosed(1, quantity)
+			    .boxed().collect(Collectors.toList()));
+		return "addorder?faces-redirect=true";
+	}
 	public void deleteorder(long id) {
 		orderservice.deleteOrder(id);
 	}
 
-	public void displayorder(Orders o) {
+	public String displayorder(Orders o) {
 		this.setCurrent(o.getUser1());
 		this.setIdi(o.getItem().getItemId());
-		this.setQuantity(o.getQuantity());
+		Item item = itemservice.getItemById(idi).get();
+		this.setQuantity(item.getAvailableQuantity());
+		this.setRange(IntStream.rangeClosed(1, quantity)
+			    .boxed().collect(Collectors.toList()));
 		this.setShippingdestination(o.getShippingdestination());
 		this.setDeliverytype(o.getDeliverytype());
 		this.setOrderid(o.getOrderId());
+		return "addorder?faces-redirect=true";
 	}
 
-	public void updateorder() {
+	public String updateorder() {
 		Item item = itemservice.getItemById(idi).get();
-		orderservice.addNewOrder(new Orders(orderid, item, Current, quantity, shippingdestination, deliverytype));
+		orderservice.updateOrder(new Orders(orderid, item, Current, quantity, shippingdestination, deliverytype));
+		return "myorders?faces-redirect=true";
 	}
 
 	public OrderServiceInterface getOrderservice() {
@@ -152,6 +167,16 @@ public class OrderController {
 
 	public void setPic(String pic) {
 		this.pic = pic;
+	}
+
+
+	public List<Integer> getRange() {
+		return range;
+	}
+
+
+	public void setRange(List<Integer> range) {
+		this.range = range;
 	}
 
 }

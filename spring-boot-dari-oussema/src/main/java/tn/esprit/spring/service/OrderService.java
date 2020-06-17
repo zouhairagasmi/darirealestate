@@ -15,6 +15,7 @@ import tn.esprit.spring.entity.Deliverytype;
 import tn.esprit.spring.entity.Item;
 import tn.esprit.spring.entity.Orders;
 import tn.esprit.spring.entity.Status;
+import tn.esprit.spring.repository.ItemRepository;
 import tn.esprit.spring.repository.OrderRepository;
 
 @Service
@@ -23,6 +24,8 @@ public class OrderService implements OrderServiceInterface {
 	OrderRepository orderrepository;
 	@Autowired
 	ItemServiceInterface itemservice;
+	@Autowired
+	ItemRepository itemrepository;
 	@Override
 	public long addNewOrder(Orders orders) {
 		Date dt=new java.util.Date();
@@ -34,6 +37,7 @@ public class OrderService implements OrderServiceInterface {
 		orders.setShippingprice(GenerateShippingPrice(orders,i.getShippingWeight()));
 		orders.setTotalprice(orders.getShippingprice() + i.getPrice() * orders.getQuantity());
 		i.setAvailableQuantity(i.getAvailableQuantity() - orders.getQuantity());
+		itemrepository.save(i);
 		orderrepository.save(orders);
 		return orders.getOrderId();
 	}
@@ -77,11 +81,7 @@ public class OrderService implements OrderServiceInterface {
 
 	public Orders updateOrder(Orders orders) {
 		orders.setOrderId(orders.getOrderId());
-		orders.setQuantity(orders.getQuantity());
-		orders.setOrderId(orders.getOrderId());
-		orders.setShippingdestination(orders.getShippingdestination());
-		orders.setItem(orders.getItem());
-		orders.setUser1(orders.getUser1());
+		System.out.println("id="+orders.getOrderId());
 		Date dt=new java.util.Date();
 		Item i=itemservice.getItemById(orders.getItem().getItemId()).get();
 		orders.setDatecreated(dt);
@@ -91,6 +91,7 @@ public class OrderService implements OrderServiceInterface {
 		orders.setShippingprice(GenerateShippingPrice(orders,i.getShippingWeight()));
 		orders.setTotalprice(orders.getShippingprice() + i.getPrice() * orders.getQuantity());
 		i.setAvailableQuantity(i.getAvailableQuantity() - orders.getQuantity());
+		itemrepository.save(i);
 		return orderrepository.save(orders);
 	}
 

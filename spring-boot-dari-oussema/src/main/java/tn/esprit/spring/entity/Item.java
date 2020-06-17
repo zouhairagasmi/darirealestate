@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 public class Item implements Serializable{
 
-	private static final long serialVersionUID = 1134745019353479667L;
+	private static final long serialVersionUID = 6654332526918890010L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long ItemId;

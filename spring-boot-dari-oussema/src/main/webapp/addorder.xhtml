@@ -6,121 +6,136 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
 	template="/WEB-INF/template/templateuser.xhtml">
+	<ui:define name="title">
+	</ui:define>
+	<ui:define name="stylesheets">
+		<link href="css/plugins/dataTables/datatables.min.css"
+			rel="stylesheet" />
+	</ui:define>
 	<ui:define name="content">
-		<h:panelGroup columns="3">
-			<h:form id="sa">
-				<table>
-					<tr>
-						<td><h:outputText value="Item id"></h:outputText></td>
-						<td><p:inputText value="#{orderController.idi}"
-								required="true" requiredMessage="id is a required field"></p:inputText></td>
-					</tr>
-					<tr>
-						<td><h:outputText value="quantity"></h:outputText></td>
-						<td><p:inputTextarea value="#{orderController.quantity}"
-								required="true" requiredMessage="quantity is a required field"></p:inputTextarea></td>
-					</tr>
-					<tr>
-						<td><h:outputText value="shipping destination"></h:outputText></td>
-						<td><p:inputText
-								value="#{orderController.shippingdestination}" required="true"
-								requiredMessage="shippingdestination is a required field"></p:inputText></td>
-					</tr>
-					<tr>
-						<td><h:outputText value="Delivery Type"></h:outputText></td>
-						<td><h:selectOneMenu value="#{orderController.deliverytype}">
-								<f:selectItem itemLabel="choose delivery type"
-									itemValue="#{null}" />
-								<f:selectItems value="#{orderController.deliverytypes}" />
-							</h:selectOneMenu></td>
-					</tr>
-					<tr>
-						<td colspan="2"><h:commandButton value="Add"
-								action="#{orderController.addorder()}" /></td>
-						<td colspan="2"><h:commandButton value="Update"
-								action="#{orderController.updateorder()}" /></td>
-					</tr>
-				</table>
-				<h:messages style="color:red;margin:8px;" />
-			</h:form>
-		</h:panelGroup>
-		<h:panelGroup columns="2">
-			<h:form>
-				<h:dataTable value="#{orderController.orders}" var="orders"
-					border="1">
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="image" />
-						</f:facet>
-						<h:graphicImage library="images"
-							value="/images/#{orders.item.pic}" width="150" height="150" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="seller" />
-						</f:facet>
-						<h:outputText value="#{orders.item.user.username}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Buyer" />
-						</f:facet>
-						<h:outputText value="#{orders.user1.username}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="quantity" />
-						</f:facet>
-						<h:outputText value="#{orders.quantity}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="from" />
-						</f:facet>
-						<h:outputText value="#{orders.item.location}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="shipping destination" />
-						</f:facet>
-						<h:outputText value="#{orders.shippingdestination}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="distance" />
-						</f:facet>
-						<h:outputText value="#{orders.distance}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="delivery type" />
-						</f:facet>
-						<h:outputText value="#{orders.deliverytype}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="shipping price" />
-						</f:facet>
-						<h:outputText value="#{orders.shippingprice}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="total price" />
-						</f:facet>
-						<h:outputText value="#{orders.totalprice}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Action" />
-						</f:facet>
-						<h:commandButton
-							action="#{orderController.deleteorder(orders.orderId)}"
-							value="Delete" />
-						<h:commandButton action="#{orderController.displayorder(orders)}"
-							value="display" />
-					</h:column>
-				</h:dataTable>
-			</h:form>
-		</h:panelGroup>
+		<div class="row wrapper border-bottom white-bg page-heading">
+			<div class="col-lg-10">
+				<h2>orders</h2>
+			</div>
+			<div class="col-lg-2"></div>
+		</div>
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<h5>Add or update item</h5>
+							<div class="ibox-tools">
+								<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
+								</a>
+							</div>
+						</div>
+						<div class="ibox-content">
+							<h:form method="get" class="form-horizontal">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">quantity</label>
+									<div class="col-sm-10">
+										<h:selectOneMenu value="#{orderController.quantity}">
+											<f:selectItems value="#{orderController.range}" />
+										</h:selectOneMenu>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">shipping
+										destination</label>
+									<div class="col-sm-10">
+										<h:inputText p:type="text" class="form-control"
+											value="#{orderController.shippingdestination}"
+											required="true"
+											requiredMessage="shipping destination is a required field"></h:inputText>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Delivery Type</label>
+									<div class="col-sm-10">
+										<h:selectOneMenu class="form-control"
+											value="#{orderController.deliverytype}">
+											<f:selectItem itemLabel="choose delivery type"
+												itemValue="#{null}" />
+											<f:selectItems value="#{orderController.deliverytypes}" />
+										</h:selectOneMenu>
+									</div>
+								</div>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<div class="col-sm-4 col-sm-offset-2">
+										<h:commandButton class="btn btn-primary"
+											action="#{orderController.addorder()}" value="Add"></h:commandButton>
+										<h:commandButton class="btn btn-primary"
+											action="#{orderController.updateorder()}" value="Update"></h:commandButton>
+									</div>
+								</div>
+								<h:messages style="color:red;margin:8px;" />
+
+							</h:form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+	<ui:define name="js">
+		<script src="js/plugins/dataTables/datatables.min.js"></script>
+	</ui:define>
+	<ui:define name="scripts">
+		<!-- Page-Level Scripts -->
+		<script>
+			$(document)
+					.ready(
+							function() {
+								$('.dataTables-example')
+										.DataTable(
+												{
+													pageLength : 25,
+													responsive : true,
+													dom : '&lt;"html5buttons"B&gt;lTfgitp',
+													buttons : [
+															{
+																extend : 'copy'
+															},
+															{
+																extend : 'csv'
+															},
+															{
+																extend : 'excel',
+																title : 'ExampleFile'
+															},
+															{
+																extend : 'pdf',
+																title : 'ExampleFile'
+															},
+															{
+																extend : 'print',
+																customize : function(
+																		win) {
+																	$(
+																			win.document.body)
+																			.addClass(
+																					'white-bg');
+																	$(
+																			win.document.body)
+																			.css(
+																					'font-size',
+																					'10px');
+																	$(
+																			win.document.body)
+																			.find(
+																					'table')
+																			.addClass(
+																					'compact')
+																			.css(
+																					'font-size',
+																					'inherit');
+																}
+															} ]
+												});
+							});
+		</script>
 	</ui:define>
 </ui:composition>
