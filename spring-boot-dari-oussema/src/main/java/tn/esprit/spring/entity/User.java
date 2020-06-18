@@ -12,6 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -33,15 +34,15 @@ public class User {
 	private String adress;
 	@Temporal(TemporalType.DATE)
 	private Date dateofbirth;
-	private int rating;
+	private int rating=5;
 	private String email;
 	@Enumerated(EnumType.STRING)
 	public Role role;
-	private Integer status;
-	
+	private Integer status=1;
 	private float balance;
 	private Boolean isActif; 
-	
+	@ManyToOne
+	private Subscription subscription;
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Favorits> favorits;

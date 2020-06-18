@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import tn.esprit.spring.entity.BuildingType;
+import tn.esprit.spring.entity.Role;
 import tn.esprit.spring.entity.ServiceType;
 import tn.esprit.spring.entity.VisitType;
 
@@ -26,5 +27,9 @@ public class Data {
 	public VisitType[] getVisitTypes()
 	{
 	return VisitType.values();
+	}
+	public Role[] getRoles()
+	{
+	return Role.values();
 	}
 }

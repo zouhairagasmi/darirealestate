@@ -234,9 +234,7 @@ public class PropertyController {
 		PropertyJSF e = new PropertyJSF(name,price, buildingType, serviceType,description,province, town, latitude, longitude);
 		propertyService.updateProperty(e);
 	}
-
 	
-
 	public void modifier(PropertyJSF property) {
 		this.setName(property.getName());
 		this.setPrice(property.getPrice());

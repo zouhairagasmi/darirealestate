@@ -30,7 +30,6 @@ public class PropertyJSFService implements IPropertyJSFService{
 	
 	@Override
 	public List<Property> findPropByIdUser(Long id) {
-		//List<Visits> list = visitRepository.findVisitByIdVisitor(id);
 		return propertyRepository.findPropByIdUser(id);
 	}
 	
