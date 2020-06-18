@@ -1,0 +1,63 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:c="http://java.sun.com/jsp/jstl/core"
+xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+template="/WEB-INF/template/template.xhtml">
+
+
+<ui:define name="title">
+
+</ui:define>
+
+
+
+<ui:define name="content">
+<div class="wrapper wrapper-content">
+          <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+            
+            <c:forEach var="subscription" items="#{subscriptionController.getSubscriptions()}">
+                <div class="col-md-3">
+                    <div class="ibox">
+                        <div class="ibox-content product-box">
+
+                            <div class="product-imitation">
+                                <h:graphicImage alt="image" class="img-responsive"
+										value="img/sub.jpg" width="500" height="500" />
+                            </div>
+                            <div class="product-desc">
+                                <span class="product-price">
+                                    <h:outputText value="#{subscription.price}">
+    									<f:convertNumber type="currency" currencySymbol="€"/>
+									</h:outputText>
+                                </span>
+                                
+                                <a href="#" class="product-name"> #{subscription.name}</a>
+                                <div class="small m-t-xs">
+                                   #{subscription.description}
+                                </div>
+                                <div class="m-t text-righ">
+                               
+                                
+                                
+                                 <h:commandButton id="btn4" class="btn btn-primary block full-width m-b" value="Subscribe"  action="#{userController.subscribe(userController.getIdCnx(),subscription.idS)}" onclick="alert('You have subscribed successfully');"/>
+                               
+                               
+																
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </c:forEach>
+                 
+            </div>
+        </div>
+    </div>
+    
+</ui:define>
+
+
+</ui:composition>

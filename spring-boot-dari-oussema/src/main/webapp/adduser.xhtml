@@ -1,0 +1,120 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui"
+xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+template="/WEB-INF/template/templateadmin.xhtml">
+
+
+<ui:define name="title">
+
+</ui:define>
+
+
+
+<ui:define name="content">
+<div class="wrapper wrapper-content animated fadeInRight">
+           
+          
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Add User <small>for Adminastrator.</small></h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <h:form method="get" class="form-horizontal">
+                                <div class="form-group"><label class="col-sm-2 control-label">Firstname</label>
+
+                                    <div class="col-sm-10"><h:inputText p:type="text" class="form-control" value="#{userjsfController.firstname}"/></div>
+                                </div>
+                                
+                                <div class="form-group"><label class="col-sm-2 control-label">Lastname</label>
+
+                                    <div class="col-sm-10"><h:inputText p:type="text" class="form-control" value="#{userjsfController.lastname}"/></div>
+                                </div>
+                                
+                                <div class="form-group"><label class="col-sm-2 control-label">Phone number</label>
+
+                                    <div class="col-sm-10"><h:inputText id="maxrecs" required="false"   value="#{userjsfController.phone}" minlenght="8" maxlength="16" > <f:convertNumber longOnly="true"/></h:inputText>
+                                    <p:message for="maxrecs" />
+                                    </div>
+                                </div>
+  							
+                                <div class="hr-line-dashed"></div>
+                                
+                                  <div class="form-group"><label class="col-sm-2 control-label">Username</label>
+
+                                    <div class="col-sm-10">
+                                        <div class="input-group m-b"><span class="input-group-addon">@</span> <h:inputText p:type="text" a:placeholder="Username" class="form-control" value="#{userjsfController.username}"/></div>
+                                       <!--	<div class="input-group m-b"><span class="input-group-addon">$</span> <h:inputText p:type="text" class="form-control"/> <span class="input-group-addon">.00</span></div> -->
+                                    </div>
+                                    <label class="col-sm-2 control-label">Balance</label>
+                                     <div class="input-group m-b"><span class="input-group-addon">$</span> <h:inputText  p:type="text" a:placeholder="Balance" class="form-control" value="#{userjsfController.balance}"/> <span class="input-group-addon">.00</span></div>
+                                    </div>
+                                    <div class="form-group"><label class="col-lg-2 control-label">Email Exemple</label>
+
+                                    <div class="col-lg-10"><p class="form-control-static">email@example.com</p></div>
+                                </div>
+                                    <div class="form-group"><label class="col-sm-2 control-label">Email</label>
+
+                                    <div class="col-sm-10"><h:inputText id="email"  class="form-control" value="#{userjsfController.email}" required="true" label="Email" validatorMessage="#{settingsBean.aFriendEmail} is not valid">
+                                    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" /></h:inputText> <p:message for="email" />
+                                    </div>
+                                </div>
+
+                                    
+           
+                                <div class="form-group"><label class="col-sm-2 control-label">Password</label>
+
+                                    <div class="col-sm-10"><h:inputSecret p:type="password" class="form-control" name="password" value="#{userjsfController.password}"/></div>
+                                </div>
+                                
+                                
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group"><label class="col-sm-2 control-label">Do you want the user to be<br></br>
+                                    <small class="text-navy">actif/inactif</small></label>
+
+                                    <div class="col-sm-10">
+                                        <div><label> <h:selectBooleanCheckbox p:type="checkbox" value="#{userjsfController.isActif}"></h:selectBooleanCheckbox></label></div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                
+                                <div class="form-group"><label class="col-sm-2 control-label">Role</label>
+
+                                    <div class="col-sm-10"><h:selectOneMenu class="form-control m-b"  value="#{userjsfController.role}" required="true">
+                                       
+                                        <f:selectItems value="#{data.roles}" />
+                                    </h:selectOneMenu>
+                                       
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="hr-line-dashed"></div>
+                      
+                                                      
+                                <div class="form-group">
+                                    <div class="col-sm-4 col-sm-offset-2">
+                                        <h:commandButton class="btn btn-primary" action="#{userjsfController.ajouterUser()}" value="Save changes"></h:commandButton>
+                                    </div>
+                                </div>
+                            </h:form>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</ui:define>
+
+
+</ui:composition>
